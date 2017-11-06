@@ -26,8 +26,8 @@ public class MainApplication extends GraphicsApplication {
 		
 		AudioPlayer audio = AudioPlayer.getInstance();
 		switch(count % 2) {
-			case 0: audio.stopSound("sounds", "r2d2.mp3"); break;
-			case 1: audio.stopSound("sounds", "somethinlikethis.mp3"); break;
+			//case 0: audio.stopSound("sounds", "r2d2.mp3"); break;
+			//case 1: audio.stopSound("sounds", "somethinlikethis.mp3"); break;
 		}
 		count++;
 		
@@ -38,8 +38,8 @@ public class MainApplication extends GraphicsApplication {
 		
 		AudioPlayer audio = AudioPlayer.getInstance();
 		switch(count % 2) {
-			case 0: audio.playSound("sounds", "r2d2.mp3"); break;
-			case 1: audio.playSound("sounds", "somethinlikethis.mp3"); break;
+			//case 0: audio.playSound("sounds", "r2d2.mp3"); break;
+			//case 1: audio.playSound("sounds", "somethinlikethis.mp3"); break;
 		}
 		
 		switchToScreen(somePane);
