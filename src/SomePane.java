@@ -9,7 +9,7 @@ public class SomePane extends GraphicsPane {
 	
 	public SomePane(MainApplication app) {
 		this.program = app;
-		img = new GImage("robot head.jpg", 100, 100);
+		img = new GImage("hero.jpg", 100, 100);
 	}
 	
 	@Override

@@ -1,28 +1,50 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.MouseEvent;
 
+import acm.graphics.GLabel;
 import acm.graphics.GObject;
 import acm.graphics.GOval;
 import acm.graphics.GRect;
 
-public class MenuPane extends GraphicsPane {
+public class MenuPane extends GraphicsPane{
 	private MainApplication program; //you will use program to get access to all of the GraphicsProgram calls
 	private GButton rect;
+	private GButton options; 
+	private GButton exit; 
+	private GLabel title; 
+	
 	
 	public MenuPane(MainApplication app) {
 		program = app;
-		rect = new GButton("Next", 200, 200, 200, 200);
-		rect.setFillColor(Color.RED);
-	}
+		rect = new GButton("Start", 350, 200, 100, 50);
+		rect.setFillColor(Color.white);
+		
+		options = new GButton("Options", 350, 275, 100, 50);
+		options.setFillColor(Color.white);
+		
+		exit = new GButton("Exit", 350, 350, 100, 50);
+		exit.setFillColor(Color.WHITE);
+		
+		title = new GLabel("Golden Boy", 315, 150);
+		title.setFont(new Font("Times New Roman", Font.BOLD, 34));
+		
+		}
 	
 	@Override
 	public void showContents() {
 		program.add(rect);
+		program.add(options);
+		program.add(exit);
+		program.add(title);
 	}
 
 	@Override
 	public void hideContents() {
 		program.remove(rect);
+		program.remove(options);
+		program.remove(exit);
+		program.remove(title);
 	}
 
 	@Override
@@ -31,5 +53,13 @@ public class MenuPane extends GraphicsPane {
 		if(obj == rect) {
 			program.switchToSome();
 		}
+		else if(obj == options) {
+			program.switchToSome();
+		}
+		else if(obj == exit) {
+			System.exit(0);
+		}
 	}
+	
+	
 }
