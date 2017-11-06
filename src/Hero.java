@@ -42,7 +42,7 @@ public class Hero extends GraphicsProgram{
 		Hero_x += ACCELERATION;
 	}
 
-}
+
 
 
 public void moveLeft()
