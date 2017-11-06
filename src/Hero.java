@@ -25,18 +25,15 @@ public class Hero extends GraphicsProgram{
 	private int exp; //experience
 	private String name;
 	private BufferedImage Hero; 
+	private MainApplication program; 
+	GImage hero; 
 
-	public Hero()
+	public Hero(MainApplication app)
 	{
-		try
-		{
-			Hero = ImageIO.read(getClass().getResourceAsStream("hero.jpg"));
-		}catch(IOException ex)
-		{
-			ex.printStackTrace();
-		}
+		this.program = app; 
+		hero = new GImage("hero.jpg", 500, 500); 
 	}
-
+	
 	public void moveRight()
 	{
 		Hero_x += ACCELERATION;

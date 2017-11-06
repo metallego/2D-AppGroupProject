@@ -9,6 +9,7 @@ public class MainApplication extends GraphicsApplication {
 	
 	private SomePane somePane;
 	private MenuPane menu;
+	private Hero hero; 
 	private int count = 0;
 	
 	public void init() {
@@ -44,4 +45,10 @@ public class MainApplication extends GraphicsApplication {
 		
 		switchToScreen(somePane);
 	}
+	
+	public void switchtoGame()
+	{
+		//switchToScreen(hero);
+	}
+
 }
