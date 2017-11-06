@@ -21,6 +21,11 @@ public class MainApplication extends GraphicsApplication {
 		somePane = new SomePane(this);
 		menu = new MenuPane(this);
 		switchToMenu();
+		hero = new Hero();
+		while(true) {
+			hero.move();
+			pause(30);
+		}
 	}
 	
 	public void switchToMenu() {
