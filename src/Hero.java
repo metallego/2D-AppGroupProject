@@ -1,3 +1,5 @@
+import java.awt.event.KeyEvent;
+
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -7,23 +9,23 @@ import acm.graphics.*;
 import acm.program.*;
 
 
-public class Hero {
-	
+public class Hero extends GraphicsProgram{
+
 	public int Hero_x; 
 	public int Hero_y;
-	
-	
+
+
 	private static final int HEIGHT = 10;
 	private static final int MAX_SPEED = 2;
 	private static final double ACCELERATION = .2;
-	
+
 	private int level;
 	private int HP; // health points
 	private int attack;
 	private int exp; //experience
 	private String name;
 	private BufferedImage Hero; 
-	
+
 	public Hero()
 	{
 		try
@@ -34,25 +36,36 @@ public class Hero {
 			ex.printStackTrace();
 		}
 	}
-	
+
 	public void moveRight()
 	{
-		Hero_x += ACCELERATION; 
+		Hero_x += ACCELERATION;
 	}
-	
-	public void moveLeft()
-	{
-		Hero_x -= ACCELERATION;
+
+}
+
+
+public void moveLeft()
+{
+	Hero_x -= ACCELERATION;
+}
+
+// TO DO add?? the variables: entityType, knockback, inventory
+
+
+
+@Override
+public void keyPressed(KeyEvent e) {
+	if(e.getKeyCode() ==KeyEvent.VK_LEFT) {
+		// this is for the key event for the left arrow key
+		
 	}
-	
-    // TO DO add?? the variables: entityType, knockback, inventory
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	if(e.getKeyCode() ==KeyEvent.VK_LEFT) {
+
+		// this is for the key event for the right arrow key
+	}
+
+}
+
+
 }
