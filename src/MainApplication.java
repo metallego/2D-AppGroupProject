@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 import acm.graphics.*;
 import acm.program.*;
@@ -9,7 +10,7 @@ public class MainApplication extends GraphicsApplication {
 	
 	private SomePane somePane;
 	private MenuPane menu;
-	private Hero hero; 
+	public Hero hero; 
 	private int count = 0;
 	
 	public void init() {
@@ -54,6 +55,17 @@ public class MainApplication extends GraphicsApplication {
 	public void switchtoGame()
 	{
 		//switchToScreen(hero);
+	}
+	
+	@Override
+	public void keyPressed(KeyEvent e) {
+	    if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+	        hero.moveLeft();
+	    }
+	    if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+	        // this is for the key event for the right arrow key
+	        hero.moveRight();
+	    }
 	}
 
 }

@@ -16,10 +16,10 @@ public class Hero extends GraphicsProgram{
 
 
 	private static final int HEIGHT = 10;
-	private static final int MAX_SPEED = 2;
-	private static final double ACCELERATION = .2;
+	private static final int MAX_SPEED = 10;
+	private static final double ACCELERATION = .5;
 
-	private int speed = 0;
+	private double speed = 0;
 	private int level;
 	private int HP; // health points
 	private int attack;
@@ -27,7 +27,7 @@ public class Hero extends GraphicsProgram{
 	private String name;
 	private BufferedImage Hero; 
 	private MainApplication program; 
-	GImage hero; 
+	public GImage hero; 
 
 	public Hero()
 	{
@@ -45,9 +45,9 @@ public class Hero extends GraphicsProgram{
 		//Hero_x += ACCELERATION;
 		
 		// this is for the key event for the right arrow key
-		hero.move(MAX_SPEED, 0);
+		hero.move(speed, 0);
 		
-		Hero_x += ACCELERATION;
+		speed += ACCELERATION;
 		speed = Math.min(speed, MAX_SPEED);
 		
 	}
@@ -57,8 +57,8 @@ public class Hero extends GraphicsProgram{
 	{
 		
 		// this is for the key event for the left arrow key
-		hero.move(MAX_SPEED, 0);
-		Hero_x -= ACCELERATION;
+		hero.move(speed, 0);
+		speed -= ACCELERATION;
 		speed = Math.max(speed, -MAX_SPEED);
 	}
 
@@ -66,7 +66,7 @@ public class Hero extends GraphicsProgram{
 
 
 
-	@Override
+	/*@Override
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_LEFT) {
 			moveLeft();
@@ -77,6 +77,6 @@ public class Hero extends GraphicsProgram{
 }
 
 	}
-
+*/
 
 }
