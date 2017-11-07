@@ -63,7 +63,7 @@ public class Enemy extends GraphicsProgram{
 		else if (enemyImage.getX() == enemyImage.getX())
 		{
 			enemyImage.move(speed, 0);
-			speed -= ACCELERATION;
+			speed += ACCELERATION;
 			speed = Math.min(speed, MAX_SPEED);
 		}
 	}

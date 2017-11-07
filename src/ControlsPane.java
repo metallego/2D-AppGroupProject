@@ -18,17 +18,27 @@ public class ControlsPane extends GraphicsPane{
 	private GButton attack; 
 	private GButton back; 
 
+	// labels and lines 
+	private GLabel jumpUp;
+	private GLabel moveLeft;
+	private GLabel moveRight;
+	private GLabel jumpDown;
+	
 	public ControlsPane(MainApplication app)
 	{
 		program = app;
-		Up_Key = new GButton ("Jump - W / ^", 150, 150, 50, 50); 
-		Right_Key = new GButton ("Move Right - D / >", 250, 200, 50, 50); 
-		Left_Key = new GButton ("Move Left - A / <", 50, 200, 50, 50); 
-		Down_Key = new GButton("Jump Down - S / v", 150, 200, 50, 50);
+		Up_Key = new GButton ("^", 600, 150, 50, 50); 
+		jumpUp = new GLabel ("Jump Up", 600, 125);
+		Right_Key = new GButton (">", 650, 200, 50, 50); 
+		moveRight = new GLabel ("Move right", 675, 200); 
+		Left_Key = new GButton ("<", 550, 200, 50, 50); 
+		moveLeft = new GLabel ("Move left", 525, 200); 
+		Down_Key = new GButton("v", 600, 200, 50, 50);
+		jumpDown = new GLabel("Jump down", 600, 225);
 		
-		Spacebar = new GButton("Jump - spacebar", 400, 300, 200, 50);
+		Spacebar = new GButton("Spacebar", 250, 300, 200, 50);
 		
-		attack = new GButton ("Attack - Z / J", 600, 200, 50, 50); 
+		attack = new GButton ("Z", 50, 200, 50, 50); 
 		
 		back = new  GButton("back to menu", 0, 0, 100, 50); 
 		
@@ -47,6 +57,10 @@ public class ControlsPane extends GraphicsPane{
 		program.add(Spacebar);
 		program.add(attack);
 		program.add(back);
+		program.add(jumpUp);
+		program.add(moveLeft);
+		program.add(moveRight);
+		program.add(jumpDown);
 		
 	}
 
@@ -60,6 +74,10 @@ public class ControlsPane extends GraphicsPane{
 		program.remove(Spacebar);
 		program.remove(attack);
 		program.remove(back);
+		program.remove(jumpUp);
+		program.remove(moveLeft);
+		program.remove(moveRight);
+		program.remove(jumpDown);
 	}
 	
 	@Override
