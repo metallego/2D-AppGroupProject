@@ -15,11 +15,13 @@ public class SomePane extends GraphicsPane {
 	@Override
 	public void showContents() {
 		program.add(program.hero.heroImg);
+		program.add(program.enemy.enemyImage);
 	}
 
 	@Override
 	public void hideContents() {
 		program.remove(program.hero.heroImg);
+		program.remove(program.enemy.enemyImage);
 	}
 	
 	@Override
