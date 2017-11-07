@@ -13,6 +13,7 @@ public class MenuPane extends GraphicsPane{
 	private GButton options; 
 	private GButton exit; 
 	private GLabel title; 
+	private GButton controls;
 	
 	
 	public MenuPane(MainApplication app) {
@@ -23,11 +24,14 @@ public class MenuPane extends GraphicsPane{
 		options = new GButton("Options", 350, 275, 100, 50);
 		options.setFillColor(Color.white);
 		
-		exit = new GButton("Exit", 350, 350, 100, 50);
+		exit = new GButton("Exit", 350, 425, 100, 50);
 		exit.setFillColor(Color.WHITE);
 		
 		title = new GLabel("Golden Boy", 315, 150);
 		title.setFont(new Font("Times New Roman", Font.BOLD, 34));
+		
+		controls = new GButton("Controls", 350, 350, 100, 50);
+		controls.setFillColor(Color.white);
 		
 		}
 	
@@ -37,6 +41,7 @@ public class MenuPane extends GraphicsPane{
 		program.add(options);
 		program.add(exit);
 		program.add(title);
+		program.add(controls);
 	}
 
 	@Override
@@ -45,6 +50,7 @@ public class MenuPane extends GraphicsPane{
 		program.remove(options);
 		program.remove(exit);
 		program.remove(title);
+		program.remove(controls);
 	}
 
 	@Override
@@ -58,6 +64,10 @@ public class MenuPane extends GraphicsPane{
 		}
 		else if(obj == exit) {
 			System.exit(0);
+		}
+		else if (obj == controls)
+		{
+			program.switchtoControls();
 		}
 	}
 	

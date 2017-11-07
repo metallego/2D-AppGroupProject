@@ -11,6 +11,7 @@ public class MainApplication extends GraphicsApplication {
 	private SomePane somePane;
 	private MenuPane menu;
 	public Hero hero; 
+	private ControlsPane control; 
 	private int count = 0;
 	
 	public void init() {
@@ -21,6 +22,7 @@ public class MainApplication extends GraphicsApplication {
 		System.out.println("Hello, world!");
 		somePane = new SomePane(this);
 		menu = new MenuPane(this);
+		control = new ControlsPane(this);
 		switchToMenu();
 		hero = new Hero();
 		while(true) {
@@ -56,6 +58,11 @@ public class MainApplication extends GraphicsApplication {
 	{
 		//switchToScreen(hero);
 	}
+	
+	public void switchtoControls()
+    {
+        switchToScreen(control); 
+    }
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
