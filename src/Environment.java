@@ -15,7 +15,7 @@ public class Environment
     
     public void update()
     {
-        hero.move();
+        //hero.move();
         hero.applyFriction(FRICTION);
         //hero.applyGravity(GRAVITY);
     }

@@ -14,18 +14,18 @@ public class SomePane extends GraphicsPane {
 	
 	@Override
 	public void showContents() {
-		program.add(program.hero.hero);
+		program.add(program.hero.heroImg);
 	}
 
 	@Override
 	public void hideContents() {
-		program.remove(program.hero.hero);
+		program.remove(program.hero.heroImg);
 	}
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
-		if(obj == program.hero.hero) {
+		if(obj == program.hero.heroImg) {
 			program.switchToMenu();
 		}
 	}

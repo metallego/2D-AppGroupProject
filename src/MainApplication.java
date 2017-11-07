@@ -28,6 +28,7 @@ public class MainApplication extends GraphicsApplication {
 		options = new OptionsPane(this);
 		switchToMenu();
 		hero = new Hero();
+		environment = new Environment(hero);
 		while(true) {
 			hero.move();
 			environment.update();

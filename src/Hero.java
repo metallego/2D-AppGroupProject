@@ -25,19 +25,18 @@ public class Hero extends GraphicsProgram{
 	private int attack;
 	private int exp; //experience
 	private String name;
-	private BufferedImage Hero; 
 	private MainApplication program; 
-	public GImage hero; 
+	public GImage heroImg; 
 
 	public Hero()
 	{
-		hero = new GImage("hero.jpg", 50, 50); 
-		hero.setSize(100,100);
+		heroImg = new GImage("hero.jpg", 50, 50); 
+		heroImg.setSize(100,100);
 	}
 
 
 	public void move() {
-		hero.move(speed,0);
+		heroImg.move(speed,0);
 	}
 
 
@@ -45,7 +44,7 @@ public class Hero extends GraphicsProgram{
 	{
 
 		// this is for the key event for the right arrow key
-		hero.move(speed, 0);
+		heroImg.move(speed, 0);
 
 		speed += ACCELERATION;
 		speed = Math.min(speed, MAX_SPEED);
@@ -57,7 +56,7 @@ public class Hero extends GraphicsProgram{
 	{
 
 		// this is for the key event for the left arrow key
-		hero.move(speed, 0);
+		heroImg.move(speed, 0);
 		speed -= ACCELERATION;
 		speed = Math.max(speed, -MAX_SPEED);
 	}
