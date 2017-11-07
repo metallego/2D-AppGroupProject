@@ -21,14 +21,14 @@ public class ControlsPane extends GraphicsPane{
 	public ControlsPane(MainApplication app)
 	{
 		program = app;
-		Up_Key = new GButton ("Jump - W / ^", 150, 150, 100, 50); 
-		Right_Key = new GButton ("Move Right - D / >", 250, 200, 100, 50); 
-		Left_Key = new GButton ("Move Left - A / <", 50, 200, 100, 50); 
-		Down_Key = new GButton("Jump Down - S / v", 150, 200, 100, 50);
+		Up_Key = new GButton ("Jump - W / ^", 150, 150, 50, 50); 
+		Right_Key = new GButton ("Move Right - D / >", 250, 200, 50, 50); 
+		Left_Key = new GButton ("Move Left - A / <", 50, 200, 50, 50); 
+		Down_Key = new GButton("Jump Down - S / v", 150, 200, 50, 50);
 		
-		Spacebar = new GButton("Jump - spacebar", 400, 300, 100, 50);
+		Spacebar = new GButton("Jump - spacebar", 400, 300, 200, 50);
 		
-		attack = new GButton ("Attack - Z / J", 600, 200, 100, 50); 
+		attack = new GButton ("Attack - Z / J", 600, 200, 50, 50); 
 		
 		back = new  GButton("back to menu", 0, 0, 100, 50); 
 		

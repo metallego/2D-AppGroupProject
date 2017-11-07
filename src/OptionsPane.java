@@ -65,6 +65,18 @@ public class OptionsPane extends GraphicsPane{
 		if(obj == back) {
 			program.switchToMenu();
 		}
+		else if (obj == on)
+		{
+			on.setFillColor(Color.gray);
+			off.setFillColor(Color.white);
+		}
+		else if (obj == off)
+		{
+			off.setFillColor(Color.gray);
+			on.setFillColor(Color.white);
+		}
 	}
+	
+	
 
 }
