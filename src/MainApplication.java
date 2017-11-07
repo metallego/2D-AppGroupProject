@@ -11,6 +11,7 @@ public class MainApplication extends GraphicsApplication {
 	private SomePane somePane;
 	private MenuPane menu;
 	public Hero hero; 
+	public Enemy enemy; 
 	public Environment environment;
 	private ControlsPane control; 
 	private OptionsPane options; 
@@ -28,6 +29,8 @@ public class MainApplication extends GraphicsApplication {
 		options = new OptionsPane(this);
 		switchToMenu();
 		hero = new Hero();
+		enemy = new Enemy(); 
+		environment = new Environment(enemy); 
 		environment = new Environment(hero);
 		while(true) {
 			hero.move();
@@ -78,28 +81,30 @@ public class MainApplication extends GraphicsApplication {
 	public void keyPressed(KeyEvent e) {
 	    if(e.getKeyCode() == KeyEvent.VK_LEFT) {
 	        hero.moveLeft();
+	        enemy.moveRight();
 	    }
 	    if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
 	        // this is for the key event for the right arrow key
 	        hero.moveRight();
+	        enemy.moveLeft();
 	    }
 	}
 	
 	public void keyReleased(KeyEvent e) {
 	    if(e.getKeyCode() == KeyEvent.VK_LEFT) {
 	        hero.moveLeft();
+	        enemy.moveRight();
 	    }
 	    if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
 	        // this is for the key event for the right arrow key
 	        hero.moveRight();
+	        enemy.moveLeft();
 	    }
 	    if(e.getKeyCode() == KeyEvent.VK_SPACE) {
 	    		hero.jump();
-	    		
-	    	
 	    }
 	}
-	
+
 	
 	
 	

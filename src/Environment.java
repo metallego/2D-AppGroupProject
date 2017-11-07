@@ -5,6 +5,7 @@ import acm.program.*;
 public class Environment
 {
 	private Hero hero;
+	private Enemy enemy; 
 	private double FRICTION = .1;
 	private double GRAVITY = .05;
 	private double groundY = 200;
@@ -12,6 +13,11 @@ public class Environment
 	public Environment(Hero h)
 	{
 		hero = h;
+	}
+	
+	public Environment(Enemy e)
+	{
+		enemy = e; 
 	}
 
 	public void update()
