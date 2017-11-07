@@ -100,6 +100,9 @@ public class MainApplication extends GraphicsApplication {
 	        hero.moveRight();
 	        enemy.moveLeft();
 	    }
+	    if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+	    		hero.jump();
+	    }
 	}
 
 	
