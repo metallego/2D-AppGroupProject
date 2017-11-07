@@ -11,17 +11,13 @@ import acm.program.*;
 
 public class Hero extends GraphicsProgram{
 
-	public int Hero_x; 
-	public int Hero_y;
-
-
 	private static final int HEIGHT = 10;
 	private static final int MAX_SPEED = 10;
 	private static final int MAX_VERT_SPEED = 5;
-	private double vertSpeed = 0;
 	private static final double ACCELERATION = .7;
-
+	private double vertSpeed = 0;
 	private double speed = 0;
+	
 	private int level;
 	private int HP; // health points
 	private int attack;
@@ -32,7 +28,7 @@ public class Hero extends GraphicsProgram{
 
 	public Hero()
 	{
-		heroImg = new GImage("hero.jpg", 200, 200); 
+		heroImg = new GImage("hero.jpg", 50, 400); 
 		heroImg.setSize(100,100);
 	}
 	
@@ -99,9 +95,7 @@ public class Hero extends GraphicsProgram{
 	}
 
 	public void applyGravity(double g) {
-		
-			vertSpeed -= g;
-			
+			vertSpeed -= g;	
 
 	}
 
