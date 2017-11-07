@@ -93,6 +93,11 @@ public class MainApplication extends GraphicsApplication {
 	        // this is for the key event for the right arrow key
 	        hero.moveRight();
 	    }
+	    if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+	    		hero.jump();
+	    		
+	    	
+	    }
 	}
 	
 	

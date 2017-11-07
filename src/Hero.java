@@ -17,6 +17,8 @@ public class Hero extends GraphicsProgram{
 
 	private static final int HEIGHT = 10;
 	private static final int MAX_SPEED = 10;
+	private static final int MAX_VERT_SPEED = 5;
+	private double vertSpeed = 0;
 	private static final double ACCELERATION = .7;
 
 	private double speed = 0;
@@ -30,15 +32,34 @@ public class Hero extends GraphicsProgram{
 
 	public Hero()
 	{
-		heroImg = new GImage("hero.jpg", 50, 50); 
+		heroImg = new GImage("hero.jpg", 200, 200); 
 		heroImg.setSize(100,100);
+	}
+	
+	public int getY() {
+		
+		return (int) heroImg.getY();
 	}
 
 
 	public void move() {
-		heroImg.move(speed,0);
+
+		heroImg.move(speed,-vertSpeed);
+
 	}
 
+	public void jump() {
+		if(vertSpeed == 0) {
+			vertSpeed = MAX_VERT_SPEED;
+			heroImg.move(0,-MAX_VERT_SPEED);
+		}
+	}
+	
+	public void stopJumping(double y) {
+		vertSpeed = 0;
+		heroImg.setLocation(heroImg.getX(),y);
+		
+	}
 
 	public void moveRight()
 	{
@@ -61,6 +82,7 @@ public class Hero extends GraphicsProgram{
 		speed = Math.max(speed, -MAX_SPEED);
 	}
 
+
 	// TO DO add?? the variables: entityType, knockback, inventory
 
 	public void applyFriction(double f) {
@@ -77,7 +99,9 @@ public class Hero extends GraphicsProgram{
 	}
 
 	public void applyGravity(double g) {
-
+		
+			vertSpeed -= g;
+			
 
 	}
 
