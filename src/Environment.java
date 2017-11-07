@@ -6,9 +6,9 @@ public class Environment
 {
 	private Hero hero;
 	private Enemy enemy; 
-	private double FRICTION = .1;
-	private double GRAVITY = .05;
-	private double groundY = 200;
+	private double FRICTION = .05;
+	private double GRAVITY = .1;
+	private double groundY = 400;
 
 	public Environment(Hero h)
 	{
