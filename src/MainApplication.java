@@ -11,6 +11,7 @@ public class MainApplication extends GraphicsApplication {
 	private SomePane somePane;
 	private MenuPane menu;
 	public Hero hero; 
+	public Environment environment;
 	private ControlsPane control; 
 	private OptionsPane options; 
 	private int count = 0;
@@ -29,6 +30,7 @@ public class MainApplication extends GraphicsApplication {
 		hero = new Hero();
 		while(true) {
 			hero.move();
+			environment.update();
 			pause(30);
 		}
 	}
@@ -81,5 +83,19 @@ public class MainApplication extends GraphicsApplication {
 	        hero.moveRight();
 	    }
 	}
+	
+	public void keyReleased(KeyEvent e) {
+	    if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+	        hero.moveLeft();
+	    }
+	    if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+	        // this is for the key event for the right arrow key
+	        hero.moveRight();
+	    }
+	}
+	
+	
+	
+	
 
 }

@@ -5,7 +5,7 @@ import acm.program.*;
 public class Environment
 {
     private Hero hero;
-    private double FRICTION = .4;
+    private double FRICTION = .1;
     private double GRAVITY = .4;
 
     public Environment(Hero h)
@@ -13,10 +13,11 @@ public class Environment
         hero = h;
     }
     
-    private void update()
+    public void update()
     {
         hero.move();
-        //hero.applyFriction(FRICTION);
+        hero.applyFriction(FRICTION);
         //hero.applyGravity(GRAVITY);
     }
+    
 }

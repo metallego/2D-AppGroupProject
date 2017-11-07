@@ -17,7 +17,7 @@ public class Hero extends GraphicsProgram{
 
 	private static final int HEIGHT = 10;
 	private static final int MAX_SPEED = 10;
-	private static final double ACCELERATION = .5;
+	private static final double ACCELERATION = .7;
 
 	private double speed = 0;
 	private int level;
@@ -32,9 +32,10 @@ public class Hero extends GraphicsProgram{
 	public Hero()
 	{
 		hero = new GImage("hero.jpg", 50, 50); 
+		hero.setSize(100,100);
 	}
 
-	
+
 	public void move() {
 		hero.move(speed,0);
 	}
@@ -42,20 +43,19 @@ public class Hero extends GraphicsProgram{
 
 	public void moveRight()
 	{
-		//Hero_x += ACCELERATION;
-		
+
 		// this is for the key event for the right arrow key
 		hero.move(speed, 0);
-		
+
 		speed += ACCELERATION;
 		speed = Math.min(speed, MAX_SPEED);
-		
+
 	}
 
 
 	public void moveLeft()
 	{
-		
+
 		// this is for the key event for the left arrow key
 		hero.move(speed, 0);
 		speed -= ACCELERATION;
@@ -64,19 +64,23 @@ public class Hero extends GraphicsProgram{
 
 	// TO DO add?? the variables: entityType, knockback, inventory
 
-
-
-	/*@Override
-	public void keyPressed(KeyEvent e) {
-		if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-			moveLeft();
+	public void applyFriction(double f) {
+		if(speed > 0) {
+			speed-= f;
+			speed = Math.max(speed, 0);
 		}
-		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			// this is for the key event for the right arrow key
-			moveRight();
-}
+		else if(speed < 0) {
+			speed +=f;
+			speed = Math.min(speed, 0);
+		}
+
 
 	}
-*/
+
+	public void applyGravity(double g) {
+
+
+	}
+
 
 }
