@@ -60,7 +60,7 @@ public class MenuPane extends GraphicsPane{
 			program.switchToSome();
 		}
 		else if(obj == options) {
-			program.switchToSome();
+			program.switchtoOptions();
 		}
 		else if(obj == exit) {
 			System.exit(0);
