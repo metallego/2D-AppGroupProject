@@ -29,8 +29,8 @@ public class MainApplication extends GraphicsApplication {
 		switchToMenu();
 		hero = new Hero();
 		enemy = new Enemy(); 
-		environment.addEnemy( enemy );
 		environment = new Environment(hero);
+		environment.addEnemy( enemy );
 		while(true) {
 			hero.move();
 			environment.update();

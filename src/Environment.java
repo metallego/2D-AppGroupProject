@@ -7,7 +7,7 @@ public class Environment
 {
 	private Hero hero;
 	private Enemy enemy; 
-	private ArrayList<Enemy> enemies;
+	private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 	private double FRICTION = .05;
 	private double GRAVITY = .1;
 	private double groundY = 400;
