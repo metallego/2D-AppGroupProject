@@ -4,11 +4,12 @@ import acm.program.*;
 import java.util.ArrayList;
 
 
-public class Environment
+public class Environment extends GraphicsProgram
 {
     private MainApplication program;
 	private Hero hero;
 	private Enemy enemy; 
+	private ArrayList<Chest> chest = new ArrayList<Chest>();
 	private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 	private ArrayList<Platform> platforms = new ArrayList<Platform>();
 	private double platformWidth = 100;
@@ -32,11 +33,14 @@ public class Environment
 		}
 	}
 
-
-
 	public void addEnemy( Enemy e)
 	{
 		enemies.add( e );
+	}
+	
+	public void addChest(Chest c)
+	{
+		chest.add(c); 
 	}
 
 	public void update()

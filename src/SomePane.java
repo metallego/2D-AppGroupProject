@@ -17,6 +17,7 @@ public class SomePane extends GraphicsPane {
 		program.add(program.hero.heroImg);
 		program.add(program.enemy.enemyImage);
 		program.environment.setupPlatforms();
+		program.add(program.chest.chestImage);
 	}
 
 	@Override
@@ -25,6 +26,7 @@ public class SomePane extends GraphicsPane {
 		program.remove(program.enemy.enemyImage);
 		for( int i = 0; i < program.environment.getPlatforms().size(); i++)
 		    program.remove( program.environment.getPlatforms().get(i).getGRect() );
+		program.remove(program.chest.chestImage);
 	}
 	
 	@Override
