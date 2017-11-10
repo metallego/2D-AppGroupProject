@@ -34,7 +34,6 @@ public class MainApplication extends GraphicsApplication {
 		environment = new Environment(this,hero);
 		chest = new Chest(); 
 		environment.addEnemy( enemy );
-		environment.setupPlatforms();
 		environment.addChest(chest);
 		while(true) {
 			hero.move();
