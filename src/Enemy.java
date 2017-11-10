@@ -1,8 +1,6 @@
 import java.awt.event.KeyEvent;
-
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 
 import acm.graphics.*;

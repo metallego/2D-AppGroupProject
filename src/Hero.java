@@ -1,8 +1,5 @@
 import java.awt.event.KeyEvent;
-
-import java.awt.image.BufferedImage;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 
 import acm.graphics.*;
@@ -12,7 +9,7 @@ import acm.program.*;
 public class Hero extends GraphicsProgram{
 
 	private static final int HEIGHT = 10;
-	private static final int MAX_SPEED = 10;
+	private static final int MAX_SPEED = 5;
 	private static final int MAX_VERT_SPEED = 3;
 	private static final double ACCELERATION = .7;
 	private double vertSpeed = 0;
