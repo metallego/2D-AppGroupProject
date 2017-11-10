@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class Environment
 {
+    private MainApplication program;
 	private Hero hero;
 	private Enemy enemy; 
 	private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
@@ -16,8 +17,9 @@ public class Environment
 	private double GRAVITY = .1;
 	private double groundY = 400;
 
-	public Environment(Hero h)
+	public Environment(MainApplication p, Hero h)
 	{
+	    program = p;
 		hero = h;
 	}
 	
@@ -26,6 +28,7 @@ public class Environment
 		for(int i = 0; i < 10; i++) {
 			Platform p = new Platform(i*platformWidth, i*platformHeight, platformWidth, platformHeight);
 			platforms.add(p);
+			platforms.get(i).drawPlatform( program, platforms.get( i ) );
 		}
 	}
 
@@ -46,6 +49,11 @@ public class Environment
 			hero.stopJumping(groundY);
 		}
 
+	}
+	
+	public ArrayList<Platform> getPlatforms()
+	{
+	    return platforms;
 	}
 
 }

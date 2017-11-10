@@ -17,5 +17,10 @@ public class Platform {
 
 		return box;
 	}
+	
+	public void drawPlatform(MainApplication program, Platform p)
+	{
+	    program.add(p.getGRect());
+	}
 
 }

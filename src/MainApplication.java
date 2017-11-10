@@ -29,7 +29,7 @@ public class MainApplication extends GraphicsApplication {
 		switchToMenu();
 		hero = new Hero();
 		enemy = new Enemy(); 
-		environment = new Environment(hero);
+		environment = new Environment(this,hero);
 		environment.addEnemy( enemy );
 		while(true) {
 			hero.move();
