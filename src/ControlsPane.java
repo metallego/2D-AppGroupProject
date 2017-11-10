@@ -23,6 +23,7 @@ public class ControlsPane extends GraphicsPane{
 	private GLabel moveLeft;
 	private GLabel moveRight;
 	private GLabel jumpDown;
+	private GLabel attackLabel; 
 	
 	public ControlsPane(MainApplication app)
 	{
@@ -30,13 +31,14 @@ public class ControlsPane extends GraphicsPane{
 		Up_Key = new GButton ("^", 600, 150, 50, 50); 
 		jumpUp = new GLabel ("Jump Up", 600, 125);
 		Right_Key = new GButton (">", 650, 200, 50, 50); 
-		moveRight = new GLabel ("Move right", 675, 200); 
+		moveRight = new GLabel ("Move right", 710, 230); 
 		Left_Key = new GButton ("<", 550, 200, 50, 50); 
-		moveLeft = new GLabel ("Move left", 525, 200); 
+		moveLeft = new GLabel ("Move left", 490, 230); 
 		Down_Key = new GButton("v", 600, 200, 50, 50);
-		jumpDown = new GLabel("Jump down", 600, 225);
+		jumpDown = new GLabel("Jump down", 600, 275);
+		attackLabel = new GLabel("Attack", 60, 260);
 		
-		Spacebar = new GButton("Spacebar", 250, 300, 200, 50);
+		Spacebar = new GButton("Spacebar - Jump", 250, 300, 200, 50);
 		
 		attack = new GButton ("Z", 50, 200, 50, 50); 
 		
@@ -61,6 +63,7 @@ public class ControlsPane extends GraphicsPane{
 		program.add(moveLeft);
 		program.add(moveRight);
 		program.add(jumpDown);
+		program.add(attackLabel);
 		
 	}
 
@@ -78,6 +81,7 @@ public class ControlsPane extends GraphicsPane{
 		program.remove(moveLeft);
 		program.remove(moveRight);
 		program.remove(jumpDown);
+		program.remove(attackLabel);
 	}
 	
 	@Override
