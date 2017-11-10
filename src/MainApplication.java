@@ -12,6 +12,8 @@ public class MainApplication extends GraphicsApplication {
 	private MenuPane menu;
 	public Hero hero; 
 	public Enemy enemy; 
+	public Platform platform;
+	public Chest chest; 
 	public Environment environment;
 	private ControlsPane control; 
 	private OptionsPane options; 
@@ -29,8 +31,11 @@ public class MainApplication extends GraphicsApplication {
 		switchToMenu();
 		hero = new Hero();
 		enemy = new Enemy(); 
+		chest = new Chest(); 
 		environment = new Environment(hero);
 		environment.addEnemy( enemy );
+		environment.setupPlatforms();
+		environment.addChest(chest);
 		while(true) {
 			hero.move();
 			environment.update();
@@ -89,6 +94,10 @@ public class MainApplication extends GraphicsApplication {
 		}
 		if(e.getKeyCode() == KeyEvent.VK_SPACE) {
 			hero.jump();
+		}
+		if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
+		{
+			switchToScreen(menu);
 		}
 	}
 

@@ -16,12 +16,14 @@ public class SomePane extends GraphicsPane {
 	public void showContents() {
 		program.add(program.hero.heroImg);
 		program.add(program.enemy.enemyImage);
+		program.add(program.chest.chestImage);
 	}
 
 	@Override
 	public void hideContents() {
 		program.remove(program.hero.heroImg);
 		program.remove(program.enemy.enemyImage);
+		program.remove(program.chest.chestImage);
 	}
 	
 	@Override

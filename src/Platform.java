@@ -1,6 +1,8 @@
 import acm.graphics.*;
 import acm.program.*;
 
+import java.awt.Color;
+
 import javax.imageio.ImageIO;
 
 
