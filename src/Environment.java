@@ -49,6 +49,7 @@ public class Environment extends GraphicsProgram
 		hero.applyFriction(FRICTION);
 		hero.applyGravity(GRAVITY);
 
+		
 		if(hero.getY() >= groundY) {
 			hero.stopJumping(groundY);
 		}

@@ -83,12 +83,12 @@ public class MainApplication extends GraphicsApplication {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-			hero.moveLeft();
+			hero.startMoveLeft();
 			enemy.moveRight();
 		}
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			// this is for the key event for the right arrow key
-			hero.moveRight();
+			hero.startMoveRight();
 			enemy.moveLeft();
 		}
 		if(e.getKeyCode() == KeyEvent.VK_SPACE) {
@@ -98,6 +98,18 @@ public class MainApplication extends GraphicsApplication {
 		{
 			switchToScreen(menu);
 		}
+	}
+	
+	@Override
+	public void keyReleased( KeyEvent e )
+	{
+	    if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+            hero.stopMoveLeft();
+        }
+        if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            // this is for the key event for the right arrow key
+            hero.stopMoveRight();
+        }
 	}
 
 

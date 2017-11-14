@@ -21,6 +21,8 @@ public class Hero extends GraphicsProgram{
 	private int exp; //experience
 	private String name;
 	private MainApplication program; 
+	private boolean shouldMoveLeft = false;
+	private boolean shouldMoveRight = false;
 	public GImage heroImg; 
 
 	public Hero()
@@ -37,6 +39,7 @@ public class Hero extends GraphicsProgram{
 
 	public void move() {
 
+	    applyDecisions();
 		heroImg.move(speed,-vertSpeed);
 
 	}
@@ -90,6 +93,34 @@ public class Hero extends GraphicsProgram{
 
 
 	}
+	
+	public void startMoveLeft()
+    {
+        shouldMoveLeft = true;
+    }
+    
+    public void startMoveRight()
+    {
+        shouldMoveRight = true;
+    }
+    
+    public void stopMoveLeft()
+    {
+        shouldMoveLeft = false;
+    }
+    
+    public void stopMoveRight()
+    {
+        shouldMoveRight = false;
+    }
+    
+    public void applyDecisions()
+    {
+        if( shouldMoveLeft )
+            moveLeft();
+        if( shouldMoveRight )
+            moveRight();
+    }
 
 	public void applyGravity(double g) {
 			vertSpeed -= g;	
