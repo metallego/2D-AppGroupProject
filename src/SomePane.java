@@ -8,7 +8,7 @@ public class SomePane extends GraphicsPane {
 	//private GImage img;
 	private GButton exitButton; 
 	private GButton optionsButton; 
-	private OptionsPane merp; 
+	private InGameOptionsPane merp; 
 	
 	public SomePane(MainApplication app) {
 		this.program = app;
@@ -46,7 +46,7 @@ public class SomePane extends GraphicsPane {
 		}
 		if(obj == optionsButton)
 		{
-			program.switchtoOptions(); 
+			program.switchtoIGOptions(); 
 		}
 	}
 

@@ -7,7 +7,7 @@ import acm.graphics.GObject;
 import acm.graphics.GOval;
 import acm.graphics.GRect;
 
-public class OptionsPane extends GraphicsPane{
+public class InGameOptionsPane extends GraphicsPane{
 	
 	private MainApplication program; 
 	private GRect volume_box;
@@ -17,7 +17,7 @@ public class OptionsPane extends GraphicsPane{
 	private GButton backMenu;
 	private GButton backGame; 
 
-	public OptionsPane (MainApplication app)
+	public InGameOptionsPane (MainApplication app)
 	{
 		program = app; 
 		
@@ -48,7 +48,7 @@ public class OptionsPane extends GraphicsPane{
 		program.add(volume_box);
 		program.add(volume);
 		program.add(backMenu);
-		//program.add(backGame);
+		program.add(backGame);
 		program.add(on);
 		program.add(off); 
 	}
@@ -59,7 +59,7 @@ public class OptionsPane extends GraphicsPane{
 		program.remove(volume_box);
 		program.remove(volume);
 		program.remove(backMenu);
-		//program.remove(backGame);
+		program.remove(backGame);
 		program.remove(on);
 		program.remove(off);
 	}

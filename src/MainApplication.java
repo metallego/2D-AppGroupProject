@@ -17,6 +17,7 @@ public class MainApplication extends GraphicsApplication {
 	public Environment environment;
 	private ControlsPane control; 
 	private OptionsPane options; 
+	private InGameOptionsPane igOptions; 
 	private int count = 0;
 
 	public void init() {
@@ -28,6 +29,7 @@ public class MainApplication extends GraphicsApplication {
 		menu = new MenuPane(this);
 		control = new ControlsPane(this);
 		options = new OptionsPane(this);
+		igOptions = new InGameOptionsPane(this);
 		switchToMenu();
 		hero = new Hero();
 		enemy = new Enemy(); 
@@ -78,6 +80,11 @@ public class MainApplication extends GraphicsApplication {
 	public void switchtoOptions()
 	{
 		switchToScreen(options);
+	}
+	
+	public void switchtoIGOptions()
+	{
+		switchToScreen(igOptions); 
 	}
 
 	@Override

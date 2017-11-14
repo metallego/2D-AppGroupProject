@@ -9,7 +9,7 @@ import acm.program.*;
 public class Hero extends GraphicsProgram{
 
 	private static final int HEIGHT = 10;
-	private static final int MAX_SPEED = 5;
+	private static final int MAX_SPEED = 5; //should be 3 but set it so that we can test jump 
 	private static final int MAX_VERT_SPEED = 8;
 	private static final double ACCELERATION = .7;
 	private double vertSpeed = 0;
