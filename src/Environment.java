@@ -49,7 +49,9 @@ public class Environment extends GraphicsProgram
 		hero.applyFriction(FRICTION);
 		hero.applyGravity(GRAVITY);
 
-		
+		for( Platform p: platforms )
+            if (p.isUnderneath(hero.getBottomFeet()))
+                hero.stopJumping( p.getY() );
 		if(hero.getY() >= groundY) {
 			hero.stopJumping(groundY);
 		}
@@ -59,6 +61,14 @@ public class Environment extends GraphicsProgram
 	public ArrayList<Platform> getPlatforms()
 	{
 	    return platforms;
+	}
+	
+	public ArrayList<GRect> getPlatformRects()
+	{
+	    ArrayList<GRect> boxes = new ArrayList<GRect>();
+	    for( Platform p: platforms )
+	        boxes.add( p.getGRect() );
+	    return boxes;
 	}
 
 }

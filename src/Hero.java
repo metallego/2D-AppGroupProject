@@ -1,4 +1,5 @@
 import java.awt.event.KeyEvent;
+import java.awt.geom.Point2D;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
@@ -23,7 +24,7 @@ public class Hero extends GraphicsProgram{
 	private MainApplication program; 
 	private boolean shouldMoveLeft = false;
 	private boolean shouldMoveRight = false;
-	public GImage heroImg; 
+	public GImage heroImg;
 
 	public Hero()
 	{
@@ -125,6 +126,12 @@ public class Hero extends GraphicsProgram{
 	public void applyGravity(double g) {
 			vertSpeed -= g;	
 
+	}
+	
+	public Point2D.Double getBottomFeet()
+	{
+	    return new Point2D.Double( heroImg.getX() + heroImg.getWidth()/2,
+	                               heroImg.getY() + heroImg.getHeight());
 	}
 
 

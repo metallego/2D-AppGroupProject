@@ -2,6 +2,7 @@ import acm.graphics.*;
 import acm.program.*;
 
 import java.awt.Color;
+import java.awt.geom.Point2D;
 
 import javax.imageio.ImageIO;
 
@@ -9,6 +10,7 @@ import javax.imageio.ImageIO;
 
 public class Platform {
 	private GRect box;
+	private static final int buffer = 10;
 
 	public Platform(double x, double y, double width, double height) {
 		box = new GRect(x ,y , width, height);
@@ -23,6 +25,21 @@ public class Platform {
 	public void drawPlatform(MainApplication program, Platform p)
 	{
 	    program.add(p.getGRect());
+	}
+	
+	public int getY()
+	{
+	    return (int)box.getY();
+	}
+	
+	public boolean isUnderneath( Point2D.Double p)
+	{
+	    if( p.getX() >= box.getX() && p.getX() <= box.getX() + box.getWidth() )
+	    {
+	        double diff = p.getY() - box.getY();
+	        return diff <= buffer && diff >= 0;
+	    }
+	    return false;
 	}
 
 }
