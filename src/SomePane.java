@@ -17,7 +17,7 @@ public class SomePane extends GraphicsPane {
 		optionsButton = new GButton ("Options", 0, 550, 50, 50); 
 		//img = new GImage("hero.jpg", 100, 100);
 		background = new GImage("background.jpg", 0, 0);
-		background.setSize(800, 600);
+		background.setSize(1080, 600);
 	}
 	
 	@Override
