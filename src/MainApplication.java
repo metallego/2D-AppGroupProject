@@ -7,6 +7,7 @@ import acm.program.*;
 public class MainApplication extends GraphicsApplication {
 	public static final int WINDOW_WIDTH = 1080;
 	public static final int WINDOW_HEIGHT = 600;
+	public static final int SCROLL_BUFFER = 200;
 
 	private SomePane somePane;
 	private MenuPane menu;
@@ -38,7 +39,12 @@ public class MainApplication extends GraphicsApplication {
 		environment.addEnemy( enemy );
 		environment.addChest(chest);
 		while(true) {
-			hero.move();
+		    if( hero.heroImg.getX() > WINDOW_WIDTH - SCROLL_BUFFER )
+		        environment.scroll( 1 );
+		    else if( hero.heroImg.getX() < SCROLL_BUFFER )
+		        environment.scroll( 0 );
+		    else
+    			hero.move();
 			environment.update();
 			pause(30);
 		}

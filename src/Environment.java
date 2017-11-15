@@ -48,6 +48,7 @@ public class Environment extends GraphicsProgram
 
 		hero.applyFriction(FRICTION);
 		hero.applyGravity(GRAVITY);
+		hero.applyDecisions();
 
 		for( Platform p: platforms )
             if (p.isUnderneath(hero.getBottomFeet()))
@@ -69,6 +70,17 @@ public class Environment extends GraphicsProgram
 	    for( Platform p: platforms )
 	        boxes.add( p.getGRect() );
 	    return boxes;
+	}
+	
+	public void scroll( boolean rl )
+	{
+	    /*if( rl )
+	        
+	    else*/
+	    for( Platform p: platforms )
+	        p.getGRect().move( -hero.getSpeed(), 0 );
+	    for( Enemy e: enemies)
+	        e.enemyImage.move( -hero.getSpeed(), 0 );
 	}
 
 }

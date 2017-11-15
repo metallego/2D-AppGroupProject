@@ -36,11 +36,15 @@ public class Hero extends GraphicsProgram{
 		
 		return (int) heroImg.getY();
 	}
+	
+	public double getSpeed()
+	{
+	    return speed;
+	}
 
 
 	public void move() {
 
-	    applyDecisions();
 		heroImg.move(speed,-vertSpeed);
 
 	}
