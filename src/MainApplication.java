@@ -40,9 +40,9 @@ public class MainApplication extends GraphicsApplication {
 		environment.addChest(chest);
 		while(true) {
 		    if( hero.heroImg.getX() > WINDOW_WIDTH - SCROLL_BUFFER )
-		        environment.scroll( 1 );
+		        environment.scroll( true );
 		    else if( hero.heroImg.getX() < SCROLL_BUFFER )
-		        environment.scroll( 0 );
+		        environment.scroll( false );
 		    else
     			hero.move();
 			environment.update();
