@@ -14,8 +14,8 @@ public class Environment extends GraphicsProgram
 	private ArrayList<Platform> platforms = new ArrayList<Platform>();
 	private double platformWidth = 100;
 	private double platformHeight = 50;
-	private double FRICTION = .05;
-	private double GRAVITY = .1;
+	private double FRICTION = .1;
+	private double GRAVITY = .3;
 	private double groundY = 400;
 
 	public Environment(MainApplication p, Hero h)
@@ -53,7 +53,7 @@ public class Environment extends GraphicsProgram
             if (p.isUnderneath(hero.getBottomFeet()))
                 hero.stopJumping( p.getY() );
 		if(hero.getY() >= groundY) {
-			hero.stopJumping(groundY);
+			hero.stopJumping(groundY+hero.heroImg.getHeight());
 		}
 
 	}
