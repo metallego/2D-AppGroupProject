@@ -27,8 +27,8 @@ public class OptionsPane extends GraphicsPane{
 		backMenu = new GButton ("Back to Menu", 350, 400, 100, 50);
 		backGame = new GButton ("Back to Game", 350, 350, 100, 50);
 		
-		on = new GButton ("ON", 300, 100, 100, 50);
-		off = new GButton ("OFF", 400, 100, 100, 50); 
+		on = new GButton ("ON", 400, 100, 100, 50);
+		off = new GButton ("OFF", 500, 100, 100, 50); 
 		
 	}
 	

@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
 
+import acm.graphics.GImage;
 import acm.graphics.GLabel;
 import acm.graphics.GObject;
 import acm.graphics.GOval;
@@ -14,6 +15,7 @@ public class MenuPane extends GraphicsPane{
 	private GButton exit; 
 	private GLabel title; 
 	private GButton controls;
+	private GImage background; 
 	
 	
 	public MenuPane(MainApplication app) {
@@ -33,10 +35,14 @@ public class MenuPane extends GraphicsPane{
 		controls = new GButton("Controls", 350, 350, 100, 50);
 		controls.setFillColor(Color.white);
 		
+		background = new GImage("background01.jpg", 0, 0);
+		background.setSize(800, 600);
+		
 		}
 	
 	@Override
 	public void showContents() {
+		program.add(background);
 		program.add(rect);
 		program.add(options);
 		program.add(exit);
@@ -46,6 +52,7 @@ public class MenuPane extends GraphicsPane{
 
 	@Override
 	public void hideContents() {
+		program.remove(background);
 		program.remove(rect);
 		program.remove(options);
 		program.remove(exit);
