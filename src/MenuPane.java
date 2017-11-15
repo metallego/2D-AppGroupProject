@@ -20,23 +20,23 @@ public class MenuPane extends GraphicsPane{
 	
 	public MenuPane(MainApplication app) {
 		program = app;
-		rect = new GButton("Start", 350, 200, 100, 50);
+		rect = new GButton("Start", 500, 200, 100, 50);
 		rect.setFillColor(Color.white);
 		
-		options = new GButton("Options", 350, 275, 100, 50);
+		options = new GButton("Options", 500, 275, 100, 50);
 		options.setFillColor(Color.white);
 		
-		exit = new GButton("Exit", 350, 425, 100, 50);
+		exit = new GButton("Exit", 500, 425, 100, 50);
 		exit.setFillColor(Color.WHITE);
 		
-		title = new GLabel("Golden Boy", 315, 150);
+		title = new GLabel("Golden Boy", 465, 150);
 		title.setFont(new Font("Times New Roman", Font.BOLD, 34));
 		
-		controls = new GButton("Controls", 350, 350, 100, 50);
+		controls = new GButton("Controls", 500, 350, 100, 50);
 		controls.setFillColor(Color.white);
 		
 		background = new GImage("background01.jpg", 0, 0);
-		background.setSize(800, 600);
+		background.setSize(1080, 600);
 		
 		}
 	

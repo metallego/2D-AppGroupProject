@@ -28,7 +28,7 @@ public class Hero extends GraphicsProgram{
 
 	public Hero()
 	{
-		heroImg = new GImage("hero.jpg", 50, 400); 
+		heroImg = new GImage("hero_idle.jpg", 50, 400); 
 		heroImg.setSize(100,100);
 	}
 	

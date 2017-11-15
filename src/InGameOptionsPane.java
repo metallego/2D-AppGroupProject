@@ -21,15 +21,14 @@ public class InGameOptionsPane extends GraphicsPane{
 	{
 		program = app; 
 		
-		volume_box = new GRect (200, 100, 100, 50);
-		volume = new GLabel ("Volume", 225, 130);
+		volume_box = new GRect (400, 100, 100, 50);
+		volume = new GLabel ("Volume", 425, 130);
 		
-		backMenu = new GButton ("Back to Menu", 350, 400, 100, 50);
-		backGame = new GButton ("Back to Game", 350, 350, 100, 50);
+		backMenu = new GButton ("Back to Menu", 500, 400, 100, 50);
+		backGame = new GButton ("Back to Game", 500, 350, 100, 50);
 		
-		on = new GButton ("ON", 300, 100, 100, 50);
-		off = new GButton ("OFF", 400, 100, 100, 50); 
-		
+		on = new GButton ("ON", 600, 100, 100, 50);
+		off = new GButton ("OFF", 700, 100, 100, 50); 
 	}
 	
 	/*

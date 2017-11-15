@@ -23,7 +23,7 @@ public class Chest extends GraphicsProgram{
 	public Chest()
 	{
 		chestImage = new GImage("chest.jpg", 500, 400);
-		chestImage.setSize(50, 50);
+		chestImage.setSize(100, 100);
 	}
 
 }
