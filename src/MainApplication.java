@@ -5,7 +5,7 @@ import acm.graphics.*;
 import acm.program.*;
 
 public class MainApplication extends GraphicsApplication {
-	public static final int WINDOW_WIDTH = 800;
+	public static final int WINDOW_WIDTH = 1080;
 	public static final int WINDOW_HEIGHT = 600;
 
 	private SomePane somePane;

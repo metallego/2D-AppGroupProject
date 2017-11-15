@@ -54,7 +54,7 @@ public class Hero extends GraphicsProgram{
 	
 	public void stopJumping(double y) {
 		vertSpeed = 0;
-		heroImg.setLocation(heroImg.getX(),y);
+		heroImg.setLocation(heroImg.getX(),y-heroImg.getHeight());
 		
 	}
 
