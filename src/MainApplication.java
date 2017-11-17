@@ -1,10 +1,13 @@
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+
+import javax.swing.Timer;
 
 import acm.graphics.*;
 import acm.program.*;
 
-public class MainApplication extends GraphicsApplication {
+public class MainApplication extends GraphicsApplication  implements ActionListener{
 	public static final int WINDOW_WIDTH = 1080;
 	public static final int WINDOW_HEIGHT = 600;
 
@@ -19,6 +22,8 @@ public class MainApplication extends GraphicsApplication {
 	private OptionsPane options; 
 	private InGameOptionsPane igOptions; 
 	private int count = 0;
+	private Timer attackTimer;
+	public static final int timerWoken = 50;
 
 	public void init() {
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -37,11 +42,18 @@ public class MainApplication extends GraphicsApplication {
 		chest = new Chest(); 
 		environment.addEnemy( enemy );
 		environment.addChest(chest);
+		attackTimer = new Timer(timerWoken, this);
+
+		
 		while(true) {
 			hero.move();
 			environment.update();
 			pause(30);
 		}
+		
+
+		
+		
 	}
 
 	public void switchToMenu() {
@@ -101,6 +113,14 @@ public class MainApplication extends GraphicsApplication {
 		if(e.getKeyCode() == KeyEvent.VK_SPACE) {
 			hero.jump();
 		}
+		
+        if(e.getKeyCode() == KeyEvent.VK_Z) { 	
+        		attackTimer.start();
+        		
+//    		hero.attack();
+        	
+    }
+		
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
 		{
 			switchToScreen(menu);
@@ -117,9 +137,7 @@ public class MainApplication extends GraphicsApplication {
             // this is for the key event for the right arrow key
             hero.stopMoveRight();
         }
-        if(e.getKeyCode() == KeyEvent.VK_Z) { 	
-//        		hero.attack();
-        }
+
 	}
 
 
