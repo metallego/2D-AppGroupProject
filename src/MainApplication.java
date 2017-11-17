@@ -91,11 +91,13 @@ public class MainApplication extends GraphicsApplication {
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_LEFT) {
 			hero.startMoveLeft();
+			hero.image.setImage("hero_run_left1.jpg");
 			enemy.moveRight();
 		}
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			// this is for the key event for the right arrow key
 			hero.startMoveRight();
+			hero.image.setImage("hero_run_right1.jpg");
 			enemy.moveLeft();
 		}
 		if(e.getKeyCode() == KeyEvent.VK_SPACE) {
@@ -105,20 +107,27 @@ public class MainApplication extends GraphicsApplication {
 		{
 			switchToScreen(menu);
 		}
+		if (e.getKeyCode() == KeyEvent.VK_Z)
+		{
+			hero.image.setImage("hero_attack_right1.jpg");
+		}
 	}
 	
 	@Override
 	public void keyReleased( KeyEvent e )
 	{
 	    if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+	    	hero.image.setImage("hero_idle_left.jpg");
             hero.stopMoveLeft();
         }
         if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+        	hero.image.setImage("hero_idle_right.jpg");
             // this is for the key event for the right arrow key
             hero.stopMoveRight();
         }
         if(e.getKeyCode() == KeyEvent.VK_Z) { 	
 //        		hero.attack();
+        	hero.image.setImage("hero_idle_right.jpg");
         }
 	}
 
