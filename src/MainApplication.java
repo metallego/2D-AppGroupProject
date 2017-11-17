@@ -117,6 +117,9 @@ public class MainApplication extends GraphicsApplication {
             // this is for the key event for the right arrow key
             hero.stopMoveRight();
         }
+        if(e.getKeyCode() == KeyEvent.VK_Z) { 	
+//        		hero.attack();
+        }
 	}
 
 

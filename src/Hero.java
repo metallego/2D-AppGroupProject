@@ -1,10 +1,13 @@
 import java.awt.event.KeyEvent;
+
 import java.awt.geom.Point2D;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import acm.graphics.*;
 import acm.program.*;
+
+import java.util.ArrayList;
 
 
 public class Hero extends Entity{
@@ -25,7 +28,12 @@ public class Hero extends Entity{
 //	private boolean shouldMoveLeft = false;
 //	private boolean shouldMoveRight = false;
 //	public GImage heroImg;
-
+	
+	private int coin;
+	private GImage currentWeapon;
+	
+	private ArrayList<Weapon>  inventory = new ArrayList<Weapon>();
+	
 	public Hero()
 	{
 
@@ -34,6 +42,13 @@ public class Hero extends Entity{
 		image.setSize(100,100);
 	}
 
+
+	public void attack() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
 //	
 //	public int getY() {
 //		
