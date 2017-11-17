@@ -13,6 +13,11 @@ public class Weapon extends GraphicsProgram {
 	private int attack;
 	private GImage weapon;
 	
+	public Weapon(int atk, GImage wpn) {
+		attack = atk;
+		weapon = wpn;
+	}
+
 	public int getAttack() {
 		return attack;
 	}
@@ -20,6 +25,7 @@ public class Weapon extends GraphicsProgram {
 	public GImage getGImage() {
 		return weapon;
 	}
+	
 	
 	public void setAttack(int a) {
 		attack = a;

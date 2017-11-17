@@ -1,10 +1,13 @@
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+
+import javax.swing.Timer;
 
 import acm.graphics.*;
 import acm.program.*;
 
-public class MainApplication extends GraphicsApplication {
+public class MainApplication extends GraphicsApplication  implements ActionListener{
 	public static final int WINDOW_WIDTH = 1080;
 	public static final int WINDOW_HEIGHT = 600;
 	public static final int SCROLL_BUFFER = 200;
@@ -22,6 +25,8 @@ public class MainApplication extends GraphicsApplication {
 	private int count = 0;
 	private boolean scrollState = false;
 	private int rightLeftScroll = 0;
+	private Timer attackTimer;
+	public static final int timerWoken = 50;
 
 	public void init() {
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -40,6 +45,9 @@ public class MainApplication extends GraphicsApplication {
 		chest = new Chest(); 
 		environment.addEnemy( enemy );
 		environment.addChest(chest);
+		attackTimer = new Timer(timerWoken, this);
+
+		
 		while(true) {
 		    if(( hero.image.getX() > WINDOW_WIDTH - SCROLL_BUFFER) && hero.getSpeed() > 0)
 		        scrollState = true;
@@ -51,6 +59,10 @@ public class MainApplication extends GraphicsApplication {
 			environment.update(scrollState);
 			pause(30);
 		}
+		
+
+		
+		
 	}
 
 	public void switchToMenu() {
@@ -100,19 +112,33 @@ public class MainApplication extends GraphicsApplication {
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_LEFT) {
 			hero.startMoveLeft();
+			hero.image.setImage("hero_run_left1.jpg");
 			enemy.moveRight();
 		}
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			// this is for the key event for the right arrow key
 			hero.startMoveRight();
+			hero.image.setImage("hero_run_right1.jpg");
 			enemy.moveLeft();
 		}
 		if(e.getKeyCode() == KeyEvent.VK_SPACE) {
 			hero.jump();
 		}
+		
+        if(e.getKeyCode() == KeyEvent.VK_Z) { 	
+        		attackTimer.start();
+        		
+//    		hero.attack();
+        	
+    }
+		
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
 		{
 			switchToScreen(menu);
+		}
+		if (e.getKeyCode() == KeyEvent.VK_Z)
+		{
+			hero.image.setImage("hero_attack_right1.jpg");
 		}
 	}
 	
@@ -120,14 +146,18 @@ public class MainApplication extends GraphicsApplication {
 	public void keyReleased( KeyEvent e )
 	{
 	    if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+	    	hero.image.setImage("hero_idle_left.jpg");
             hero.stopMoveLeft();
         }
         if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+        	hero.image.setImage("hero_idle_right.jpg");
             // this is for the key event for the right arrow key
             hero.stopMoveRight();
         }
+
         if(e.getKeyCode() == KeyEvent.VK_Z) { 	
 //        		hero.attack();
+        	hero.image.setImage("hero_idle_right.jpg");
         }
 	}
 
