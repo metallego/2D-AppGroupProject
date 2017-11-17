@@ -23,7 +23,7 @@ public class SomePane extends GraphicsPane {
 	@Override
 	public void showContents() {
 		program.add(background);
-		program.add(program.hero.heroImg);
+		program.add(program.hero.image);
 		program.add(program.enemy.enemyImage);
 		program.environment.setupPlatforms();
 		program.add(program.chest.chestImage);
@@ -34,7 +34,7 @@ public class SomePane extends GraphicsPane {
 	@Override
 	public void hideContents() {
 		program.remove(background);
-		program.remove(program.hero.heroImg);
+		program.remove(program.hero.image);
 		program.remove(program.enemy.enemyImage);
 		for( int i = 0; i < program.environment.getPlatforms().size(); i++)
 		    program.remove( program.environment.getPlatforms().get(i).getGRect() );
@@ -46,7 +46,7 @@ public class SomePane extends GraphicsPane {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
-		if(obj == program.hero.heroImg || obj == exitButton) {
+		if(obj == program.hero.image || obj == exitButton) {
 			program.switchToMenu();
 		}
 		if(obj == optionsButton)

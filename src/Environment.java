@@ -1,4 +1,5 @@
 import acm.graphics.*;
+
 import acm.program.*;
 
 import java.util.ArrayList;
@@ -55,7 +56,7 @@ public class Environment extends GraphicsProgram
             if (p.isUnderneath(hero.getBottomFeet()))
                 hero.stopJumping( p.getY() );
 		if(hero.getY() >= groundY) {
-			hero.stopJumping(groundY+hero.heroImg.getHeight());
+			hero.stopJumping(groundY+hero.image.getHeight());
 		}
 
 	}

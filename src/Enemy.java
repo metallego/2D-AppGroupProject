@@ -6,7 +6,7 @@ import javax.imageio.ImageIO;
 import acm.graphics.*;
 import acm.program.*;
 
-public class Enemy extends GraphicsProgram{
+public class Enemy extends Entity{
 	/*
 	 * need move, height, accel
 	 * speed, level, hp, attacks, exp, 

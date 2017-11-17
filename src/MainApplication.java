@@ -41,9 +41,9 @@ public class MainApplication extends GraphicsApplication {
 		environment.addEnemy( enemy );
 		environment.addChest(chest);
 		while(true) {
-		    if(( hero.heroImg.getX() > WINDOW_WIDTH - SCROLL_BUFFER) && hero.getSpeed() > 0)
+		    if(( hero.image.getX() > WINDOW_WIDTH - SCROLL_BUFFER) && hero.getSpeed() > 0)
 		        scrollState = true;
-		    else if(( hero.heroImg.getX() < SCROLL_BUFFER) && hero.getSpeed() < 0 )
+		    else if(( hero.image.getX() < SCROLL_BUFFER) && hero.getSpeed() < 0 )
 		        scrollState = true;
 		    else
 		        scrollState = false;
@@ -125,6 +125,9 @@ public class MainApplication extends GraphicsApplication {
         if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
             // this is for the key event for the right arrow key
             hero.stopMoveRight();
+        }
+        if(e.getKeyCode() == KeyEvent.VK_Z) { 	
+//        		hero.attack();
         }
 	}
 
