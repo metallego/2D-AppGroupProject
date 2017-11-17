@@ -46,21 +46,10 @@ public class Environment extends GraphicsProgram
 	public void update(boolean b)
 	{
 	    if( b )
-	    {
-	        scroll();
-	        /*if( !(hero.shouldMoveLeft || hero.shouldMoveRight) )
-	        {
-	            hero.applyFriction(FRICTION);
-	            hero.applyGravity(GRAVITY);
-	            hero.applyDecisions(b);
-	        }*/
-	    }
-//	    else
-	//    {
-		    hero.applyFriction(FRICTION);
-		    hero.applyGravity(GRAVITY);
-		    hero.applyDecisions(b);
-	  //  }
+            scroll();
+		hero.applyFriction(FRICTION);
+		hero.applyGravity(GRAVITY);
+		hero.applyDecisions(b);
 
 		for( Platform p: platforms )
             if (p.isUnderneath(hero.getBottomFeet()))
