@@ -22,13 +22,13 @@ public class Hero extends GraphicsProgram{
 	private int exp; //experience
 	private String name;
 	private MainApplication program; 
-	private boolean shouldMoveLeft = false;
-	private boolean shouldMoveRight = false;
+	public boolean shouldMoveLeft = false;
+	public boolean shouldMoveRight = false;
 	public GImage heroImg;
 
 	public Hero()
 	{
-		heroImg = new GImage("hero_idle.jpg", 50, 400); 
+		heroImg = new GImage("hero.jpg", 250, 400); 
 		heroImg.setSize(100,100);
 	}
 	
@@ -43,9 +43,11 @@ public class Hero extends GraphicsProgram{
 	}
 
 
-	public void move() {
-
-		heroImg.move(speed,-vertSpeed);
+	public void move(boolean b) {
+	    if( !b )
+    		heroImg.move(speed,0);
+	    heroImg.move( 0, -vertSpeed );
+	    
 
 	}
 
@@ -62,11 +64,12 @@ public class Hero extends GraphicsProgram{
 		
 	}
 
-	public void moveRight()
+	public void moveRight(boolean b)
 	{
 
 		// this is for the key event for the right arrow key
-		heroImg.move(speed, 0);
+	    if( !b )
+    		heroImg.move(speed, 0);
 
 		speed += ACCELERATION;
 		speed = Math.min(speed, MAX_SPEED);
@@ -74,11 +77,12 @@ public class Hero extends GraphicsProgram{
 	}
 
 
-	public void moveLeft()
+	public void moveLeft(boolean b)
 	{
 
 		// this is for the key event for the left arrow key
-		heroImg.move(speed, 0);
+	    if( !b )
+    		heroImg.move(speed, 0);
 		speed -= ACCELERATION;
 		speed = Math.max(speed, -MAX_SPEED);
 	}
@@ -119,12 +123,12 @@ public class Hero extends GraphicsProgram{
         shouldMoveRight = false;
     }
     
-    public void applyDecisions()
+    public void applyDecisions( boolean b )
     {
         if( shouldMoveLeft )
-            moveLeft();
+            moveLeft(b);
         if( shouldMoveRight )
-            moveRight();
+            moveRight(b);
     }
 
 	public void applyGravity(double g) {

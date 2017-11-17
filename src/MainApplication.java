@@ -20,6 +20,8 @@ public class MainApplication extends GraphicsApplication {
 	private OptionsPane options; 
 	private InGameOptionsPane igOptions; 
 	private int count = 0;
+	private boolean scrollState = false;
+	private int rightLeftScroll = 0;
 
 	public void init() {
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -39,13 +41,14 @@ public class MainApplication extends GraphicsApplication {
 		environment.addEnemy( enemy );
 		environment.addChest(chest);
 		while(true) {
-		    if( hero.heroImg.getX() > WINDOW_WIDTH - SCROLL_BUFFER )
-		        environment.scroll( true );
-		    else if( hero.heroImg.getX() < SCROLL_BUFFER )
-		        environment.scroll( false );
+		    if(( hero.heroImg.getX() > WINDOW_WIDTH - SCROLL_BUFFER) && hero.getSpeed() > 0)
+		        scrollState = true;
+		    else if(( hero.heroImg.getX() < SCROLL_BUFFER) && hero.getSpeed() < 0 )
+		        scrollState = true;
 		    else
-    			hero.move();
-			environment.update();
+		        scrollState = false;
+		    hero.move(scrollState);
+			environment.update(scrollState);
 			pause(30);
 		}
 	}

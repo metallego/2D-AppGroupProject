@@ -43,12 +43,24 @@ public class Environment extends GraphicsProgram
 		chest.add(c); 
 	}
 
-	public void update()
+	public void update(boolean b)
 	{
-
-		hero.applyFriction(FRICTION);
-		hero.applyGravity(GRAVITY);
-		hero.applyDecisions();
+	    if( b )
+	    {
+	        scroll();
+	        /*if( !(hero.shouldMoveLeft || hero.shouldMoveRight) )
+	        {
+	            hero.applyFriction(FRICTION);
+	            hero.applyGravity(GRAVITY);
+	            hero.applyDecisions(b);
+	        }*/
+	    }
+//	    else
+	//    {
+		    hero.applyFriction(FRICTION);
+		    hero.applyGravity(GRAVITY);
+		    hero.applyDecisions(b);
+	  //  }
 
 		for( Platform p: platforms )
             if (p.isUnderneath(hero.getBottomFeet()))
@@ -72,11 +84,8 @@ public class Environment extends GraphicsProgram
 	    return boxes;
 	}
 	
-	public void scroll( boolean rl )
+	public void scroll()
 	{
-	    /*if( rl )
-	        
-	    else*/
 	    for( Platform p: platforms )
 	        p.getGRect().move( -hero.getSpeed(), 0 );
 	    for( Enemy e: enemies)
