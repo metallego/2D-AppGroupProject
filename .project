@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>media/coin.jpg</name>
-			<type>1</type>
-			<location>C:/Users/j_son/git/group-project-team-lts/media/coin.jpg</location>
-		</link>
-	</linkedResources>
 </projectDescription>
