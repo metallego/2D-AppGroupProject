@@ -52,6 +52,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		winScreen = new LevelCompletePane(this);
 		switchToMenu();
 		hero = new Hero();
+		//everything below here is going to need to be refactored when Text File Level Loading is implemented
 		enemy = new Enemy(); 
 		environment = new Environment(this,hero);
 		chest = new Chest(); 
@@ -62,19 +63,21 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		attackTimer = new Timer(timerWoken, this);
 		attackTimer.start();
 		
-		while(!completed) {
-		    if(( hero.image.getX() > WINDOW_WIDTH - SCROLL_BUFFER) && hero.getSpeed() > 0)
-		        scrollState = true;
-		    else if(( hero.image.getX() < SCROLL_BUFFER) && hero.getSpeed() < 0 )
-		        scrollState = true;
-		    else
-		        scrollState = false;
-		    hero.move(scrollState);
-			completed = environment.update(scrollState);
-			pause(30);
-		}
-		winScreen.setScore( hero.getCoins() );
-        switchtoLevelComplete();
+        while ( true )
+        {
+            pause(30);
+            while ( !completed )
+            {
+                if ( ( hero.image.getX() > WINDOW_WIDTH - SCROLL_BUFFER ) && hero.getSpeed() > 0 ) scrollState = true;
+                else if ( ( hero.image.getX() < SCROLL_BUFFER ) && hero.getSpeed() < 0 ) scrollState = true;
+                else scrollState = false;
+                hero.move( scrollState );
+                completed = environment.update( scrollState );
+                pause( 30 );
+            }
+            winScreen.setScore( hero.getCoins() );
+            switchtoLevelComplete();
+        }
 
 	}
 
@@ -166,6 +169,8 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	
 	public void switchtoLevelComplete()
 	{
+	    completed = false;
+	    hero.resetCoins();
 	    switchToScreen(winScreen);
 	}
 
