@@ -20,12 +20,14 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	public Platform platform;
 	public Chest chest; 
 	public Environment environment;
+	public Loot coin;
 	private ControlsPane control; 
 	private OptionsPane options; 
 	private InGameOptionsPane igOptions; 
+	private LevelCompletePane winScreen;
 	private int count = 0;
 	private boolean scrollState = false;
-	private int rightLeftScroll = 0;
+	private boolean completed = false;
 	private Timer attackTimer;
 	public static final int timerWoken = 50;
 	private boolean isLeft = false;
@@ -47,27 +49,28 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		control = new ControlsPane(this);
 		options = new OptionsPane(this);
 		igOptions = new InGameOptionsPane(this);
+		winScreen = new LevelCompletePane(this);
 		switchToMenu();
 		hero = new Hero();
 		enemy = new Enemy(); 
 		environment = new Environment(this,hero);
 		chest = new Chest(); 
+		coin = new Loot();
 		environment.addEnemy( enemy );
-		environment.addChest(chest);
-
+		environment.addChest( chest );
+		environment.addLoot( coin );
 		attackTimer = new Timer(timerWoken, this);
 		attackTimer.start();
-
-
-		while(true) {
-			if(( hero.image.getX() > WINDOW_WIDTH - SCROLL_BUFFER) && hero.getSpeed() > 0)
-				scrollState = true;
-			else if(( hero.image.getX() < SCROLL_BUFFER) && hero.getSpeed() < 0 )
-				scrollState = true;
-			else
-				scrollState = false;
-			hero.move(scrollState);
-			environment.update(scrollState);
+		
+		while(!completed) {
+		    if(( hero.image.getX() > WINDOW_WIDTH - SCROLL_BUFFER) && hero.getSpeed() > 0)
+		        scrollState = true;
+		    else if(( hero.image.getX() < SCROLL_BUFFER) && hero.getSpeed() < 0 )
+		        scrollState = true;
+		    else
+		        scrollState = false;
+		    hero.move(scrollState);
+			completed = environment.update(scrollState);
 			pause(30);
 		}
 
@@ -87,12 +90,13 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			pause(15);
 			print(numTimesCalled);
 			numTimesCalled++;
-		}		
+		}
 
 		if(numTimesCalled > 5) {
 			attackIsPressed = false; 
 			numTimesCalled = 1;
 		}
+
 		/*
 		if (jumpIsPressed && isRight)
 		{
@@ -112,8 +116,8 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			jumpFrames = 1; 
 		}
 		*/
-		
 	}
+		
 
 
 	public void switchToMenu() {
@@ -157,6 +161,11 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	public void switchtoIGOptions()
 	{
 		switchToScreen(igOptions); 
+	}
+	
+	public void switchtoLevelComplete()
+	{
+	    switchToScreen(winScreen);
 	}
 
 	@Override
