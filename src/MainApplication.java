@@ -31,6 +31,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	private boolean isLeft = false;
 	private boolean isRight = false;
 	private boolean attackIsPressed = false;
+	private boolean jumpIsPressed = false;
 	private int numTimesCalled = 1;
 	private int runFrames = 1;
 	private int jumpFrames = 1; 
@@ -86,17 +87,32 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			pause(15);
 			print(numTimesCalled);
 			numTimesCalled++;
-		}
-		
-		
+		}		
 
 		if(numTimesCalled > 5) {
 			attackIsPressed = false; 
 			numTimesCalled = 1;
 		}
+		/*
+		if (jumpIsPressed && isRight)
+		{
+			hero.image.setImage("hero_jump_left" + jumpFrames + ".jpg");
+			pause(15);
+			jumpFrames++; 
+		}
+		else if (jumpIsPressed && isLeft)
+		{
+			hero.image.setImage("hero_jump_right" + jumpFrames + ".jpg");
+			pause(15);
+			jumpFrames++;
+		}
 		
+		if (jumpFrames > 10)
+		{
+			jumpFrames = 1; 
+		}
+		*/
 		
-
 	}
 
 
@@ -242,6 +258,11 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			{
 				//	hero.image.setImage("hero_attack_left1.jpg");
 			}
+		}
+		
+		if (e.getKeyCode() == KeyEvent.VK_SPACE)
+		{
+			jumpIsPressed = true; 
 		}
 	}
 
