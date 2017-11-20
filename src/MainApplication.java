@@ -27,6 +27,8 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	private int rightLeftScroll = 0;
 	private Timer attackTimer;
 	public static final int timerWoken = 50;
+	private boolean isLeft = false;
+	private boolean isRight = false;
 
 	public void init() {
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -114,31 +116,30 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			hero.startMoveLeft();
 			hero.image.setImage("hero_run_left1.jpg");
 			enemy.moveRight();
+			print("Move left\n");
 		}
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			// this is for the key event for the right arrow key
 			hero.startMoveRight();
 			hero.image.setImage("hero_run_right1.jpg");
 			enemy.moveLeft();
+			print("Move right\n");
 		}
 		if(e.getKeyCode() == KeyEvent.VK_SPACE) {
 			hero.jump();
+			print("jump\n"); 
 		}
 		
         if(e.getKeyCode() == KeyEvent.VK_Z) { 	
         		attackTimer.start();
-        		
+        		print("attack\n");
 //    		hero.attack();
-        	
+
     }
 		
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
 		{
 			switchToScreen(menu);
-		}
-		if (e.getKeyCode() == KeyEvent.VK_Z)
-		{
-			hero.image.setImage("hero_attack_right1.jpg");
 		}
 	}
 	
@@ -148,16 +149,27 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	    if(e.getKeyCode() == KeyEvent.VK_LEFT) {
 	    	hero.image.setImage("hero_idle_left.jpg");
             hero.stopMoveLeft();
+            isRight = false;
+            isLeft = true; 
         }
         if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
         	hero.image.setImage("hero_idle_right.jpg");
             // this is for the key event for the right arrow key
             hero.stopMoveRight();
+            isRight = true; 
+            isLeft = false; 
         }
 
-        if(e.getKeyCode() == KeyEvent.VK_Z) { 	
-//        		hero.attack();
-        	hero.image.setImage("hero_idle_right.jpg");
+        if(e.getKeyCode() == KeyEvent.VK_Z) {
+//    		hero.attack();
+        		if (isRight == true)
+        		{
+        			hero.image.setImage("hero_attack_right1.jpg");
+        		}
+        		else if (isLeft == true)
+        		{
+        			hero.image.setImage("hero_attack_left1.jpg");
+        		}
         }
 	}
 
