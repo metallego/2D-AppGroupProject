@@ -81,12 +81,12 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			print(numTimesCalled);
 			numTimesCalled++;
 		}
-				else if(attackIsPressed&&isLeft) {
-					hero.image.setImage("hero_attack_left" + numTimesCalled  + ".jpg");
-					pause(15);
-					print(numTimesCalled);
-					numTimesCalled++;
-				}
+		else if(attackIsPressed&&isLeft) {
+			hero.image.setImage("hero_attack_left" + numTimesCalled  + ".jpg");
+			pause(15);
+			print(numTimesCalled);
+			numTimesCalled++;
+		}
 		
 		
 
@@ -173,9 +173,30 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 				runFrames = 1; 
 			}
 		}
-		if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+		if(e.getKeyCode() == KeyEvent.VK_SPACE && isLeft) {
 			hero.jump();
-			print("jump\n"); 
+			hero.image.setImage("hero_jump_left" + jumpFrames + ".jpg");
+			print(jumpFrames);
+			print("jump left\n"); 
+			jumpFrames++;
+			
+			if (jumpFrames > 10)
+			{
+				jumpFrames = 1;
+			}
+		}
+		if (e.getKeyCode() == KeyEvent.VK_SPACE && isRight)
+		{
+			hero.jump();
+			hero.image.setImage("hero_jump_right" + jumpFrames + ".jpg");
+			print(jumpFrames);
+			print("jump right\n"); 
+			jumpFrames++;
+			
+			if (jumpFrames > 10)
+			{
+				jumpFrames = 1; 
+			}
 		}
 
 		if(e.getKeyCode() == KeyEvent.VK_Z) { 	
