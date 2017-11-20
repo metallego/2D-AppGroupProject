@@ -11,6 +11,7 @@ import javax.imageio.ImageIO;
 public class Platform {
 	private GRect box;
 	private static final int buffer = 10;
+	private boolean winning = false;
 
 	public Platform(double x, double y, double width, double height) {
 		box = new GRect(x ,y , width, height);
@@ -38,6 +39,20 @@ public class Platform {
 	    {
 	        double diff = p.getY() - box.getY();
 	        return diff <= buffer && diff >= 0;
+	    }
+	    return false;
+	}
+	
+	public void setWinning( boolean b )
+	{
+	    winning = b;
+	}
+	
+	public boolean checkWin( Hero h, int i )
+	{
+	    if( isUnderneath( h.getBottomFeet()) && winning && (h.getCoins() >= i) )
+	    {
+	        return true;
 	    }
 	    return false;
 	}

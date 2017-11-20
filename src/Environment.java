@@ -13,11 +13,15 @@ public class Environment extends GraphicsProgram
 	private ArrayList<Chest> chest = new ArrayList<Chest>();
 	private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 	private ArrayList<Platform> platforms = new ArrayList<Platform>();
+	private ArrayList<Loot> lootList = new ArrayList<Loot>();
 	private double platformWidth = 100;
 	private double platformHeight = 50;
 	private double FRICTION = .1;
 	private double GRAVITY = .3;
 	private double groundY = 400;
+	private boolean completed = false;
+	//just a default value here for now
+	private int winCoinAmount = 1;
 
 	public Environment(MainApplication p, Hero h)
 	{
@@ -31,6 +35,9 @@ public class Environment extends GraphicsProgram
 			Platform p = new Platform(i*platformWidth, i*platformHeight, platformWidth, platformHeight);
 			platforms.add(p);
 			platforms.get(i).drawPlatform( program, platforms.get( i ) );
+			//debug code for testing if level completion works
+			if( i == 7 )
+			    p.setWinning( true );
 		}
 	}
 
@@ -43,9 +50,15 @@ public class Environment extends GraphicsProgram
 	{
 		chest.add(c); 
 	}
-
-	public void update(boolean b)
+	
+	public void addLoot( Loot l )
 	{
+	    lootList.add( l );
+	}
+
+	public boolean update(boolean b)
+	{
+	    completed = false;
 	    if( b )
             scroll();
 		hero.applyFriction(FRICTION);
@@ -54,11 +67,19 @@ public class Environment extends GraphicsProgram
 
 		for( Platform p: platforms )
             if (p.isUnderneath(hero.getBottomFeet()))
+            {
                 hero.stopJumping( p.getY() );
+                if( p.checkWin( hero, winCoinAmount ))
+                    completed = true;
+            }
+		for( Loot l: lootList )
+		    l.pickUp( hero, program );
 		if(hero.getY() >= groundY) {
 			hero.stopJumping(groundY+hero.image.getHeight());
 		}
-
+        if( completed )
+            return true;
+        return false;
 	}
 	
 	public ArrayList<Platform> getPlatforms()

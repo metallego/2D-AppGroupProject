@@ -29,6 +29,7 @@ public class SomePane extends GraphicsPane {
 		program.add(program.chest.chestImage);
 		program.add(exitButton);
 		program.add(optionsButton);
+		program.add( program.coin.image );
 	}
 
 	@Override
