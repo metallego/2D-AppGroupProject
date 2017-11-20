@@ -81,12 +81,12 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			print(numTimesCalled);
 			numTimesCalled++;
 		}
-		//		else if(attackIsPressed&&isLeft) {
-		//			hero.image.setImage("hero_attack_right" + numTimesCalled  + ".jpg");
-		//			pause(15);
-		//			print(numTimesCalled);
-		//			numTimesCalled++;
-		//		}
+				else if(attackIsPressed&&isLeft) {
+					hero.image.setImage("hero_attack_left" + numTimesCalled  + ".jpg");
+					pause(15);
+					print(numTimesCalled);
+					numTimesCalled++;
+				}
 		
 		
 
