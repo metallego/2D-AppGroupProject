@@ -32,6 +32,8 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	private boolean isRight = false;
 	private boolean attackIsPressed = false;
 	private int numTimesCalled = 1;
+	private int runFrames = 1;
+	private int jumpFrames = 1; 
 
 
 	public void init() {
@@ -85,11 +87,15 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		//			print(numTimesCalled);
 		//			numTimesCalled++;
 		//		}
+		
+		
 
 		if(numTimesCalled > 5) {
 			attackIsPressed = false; 
 			numTimesCalled = 1;
 		}
+		
+		
 
 	}
 
@@ -141,16 +147,31 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_LEFT) {
 			hero.startMoveLeft();
-			hero.image.setImage("hero_run_left1.jpg");
+			hero.image.setImage("hero_run_left" + runFrames + ".jpg");
+			//pause(15); 
 			enemy.moveRight();
+			print(runFrames);
 			print("Move left\n");
+			runFrames++; 
+			
+			if (runFrames > 10)
+			{
+				runFrames = 1; 
+			}
 		}
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			// this is for the key event for the right arrow key
 			hero.startMoveRight();
-			hero.image.setImage("hero_run_right1.jpg");
+			hero.image.setImage("hero_run_right" + runFrames + ".jpg");
 			enemy.moveLeft();
+			print(runFrames);
 			print("Move right\n");
+			runFrames++; 
+			
+			if (runFrames > 10)
+			{
+				runFrames = 1; 
+			}
 		}
 		if(e.getKeyCode() == KeyEvent.VK_SPACE) {
 			hero.jump();
