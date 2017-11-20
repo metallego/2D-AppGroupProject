@@ -73,7 +73,8 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			completed = environment.update(scrollState);
 			pause(30);
 		}
-
+		winScreen.setScore( hero.getCoins() );
+        switchtoLevelComplete();
 
 	}
 
