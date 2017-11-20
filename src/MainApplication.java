@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
@@ -29,6 +30,13 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	private boolean completed = false;
 	private Timer attackTimer;
 	public static final int timerWoken = 50;
+	private boolean isLeft = false;
+	private boolean isRight = false;
+	private boolean attackIsPressed = false;
+	private int numTimesCalled = 1;
+	private int runFrames = 1;
+	private int jumpFrames = 1; 
+
 
 	public void init() {
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -51,7 +59,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		environment.addChest( chest );
 		environment.addLoot( coin );
 		attackTimer = new Timer(timerWoken, this);
-
+		attackTimer.start();
 		
 		while(!completed) {
 		    if(( hero.image.getX() > WINDOW_WIDTH - SCROLL_BUFFER) && hero.getSpeed() > 0)
@@ -64,14 +72,39 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			completed = environment.update(scrollState);
 			pause(30);
 		}
+
+
+	}
+
+	public void actionPerformed (ActionEvent e) {
+
+		if(attackIsPressed&&isRight)	{
+			hero.image.setImage("hero_attack_right" + numTimesCalled  + ".jpg");
+			pause(15);
+			print(numTimesCalled);
+			numTimesCalled++;
+		}
+		else if(attackIsPressed&&isLeft) {
+			hero.image.setImage("hero_attack_left" + numTimesCalled  + ".jpg");
+			pause(15);
+			print(numTimesCalled);
+			numTimesCalled++;
+		}
+		
 		
 		winScreen.setScore( hero.getCoins() );
 		switchtoLevelComplete();
 		
 
+		if(numTimesCalled > 5) {
+			attackIsPressed = false; 
+			numTimesCalled = 1;
+		}
 		
 		
+
 	}
+
 
 	public void switchToMenu() {
 
@@ -110,7 +143,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	{
 		switchToScreen(options);
 	}
-	
+
 	public void switchtoIGOptions()
 	{
 		switchToScreen(igOptions); 
@@ -125,53 +158,102 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_LEFT) {
 			hero.startMoveLeft();
-			hero.image.setImage("hero_run_left1.jpg");
+			hero.image.setImage("hero_run_left" + runFrames + ".jpg");
+			//pause(15); 
 			enemy.moveRight();
+			print(runFrames);
+			print("Move left\n");
+			runFrames++; 
+			
+			if (runFrames > 10)
+			{
+				runFrames = 1; 
+			}
 		}
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			// this is for the key event for the right arrow key
 			hero.startMoveRight();
-			hero.image.setImage("hero_run_right1.jpg");
+			hero.image.setImage("hero_run_right" + runFrames + ".jpg");
 			enemy.moveLeft();
+			print(runFrames);
+			print("Move right\n");
+			runFrames++; 
+			
+			if (runFrames > 10)
+			{
+				runFrames = 1; 
+			}
 		}
-		if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+		if(e.getKeyCode() == KeyEvent.VK_SPACE && isLeft) {
 			hero.jump();
+			hero.image.setImage("hero_jump_left" + jumpFrames + ".jpg");
+			print(jumpFrames);
+			print("jump left\n"); 
+			jumpFrames++;
+			
+			if (jumpFrames > 10)
+			{
+				jumpFrames = 1;
+			}
 		}
-		
-        if(e.getKeyCode() == KeyEvent.VK_Z) { 	
-        		attackTimer.start();
-        		
-//    		hero.attack();
-        	
-    }
-		
+		if (e.getKeyCode() == KeyEvent.VK_SPACE && isRight)
+		{
+			hero.jump();
+			hero.image.setImage("hero_jump_right" + jumpFrames + ".jpg");
+			print(jumpFrames);
+			print("jump right\n"); 
+			jumpFrames++;
+			
+			if (jumpFrames > 10)
+			{
+				jumpFrames = 1; 
+			}
+		}
+
+		if(e.getKeyCode() == KeyEvent.VK_Z) { 	
+			attackTimer.start();
+			print("attack\n");
+			//    		hero.attack();
+
+		}
+
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
 		{
 			switchToScreen(menu);
 		}
-		if (e.getKeyCode() == KeyEvent.VK_Z)
-		{
-			hero.image.setImage("hero_attack_right1.jpg");
-		}
 	}
-	
+
 	@Override
 	public void keyReleased( KeyEvent e )
 	{
-	    if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-	    	hero.image.setImage("hero_idle_left.jpg");
-            hero.stopMoveLeft();
-        }
-        if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-        	hero.image.setImage("hero_idle_right.jpg");
-            // this is for the key event for the right arrow key
-            hero.stopMoveRight();
-        }
+		if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+			hero.image.setImage("hero_idle_left.jpg");
+			hero.stopMoveLeft();
+			isRight = false;
+			isLeft = true; 
+		}
+		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			hero.image.setImage("hero_idle_right.jpg");
+			// this is for the key event for the right arrow key
+			hero.stopMoveRight();
+			isRight = true; 
+			isLeft = false; 
+		}
 
-        if(e.getKeyCode() == KeyEvent.VK_Z) { 	
-//        		hero.attack();
-        	hero.image.setImage("hero_idle_right.jpg");
-        }
+		if(e.getKeyCode() == KeyEvent.VK_Z) {
+			//hero.attack();
+			attackIsPressed = true;
+
+			if (isRight)
+			{
+				//hero.image.setImage("hero_attack_right1.jpg");
+
+			}
+			else if (isLeft)
+			{
+				//	hero.image.setImage("hero_attack_left1.jpg");
+			}
+		}
 	}
 
 

@@ -28,19 +28,19 @@ public class ControlsPane extends GraphicsPane{
 	public ControlsPane(MainApplication app)
 	{
 		program = app;
-		Up_Key = new GButton ("^", 600, 150, 50, 50); 
-		jumpUp = new GLabel ("Jump Up", 600, 125);
-		Right_Key = new GButton (">", 650, 200, 50, 50); 
-		moveRight = new GLabel ("Move right", 710, 230); 
-		Left_Key = new GButton ("<", 550, 200, 50, 50); 
-		moveLeft = new GLabel ("Move left", 490, 230); 
-		Down_Key = new GButton("v", 600, 200, 50, 50);
-		jumpDown = new GLabel("Jump down", 600, 275);
-		attackLabel = new GLabel("Attack", 60, 260);
+		Up_Key = new GButton ("^", 900, 150, 50, 50); 
+		jumpUp = new GLabel ("Jump Up", 900, 125);
+		Right_Key = new GButton (">", 950, 200, 50, 50); 
+		moveRight = new GLabel ("Move right", 1010, 230); 
+		Left_Key = new GButton ("<", 850, 200, 50, 50); 
+		moveLeft = new GLabel ("Move left", 790, 230); 
+		Down_Key = new GButton("v", 900, 200, 50, 50);
+		jumpDown = new GLabel("Jump down", 900, 275);
 		
-		Spacebar = new GButton("Spacebar - Jump", 250, 300, 200, 50);
+		Spacebar = new GButton("Spacebar - Jump", 425, 300, 200, 50);
 		
 		attack = new GButton ("Z", 50, 200, 50, 50); 
+		attackLabel = new GLabel("Attack", 60, 260);
 		
 		back = new  GButton("back to menu", 0, 0, 100, 50); 
 		
