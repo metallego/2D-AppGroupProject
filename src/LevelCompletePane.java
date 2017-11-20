@@ -43,8 +43,8 @@ public class LevelCompletePane extends GraphicsPane
     public void hideContents()
     {
         program.remove( congrats );
-        program.add( scoreLabel );
-        program.add( rect );
+        program.remove( scoreLabel );
+        program.remove( rect );
     }
     
     @Override

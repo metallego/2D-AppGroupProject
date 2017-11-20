@@ -42,6 +42,11 @@ public class Hero extends Entity{
 	{
 	    coins ++;
 	}
+	
+	public void resetCoins()
+	{
+	    coins = 0;
+	}
 
 
 }
