@@ -85,11 +85,15 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 
 		if(attackIsPressed&&isRight)	{
 			hero.image.setImage("hero_attack_right" + numTimesCalled  + ".jpg");
+			//set weaponratio
+			//hero.attack();
+			//weapon size
+			
 			pause(15);
 			print(numTimesCalled);
 			numTimesCalled++;
 		}
-		else if(attackIsPressed&&isLeft) {
+		else if(attackIsPressed&&!isRight) {
 			hero.image.setImage("hero_attack_left" + numTimesCalled  + ".jpg");
 			pause(15);
 			print(numTimesCalled);
@@ -261,18 +265,8 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		}
 
 		if(e.getKeyCode() == KeyEvent.VK_Z) {
-			//hero.attack();
 			attackIsPressed = true;
 
-			if (isRight)
-			{
-				//hero.image.setImage("hero_attack_right1.jpg");
-
-			}
-			else if (isLeft)
-			{
-				//	hero.image.setImage("hero_attack_left1.jpg");
-			}
 		}
 		
 		if (e.getKeyCode() == KeyEvent.VK_SPACE)

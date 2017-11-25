@@ -17,7 +17,8 @@ public class Hero extends Entity{
 	private GImage currentWeapon;
 	private Timer attackTimer;
 	public static final int timerWoken = 50;
-
+	private boolean right;
+	private double weaponRatio;
 	
 	private ArrayList<Weapon> inventory = new ArrayList<Weapon>();
 	
@@ -31,6 +32,31 @@ public class Hero extends Entity{
 
 	public void attack() {
 		// TODO Auto-generated method stub
+	}
+	
+	
+	
+	public void setCurrentWeapon(GImage image, boolean right) {
+		if(right) {
+			
+			
+		}
+		
+		
+		if(!right) {// this is the left interaction
+			
+		}
+		
+	}
+	
+	public void setWeaponRatio(double wRatio) {
+		
+		weaponRatio = wRatio;
+	}
+	
+	public double getWeaponRatio() {
+		
+		return weaponRatio;
 	}
 	
 	public int getCoins()

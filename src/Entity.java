@@ -47,10 +47,20 @@ public class Entity extends GraphicsProgram {
 		//TODO
 		
 	}
+
+	
+	public void withinBounds() {
+		
+	}
 	
 	
 	public void death() {
 		//TODO
+	}
+	
+	public int getX() {
+
+		return (int) image.getX();
 	}
 
 	public int getY() {
