@@ -27,7 +27,9 @@ public class Entity extends GraphicsProgram {
 	private boolean shouldMoveLeft = false;
 	private boolean shouldMoveRight = false;
 	public GImage image;
+	private double weaponRatio = 0;
 
+	
 	public Entity()
 	{
 		
@@ -43,8 +45,19 @@ public class Entity extends GraphicsProgram {
 		return type;
 	}
 	
-	public void interact(Entity e1, Entity e2) {
+	public void setWeaponRatio(double wRatio) {
+		
+		weaponRatio = wRatio;
+	}
+	
+	public double getWeaponRatio() {
+		
+		return weaponRatio;
+	}
+	
+	public void interact(Entity e1, Entity e2, double wRatio) {
 		//TODO
+			
 		
 	}
 

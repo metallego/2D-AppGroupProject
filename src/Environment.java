@@ -41,6 +41,21 @@ public class Environment extends GraphicsProgram
 		}
 	}
 
+	public void checkForEntity(GRectangle bounds) {
+		for (Enemy e:enemies) {
+		bounds.contains(e.getWidth()/2,e.getHeight()/2);
+		
+		}
+		
+		for (Chest c:chest) {
+			bounds.contains(c.getWidth()/2,c.getHeight()/2);
+
+		}
+		
+	}
+	
+	
+	
 	public void addEnemy( Enemy e)
 	{
 		enemies.add( e );

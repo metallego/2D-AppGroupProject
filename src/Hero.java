@@ -18,7 +18,6 @@ public class Hero extends Entity{
 	private Timer attackTimer;
 	public static final int timerWoken = 50;
 	private boolean right;
-	private double weaponRatio;
 	
 	private ArrayList<Weapon> inventory = new ArrayList<Weapon>();
 	
@@ -27,7 +26,7 @@ public class Hero extends Entity{
 	{
 		image = new GImage("hero_idle_right.jpg", 50, 400); 
 		this.setType(EntityType.HERO);
-		image.setSize(100,100);
+
 	}
 
 	public void attack() {
@@ -49,15 +48,7 @@ public class Hero extends Entity{
 		
 	}
 	
-	public void setWeaponRatio(double wRatio) {
-		
-		weaponRatio = wRatio;
-	}
-	
-	public double getWeaponRatio() {
-		
-		return weaponRatio;
-	}
+
 	
 	public int getCoins()
 	{
