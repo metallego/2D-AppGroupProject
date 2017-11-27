@@ -16,6 +16,7 @@ public class MenuPane extends GraphicsPane{
 	private GLabel title; 
 	private GButton controls;
 	private GImage background; 
+	private GButton lvlSelect; 
 	
 	
 	public MenuPane(MainApplication app) {
@@ -26,7 +27,7 @@ public class MenuPane extends GraphicsPane{
 		options = new GButton("Options", 500, 275, 100, 50);
 		options.setFillColor(Color.white);
 		
-		exit = new GButton("Exit", 500, 425, 100, 50);
+		exit = new GButton("Exit", 500, 500, 100, 50);
 		exit.setFillColor(Color.WHITE);
 		
 		title = new GLabel("Golden Boy", 465, 150);
@@ -38,6 +39,8 @@ public class MenuPane extends GraphicsPane{
 		background = new GImage("background01.jpg", 0, 0);
 		background.setSize(1080, 600);
 		
+		lvlSelect = new GButton ("Level Select", 500, 425, 100, 50); 
+		lvlSelect.setFillColor(Color.WHITE);
 		}
 	
 	@Override
@@ -48,6 +51,7 @@ public class MenuPane extends GraphicsPane{
 		program.add(exit);
 		program.add(title);
 		program.add(controls);
+		program.add(lvlSelect);
 	}
 
 	@Override
@@ -58,6 +62,7 @@ public class MenuPane extends GraphicsPane{
 		program.remove(exit);
 		program.remove(title);
 		program.remove(controls);
+		program.remove(lvlSelect);
 	}
 
 	@Override
@@ -75,6 +80,10 @@ public class MenuPane extends GraphicsPane{
 		else if (obj == controls)
 		{
 			program.switchtoControls();
+		}
+		else if (obj == lvlSelect)
+		{
+			program.switchtoLevelSelect();
 		}
 	}
 	

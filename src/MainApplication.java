@@ -25,6 +25,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	private OptionsPane options; 
 	private InGameOptionsPane igOptions; 
 	private LevelCompletePane winScreen;
+	private LevelSelectPane levelSelect; 
 	private int count = 0;
 	private boolean scrollState = false;
 	private boolean completed = false;
@@ -50,6 +51,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		options = new OptionsPane(this);
 		igOptions = new InGameOptionsPane(this);
 		winScreen = new LevelCompletePane(this);
+		levelSelect = new LevelSelectPane(this); 
 		switchToMenu();
 		hero = new Hero();
 		//everything below here is going to need to be refactored when Text File Level Loading is implemented
@@ -85,6 +87,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 
 		if(attackIsPressed&&isRight)	{
 			hero.image.setImage("hero_attack_right" + numTimesCalled  + ".jpg");
+			/*
 			//set weaponratio
 			if(numTimesCalled == 4) {
 				//this would be the weaponhitbox for animation 4
@@ -104,6 +107,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			}
 			//hero.attack();
 			//weapon size
+			 * */
 			
 			pause(15);
 			print(numTimesCalled);
@@ -170,6 +174,11 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	public void switchtoGame()
 	{
 		//switchToScreen(hero);
+	}
+	
+	public void switchtoLevelSelect()
+	{
+		switchToScreen(levelSelect); 
 	}
 
 	public void switchtoControls()
