@@ -49,9 +49,9 @@ public class SomePane extends GraphicsPane {
 	public void showContents() {
 		program.add(background);
 		program.add(program.hero.image);
-		program.add(program.enemy.enemyImage);
+		program.add(program.enemy.image);
 		program.environment.setupPlatforms();
-		program.add(program.chest.chestImage);
+		program.add(program.chest.image);
 		program.add(exitButton);
 		program.add(optionsButton);
 		program.add( program.coin.image );
@@ -67,10 +67,10 @@ public class SomePane extends GraphicsPane {
 	public void hideContents() {
 		program.remove(background);
 		program.remove(program.hero.image);
-		program.remove(program.enemy.enemyImage);
+		program.remove(program.enemy.image);
 		for( int i = 0; i < program.environment.getPlatforms().size(); i++)
 		    program.remove( program.environment.getPlatforms().get(i).getGImage() );
-		program.remove(program.chest.chestImage);
+		program.remove(program.chest.image);
 		program.remove(exitButton);
 		program.remove(optionsButton);
 		program.remove(heart1);

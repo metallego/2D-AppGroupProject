@@ -88,29 +88,31 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 
 		if(attackIsPressed&&isRight)	{
 			hero.image.setImage("hero_attack_right" + numTimesCalled  + ".jpg");
-			chest.chestImage.setImage("wooden_chest" + testcount + ".jpg");
-			chest.chestImage.setSize(50, 50);
-			/*
+			//chest.image.setImage("wooden_chest" + testcount + ".jpg");
+			chest.image.setSize(50, 50);
+			
 			//set weaponratio
 			if(numTimesCalled == 4) {
 				//this would be the weaponhitbox for animation 4
-				GLine weapon1 = new GLine( 77, 67, 104 ,22);
+				GLine weapon1 = new GLine( hero.getX()+77, hero.getY()+67, hero.getX()+104 ,hero.getY()+22);
 				GRectangle hitBox = weapon1.getBounds();
 				environment.checkForEntity(hitBox,hero.getAttack());
-				
+				GRect testbox = new GRect (hitBox.getX(), hitBox.getY(), hitBox.getWidth(),hitBox.getHeight());
+				add(testbox);
 			}
 			//this would be the weaponhitbox for animation 5
 			else if(numTimesCalled == 5) {
-				GLine weapon2 = new GLine( 76, 66, 122 ,61);
+				GLine weapon2 = new GLine( hero.getX()+76, hero.getY()+66, hero.getX()+122,hero.getY()+61);
 				GRectangle hitBox = weapon2.getBounds();
 				environment.checkForEntity(hitBox,hero.getAttack());
+				GRect testbox = new GRect (hitBox.getX(), hitBox.getY(), hitBox.getWidth(),hitBox.getHeight());
+				add(testbox);
 			}
 			
 			else{
 			}
 			//hero.attack();
 			//weapon size
-			 * */
 			
 			pause(15);
 			print(numTimesCalled);
@@ -128,10 +130,10 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			attackIsPressed = false; 
 			numTimesCalled = 1;
 		}
-		if (testcount > 4)
-		{
-			testcount = 1; 
-		}
+//		if (testcount > 4)
+//		{
+//			testcount = 1; 
+//		}
 
 		/*
 		if (jumpIsPressed && isRight)

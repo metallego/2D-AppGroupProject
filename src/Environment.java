@@ -45,7 +45,7 @@ public class Environment extends GraphicsProgram
 		for (Enemy e:enemies) {
 			if(bounds.contains(e.getX()+e.getWidth()/2,e.getY()+e.getHeight()/2)) {
 				e.takeDamage(attack);
-				
+				println("attacked!!!! ENEMY");
 			}
 		
 		}
@@ -53,7 +53,8 @@ public class Environment extends GraphicsProgram
 		for (Chest c:chest) {
 			bounds.contains(c.getX()+c.getWidth()/2,c.getY()+c.getHeight()/2);
 			c.takeDamage(attack);
-			
+			println("attacked!!!! CHEST");
+
 		}
 		
 	}
@@ -130,7 +131,7 @@ public class Environment extends GraphicsProgram
 	    for( Platform p: platforms )
 	        p.getGImage().move( -hero.getSpeed(), 0 );
 	    for( Enemy e: enemies)
-	        e.enemyImage.move( -hero.getSpeed(), 0 );
+	        e.image.move( -hero.getSpeed(), 0 );
 	}
 
 }

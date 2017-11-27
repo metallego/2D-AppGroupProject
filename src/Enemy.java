@@ -18,31 +18,30 @@ public class Enemy extends Entity{
 	private double speed = 0;
 
 
-	
-	public GImage enemyImage; 
-	
+		
 	public Enemy()
 	{
-		enemyImage = new GImage ("bread.jpg", 400, 400); 
-		enemyImage.setSize(100, 100);
+		image = new GImage ("bread.jpg", 400, 400); 
+		image.setSize(100, 100);
+
 	}
 	
 	public void move()
 	{
-		enemyImage.move(speed, 0); 
+		image.move(speed, 0); 
 	}
 	
 	public void moveLeft()
 	{
-		if (enemyImage.getX() > (enemyImage.getX() + 10))
+		if (image.getX() > (image.getX() + 10))
 		{
-			enemyImage.move(speed, 0);
+			image.move(speed, 0);
 			speed -= ACCELERATION;
 			speed = Math.max(speed, -MAX_SPEED);
 		}
-		else if (enemyImage.getX() == enemyImage.getX())
+		else if (image.getX() == image.getX())
 		{
-			enemyImage.move(speed, 0);
+			image.move(speed, 0);
 			speed -= ACCELERATION;
 			speed = Math.max(speed, -MAX_SPEED);
 		}
@@ -50,15 +49,15 @@ public class Enemy extends Entity{
 	
 	public void moveRight()
 	{
-		if (enemyImage.getX() < (enemyImage.getX() - 10))
+		if (image.getX() < (image.getX() - 10))
 		{
-			enemyImage.move(speed, 0);
+			image.move(speed, 0);
 			speed += ACCELERATION;
 			speed = Math.min(speed, MAX_SPEED);
 		}
-		else if (enemyImage.getX() == enemyImage.getX())
+		else if (image.getX() == image.getX())
 		{
-			enemyImage.move(speed, 0);
+			image.move(speed, 0);
 			speed += ACCELERATION;
 			speed = Math.min(speed, MAX_SPEED);
 		}
