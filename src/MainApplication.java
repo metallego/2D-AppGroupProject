@@ -36,6 +36,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	private boolean attackIsPressed = false;
 	private boolean jumpIsPressed = false;
 	private int numTimesCalled = 1;
+	private int testcount = 1; 
 	private int runFrames = 1;
 	private int jumpFrames = 1; 
 
@@ -87,6 +88,8 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 
 		if(attackIsPressed&&isRight)	{
 			hero.image.setImage("hero_attack_right" + numTimesCalled  + ".jpg");
+			chest.chestImage.setImage("wooden_chest" + testcount + ".jpg");
+			chest.chestImage.setSize(50, 50);
 			/*
 			//set weaponratio
 			if(numTimesCalled == 4) {
@@ -112,6 +115,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			pause(15);
 			print(numTimesCalled);
 			numTimesCalled++;
+			testcount++;
 		}
 		else if(attackIsPressed&&!isRight) {
 			hero.image.setImage("hero_attack_left" + numTimesCalled  + ".jpg");
@@ -123,6 +127,10 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		if(numTimesCalled > 5) {
 			attackIsPressed = false; 
 			numTimesCalled = 1;
+		}
+		if (testcount > 4)
+		{
+			testcount = 1; 
 		}
 
 		/*

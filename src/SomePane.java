@@ -57,7 +57,10 @@ public class SomePane extends GraphicsPane {
 		program.add( program.coin.image );
 		program.add(heart1);
 		program.add(heart2);
-		program.add(heart3); 
+		program.add(heart3);
+		program.add(coinSlot1);
+		program.add(coinSlot2);
+		program.add(coinSlot3);
 	}
 
 	@Override
@@ -73,6 +76,9 @@ public class SomePane extends GraphicsPane {
 		program.remove(heart1);
 		program.remove(heart2);
 		program.remove(heart3);
+		program.remove(coinSlot1);
+		program.remove(coinSlot2);
+		program.remove(coinSlot3);
 	}
 	
 	@Override
