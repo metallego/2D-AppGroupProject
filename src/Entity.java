@@ -198,6 +198,11 @@ public class Entity extends GraphicsProgram {
 	{
 	    return speed;
 	}
+	
+	public double getVertSpeed()
+	{
+	    return vertSpeed;
+	}
 
 
 }

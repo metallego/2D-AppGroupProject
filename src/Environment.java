@@ -85,7 +85,7 @@ public class Environment extends GraphicsProgram
 		hero.applyDecisions(b);
 
 		for( Platform p: platforms )
-            if (p.isUnderneath(hero.getBottomFeet()))
+            if ((p.isUnderneath(hero.getBottomFeet()))&& hero.getVertSpeed() < 0)
             {
                 hero.stopJumping( p.getY() );
                 if( p.checkWin( hero, winCoinAmount ))
