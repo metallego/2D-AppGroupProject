@@ -13,24 +13,36 @@ public class SomePane extends GraphicsPane {
 	private GImage heart1; 
 	private GImage heart2;
 	private GImage heart3; 
+	private GImage coinSlot1;
+	private GImage coinSlot2;
+	private GImage coinSlot3; 
 	
 	
 	public SomePane(MainApplication app) {
 		this.program = app;
-		exitButton = new GButton ("exit", 0, 40, 50, 50); 
+		exitButton = new GButton ("exit", 0, 0, 50, 50); 
 		optionsButton = new GButton ("Options", 0, 550, 50, 50); 
 		//img = new GImage("hero.jpg", 100, 100);
 		background = new GImage("background.jpg", 0, 0);
 		background.setSize(1080, 600);
 		
-		heart1 = new GImage ("heart.jpg", 0, 0);
+		heart1 = new GImage ("heart.jpg", 990, 0);
 		heart1.setSize(30, 30);
 		
-		heart2 = new GImage ("heart.jpg", 30, 0);
+		heart2 = new GImage ("heart.jpg", 1020, 0);
 		heart2.setSize(30, 30);
 		
-		heart3 = new GImage ("heart.jpg", 60, 0);
+		heart3 = new GImage ("heart.jpg", 1050, 0);
 		heart3.setSize(30, 30);
+		
+		coinSlot1 = new GImage ("coin_slot.jpg", 990, 40);
+		coinSlot1.setSize(30, 30);
+		
+		coinSlot2 = new GImage ("coin_slot.jpg", 1020, 40);
+		coinSlot2.setSize(30, 30);
+		
+		coinSlot3 = new GImage ("coin_slot.jpg", 1050, 40);
+		coinSlot3.setSize(30, 30);
 	}
 	
 	@Override
