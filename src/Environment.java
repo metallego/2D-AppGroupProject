@@ -114,10 +114,21 @@ public class Environment extends GraphicsProgram
 	    return boxes;
 	}
 	
+	public ArrayList<GImage> getPlatformImage()
+	{
+		ArrayList<GImage> boxes = new ArrayList<GImage>(); 
+		for (Platform p: platforms)
+		{
+			boxes.add(p.getGImage()); 
+		}
+		return boxes; 
+	}
+
+	
 	public void scroll()
 	{
 	    for( Platform p: platforms )
-	        p.getGRect().move( -hero.getSpeed(), 0 );
+	        p.getGImage().move( -hero.getSpeed(), 0 );
 	    for( Enemy e: enemies)
 	        e.enemyImage.move( -hero.getSpeed(), 0 );
 	}

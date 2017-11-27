@@ -38,7 +38,7 @@ public class SomePane extends GraphicsPane {
 		program.remove(program.hero.image);
 		program.remove(program.enemy.enemyImage);
 		for( int i = 0; i < program.environment.getPlatforms().size(); i++)
-		    program.remove( program.environment.getPlatforms().get(i).getGRect() );
+		    program.remove( program.environment.getPlatforms().get(i).getGImage() );
 		program.remove(program.chest.chestImage);
 		program.remove(exitButton);
 		program.remove(optionsButton);
