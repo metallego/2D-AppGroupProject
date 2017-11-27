@@ -8,7 +8,9 @@ import javax.imageio.ImageIO;
 
 public class Loot extends GraphicsProgram
 {
+	private CoinSlots s; 
     public GImage image;
+    public boolean isCollected = false; 
     public Loot()
     {
         image = new GImage("coin.jpg", 700, 450);
@@ -32,6 +34,8 @@ public class Loot extends GraphicsProgram
         {
             h.addCoin();
             p.remove( image );
+            isCollected = true; 
+            print("loot collected"); 
         }
     }
 }

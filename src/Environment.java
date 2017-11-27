@@ -14,8 +14,14 @@ public class Environment extends GraphicsProgram
 	private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 	private ArrayList<Platform> platforms = new ArrayList<Platform>();
 	private ArrayList<Loot> lootList = new ArrayList<Loot>();
+	private ArrayList <HeartSlots> hearts = new ArrayList <HeartSlots>(); 
+	private ArrayList <CoinSlots> coins = new ArrayList <CoinSlots>(); 
 	private double platformWidth = 100;
 	private double platformHeight = 50;
+	private double heartSlotX = 990; 
+	private double heartSlotY = 0; 
+	private double heartSlotWidthHeight = 30; 
+	private double coinSlotY = 40; 
 	private double FRICTION = .1;
 	private double GRAVITY = .3;
 	private double groundY = 400;
@@ -38,6 +44,27 @@ public class Environment extends GraphicsProgram
 			//debug code for testing if level completion works
 			if( i == 7 )
 			    p.setWinning( true );
+		}
+	}
+	
+	public void setUpHeartSlots()
+	{
+		for (int i = 0; i < 3; i++)
+		{
+			HeartSlots s = new HeartSlots(((i * 30) + heartSlotX), heartSlotY, heartSlotWidthHeight, heartSlotWidthHeight); 
+			hearts.add(s); 
+			hearts.get(i).drawHearts(program, hearts.get(i));
+			
+		}
+	}
+	
+	public void setUpCoinSlots()
+	{
+		for (int i = 0; i < 3; i++)
+		{
+			CoinSlots c = new CoinSlots((i * 30) + heartSlotX, coinSlotY, heartSlotWidthHeight, heartSlotWidthHeight); 
+			coins.add(c);
+			coins.get(i).drawCoins(program, coins.get(i));
 		}
 	}
 
@@ -100,6 +127,8 @@ public class Environment extends GraphicsProgram
         if( completed )
             return true;
         return false;
+        
+  
 	}
 	
 	public ArrayList<Platform> getPlatforms()
@@ -124,7 +153,38 @@ public class Environment extends GraphicsProgram
 		}
 		return boxes; 
 	}
+	
+	public ArrayList<HeartSlots> getHeartSlots()
+	{
+		return hearts; 
+	}
 
+	public ArrayList<GImage> getHeartSlotImage()
+	{
+		ArrayList <GImage> heartSlots = new ArrayList <GImage>();
+		for (HeartSlots s: hearts)
+		{
+			heartSlots.add(s.getGImage());
+		}
+		return heartSlots; 
+	}
+	
+	public ArrayList<GImage> getCoinSlotImage()
+	{
+		ArrayList <GImage> coinSlots = new ArrayList <GImage>(); 
+		for (CoinSlots c: coins)
+		{
+			coinSlots.add(c.getGImage());
+		}
+		return coinSlots; 
+	}
+	
+	public ArrayList<CoinSlots> getCoinSlots()
+	{
+		return coins; 
+	}
+	
+	
 	
 	public void scroll()
 	{
