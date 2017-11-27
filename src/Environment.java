@@ -41,15 +41,19 @@ public class Environment extends GraphicsProgram
 		}
 	}
 
-	public void checkForEntity(GRectangle bounds) {
+	public void checkForEntity(GRectangle bounds, double attack) {
 		for (Enemy e:enemies) {
-		bounds.contains(e.getWidth()/2,e.getHeight()/2);
+			if(bounds.contains(e.getX()+e.getWidth()/2,e.getY()+e.getHeight()/2)) {
+				e.takeDamage(attack);
+				
+			}
 		
 		}
 		
 		for (Chest c:chest) {
-			bounds.contains(c.getWidth()/2,c.getHeight()/2);
-
+			bounds.contains(c.getX()+c.getWidth()/2,c.getY()+c.getHeight()/2);
+			c.takeDamage(attack);
+			
 		}
 		
 	}
@@ -58,7 +62,7 @@ public class Environment extends GraphicsProgram
 	
 	public void addEnemy( Enemy e)
 	{
-		enemies.add( e );
+		enemies.add(e);
 	}
 	
 	public void addChest(Chest c)
@@ -68,13 +72,13 @@ public class Environment extends GraphicsProgram
 	
 	public void addLoot( Loot l )
 	{
-	    lootList.add( l );
+	    lootList.add(l);
 	}
 
 	public boolean update(boolean b)
 	{
 	    completed = false;
-	    if( b )
+	    if(b)
             scroll();
 		hero.applyFriction(FRICTION);
 		hero.applyGravity(GRAVITY);

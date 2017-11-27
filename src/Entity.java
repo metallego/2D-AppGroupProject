@@ -18,7 +18,7 @@ public class Entity extends GraphicsProgram {
 
 	private int level;
 	private int HP; // health points
-	private int attack;
+	private double attack;
 	private int exp; //experience
 	private String name;
 	private EntityType type;
@@ -35,6 +35,15 @@ public class Entity extends GraphicsProgram {
 		
 
 	}
+	
+	public void takeDamage(double damage) {
+		HP -= damage;
+		if(HP <= 0) {
+			death();
+		}
+	}
+	
+	
 	
 	public void setType(EntityType t) {
 		type = t;
@@ -61,14 +70,17 @@ public class Entity extends GraphicsProgram {
 		
 	}
 
-	
-	public void withinBounds() {
-		
-	}
+
 	
 	
 	public void death() {
 		//TODO
+	}
+	public double getAttack() {
+		return attack;
+	}
+	public void setAttack(double atk) {
+		attack = atk;
 	}
 	
 	public int getX() {

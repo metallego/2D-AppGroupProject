@@ -16,10 +16,8 @@ public class Enemy extends Entity{
 	private static final double ACCELERATION = .7;
 	
 	private double speed = 0;
-	private int level;
-	private int HP; // health points
-	private int attack;
-	private int exp; //experience
+
+
 	
 	public GImage enemyImage; 
 	

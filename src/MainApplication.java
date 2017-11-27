@@ -87,16 +87,20 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			hero.image.setImage("hero_attack_right" + numTimesCalled  + ".jpg");
 			//set weaponratio
 			if(numTimesCalled == 4) {
-				GLine weapon = new GLine( 77, 67, 104 ,22);
-				GRectangle hitBox = weapon.getBounds();
-				environment.checkForEntity(hitBox);
+				//this would be the weaponhitbox for animation 4
+				GLine weapon1 = new GLine( 77, 67, 104 ,22);
+				GRectangle hitBox = weapon1.getBounds();
+				environment.checkForEntity(hitBox,hero.getAttack());
 				
 			}
-			
+			//this would be the weaponhitbox for animation 5
 			else if(numTimesCalled == 5) {
-
+				GLine weapon2 = new GLine( 76, 66, 122 ,61);
+				GRectangle hitBox = weapon2.getBounds();
+				environment.checkForEntity(hitBox,hero.getAttack());
 			}
-			else {
+			
+			else{
 			}
 			//hero.attack();
 			//weapon size
