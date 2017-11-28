@@ -17,5 +17,11 @@ public class Chest extends Entity{
 		chestImage = new GImage("wooden_chest1.jpg", 500, 400);
 		chestImage.setSize(50, 50);
 	}
+	
+	public Chest( int i, int j )
+	{
+	    chestImage = new GImage("wooden_chest1.jpg", i, j);
+        chestImage.setSize(50, 50);
+	}
 
 }

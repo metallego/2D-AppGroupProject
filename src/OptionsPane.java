@@ -68,6 +68,7 @@ public class OptionsPane extends GraphicsPane{
 	public void mousePressed(MouseEvent e) {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		if(obj == backMenu) {
+		    program.currentLevel = 1;
 			program.switchToMenu();
 		}
 		else if (obj == on)

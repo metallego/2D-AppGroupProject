@@ -50,7 +50,9 @@ public class SomePane extends GraphicsPane {
 		program.add(background);
 		program.add(program.hero.image);
 		program.add(program.enemy.enemyImage);
-		program.environment.setupPlatforms();
+		//program.environment.setupPlatforms();
+		for( int i = 0; i < program.environment.getPlatforms().size(); i++)
+            program.add( program.environment.getPlatforms().get(i).getGImage() );
 		program.add(program.chest.chestImage);
 		program.add(exitButton);
 		program.add(optionsButton);

@@ -14,6 +14,11 @@ public class Loot extends GraphicsProgram
         image = new GImage("coin.jpg", 700, 450);
     }
     
+    public Loot( int i, int j )
+    {
+        image = new GImage("coin.jpg", i, j);
+    }
+    
     public void addImage( MainApplication p )
     {
         p.add( image );

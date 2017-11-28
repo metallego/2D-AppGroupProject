@@ -47,9 +47,20 @@ public class LevelSelectPane extends GraphicsPane{
 	
 	public void mousePressed(MouseEvent e) {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
-		if(obj == program.hero.image || obj == lvl1) {
+		//right now all of these pass a "1" indicating Level 1 should be read in
+		//in the future when more levels are added change the number to the level you want to implement.
+		if(obj == lvl1) {
+		    program.currentLevel = 1;
 			program.switchToSome();
 		}
+		else if(obj == lvl2) {
+		    program.currentLevel = 1;
+            program.switchToSome();
+        }
+		else if(obj == lvl3) {
+		    program.currentLevel = 1;
+            program.switchToSome();
+        }
 	}
 
 }

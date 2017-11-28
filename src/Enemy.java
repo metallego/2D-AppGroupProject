@@ -27,6 +27,12 @@ public class Enemy extends Entity{
 		enemyImage.setSize(100, 100);
 	}
 	
+	public Enemy( int i, int j )
+	{
+	    enemyImage = new GImage ("bread.jpg", i, j); 
+        enemyImage.setSize(100, 100);
+	}
+	
 	public void move()
 	{
 		enemyImage.move(speed, 0); 

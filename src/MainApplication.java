@@ -3,10 +3,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 import javax.swing.Timer;
 
 import acm.graphics.*;
 import acm.program.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MainApplication extends GraphicsApplication  implements ActionListener{
 	public static final int WINDOW_WIDTH = 1080;
@@ -35,10 +42,12 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	private boolean isRight = false;
 	private boolean attackIsPressed = false;
 	private boolean jumpIsPressed = false;
+	private boolean gameStarted = false;
 	private int numTimesCalled = 1;
 	private int testcount = 1; 
 	private int runFrames = 1;
 	private int jumpFrames = 1; 
+	public int currentLevel = 1;
 
 
 	public void init() {
@@ -54,21 +63,27 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		winScreen = new LevelCompletePane(this);
 		levelSelect = new LevelSelectPane(this); 
 		switchToMenu();
-		hero = new Hero();
-		//everything below here is going to need to be refactored when Text File Level Loading is implemented
-		enemy = new Enemy(); 
-		environment = new Environment(this,hero);
-		chest = new Chest(); 
-		coin = new Loot();
-		environment.addEnemy( enemy );
-		environment.addChest( chest );
-		environment.addLoot( coin );
+        //everything below here is going to need to be refactored when Text File Level Loading is implemented
+		//hero = new Hero();
+		//enemy = new Enemy(); 
+		//chest = new Chest(); 
+        //coin = new Loot();
+		environment = new Environment(this);
+		//environment.addEnemy( enemy );
+		//environment.addChest( chest );
+		//environment.addLoot( coin );
 		attackTimer = new Timer(timerWoken, this);
 		attackTimer.start();
+		
+		while( !gameStarted )
+		{
+		    pause(30);
+		}
 		
         while ( true )
         {
             pause(30);
+            System.out.println( "Going into gameplay Loop" );
             while ( !completed )
             {
                 if ( ( hero.image.getX() > WINDOW_WIDTH - SCROLL_BUFFER ) && hero.getSpeed() > 0 ) scrollState = true;
@@ -174,8 +189,14 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		switch(count % 2) {
 		//case 0: audio.playSound("sounds", "r2d2.mp3"); break;
 		//case 1: audio.playSound("sounds", "somethinlikethis.mp3"); break;
+		
+		
 		}
-
+		//load level data into environment here
+		loadLevel();
+        gameStarted = true;
+        System.out.println( "Loaded Level" );
+        pause(500);
 		switchToScreen(somePane);
 	}
 
@@ -306,6 +327,73 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		{
 			jumpIsPressed = true; 
 		}
+	}
+	
+	public void loadLevel()
+	{
+	    String fileName = "level" + currentLevel + ".txt";
+	    System.out.println( fileName );
+	    BufferedReader file = null;
+	    int z = 0;
+        try
+        {
+            file = new BufferedReader(new FileReader(fileName));
+        }
+        catch ( FileNotFoundException e1 )
+        {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+	    String currLine = null;
+	    String[] objAttributes;
+	    try
+        {
+            while (( currLine = file.readLine()) != null )
+            {
+                objAttributes = currLine.split( ",[ ]*" );
+                if( objAttributes[0].equals( "platform" ) )
+                {
+                    environment.addPlatform( Integer.parseInt( objAttributes[1] ),
+                                             Integer.parseInt( objAttributes[2] ),
+                                             Boolean.parseBoolean( objAttributes[3] ));
+                }
+                else if( objAttributes[0].equals( "hero" ))
+                {
+                    hero = new Hero(Integer.parseInt( objAttributes[1] ),
+                                    Integer.parseInt( objAttributes[2] ));
+                    environment.addHero( hero );
+                }
+                else if( objAttributes[0].equals( "coin" ))
+                {
+                    coin = new Loot(Integer.parseInt( objAttributes[1] ),
+                                    Integer.parseInt( objAttributes[2] ));
+                    environment.addLoot( coin );
+                }
+                else if( objAttributes[0].equals( "chest" ))
+                {
+                    chest = new Chest(Integer.parseInt( objAttributes[1] ),
+                                      Integer.parseInt( objAttributes[2] ));
+                    environment.addChest( chest );
+                }
+                else if( objAttributes[0].equals( "bread" ))
+                {
+                    enemy = new Enemy(Integer.parseInt( objAttributes[1] ),
+                                      Integer.parseInt( objAttributes[2] ));
+                    environment.addEnemy( enemy );
+                }
+                z++;
+                System.out.println( "Line# " + z );
+                for( int y = 0; y < objAttributes.length; y++ )
+                {
+                    System.out.println( objAttributes[y] );
+                }
+            }
+        }
+        catch ( IOException e )
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 	}
 
 

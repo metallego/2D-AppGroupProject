@@ -28,6 +28,14 @@ public class Hero extends Entity{
 		this.setType(EntityType.HERO);
 
 	}
+	
+	public Hero(int i, int j)
+    {
+        image = new GImage("hero_idle_right.jpg", i, j); 
+        this.setType(EntityType.HERO);
+        System.out.println("Created new Hero");
+
+    }
 
 	public void attack() {
 		// TODO Auto-generated method stub

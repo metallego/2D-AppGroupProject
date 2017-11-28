@@ -1,0 +1,18 @@
+platform, 1, 1, false
+platform, 2, 2, false
+platform, 3, 3, false
+platform, 4, 4, false
+platform, 5, 5, false
+platform, 6, 6, false
+platform, 7, 7, true
+platform, 8, 8, false
+platform, 9, 9, false
+platform, 10, 10, false
+
+hero, 50, 400
+
+coin, 700, 450
+
+chest, 500, 400
+
+bread, 400, 400

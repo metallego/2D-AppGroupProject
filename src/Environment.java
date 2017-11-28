@@ -23,10 +23,9 @@ public class Environment extends GraphicsProgram
 	//just a default value here for now
 	private int winCoinAmount = 1;
 
-	public Environment(MainApplication p, Hero h)
+	public Environment(MainApplication p)
 	{
 	    program = p;
-		hero = h;
 	}
 	
 	
@@ -39,6 +38,15 @@ public class Environment extends GraphicsProgram
 			if( i == 7 )
 			    p.setWinning( true );
 		}
+	}
+	
+	public void addPlatform( int i, int j, boolean b )
+	{
+	    Platform p = new Platform(i*platformWidth, j*platformHeight, platformWidth, platformHeight);
+	    platforms.add( p );
+	    if( b )
+	        p.setWinning( b );
+	    System.out.println("Added Platform");
 	}
 
 	public void checkForEntity(GRectangle bounds, double attack) {
@@ -63,23 +71,34 @@ public class Environment extends GraphicsProgram
 	public void addEnemy( Enemy e)
 	{
 		enemies.add(e);
+		System.out.println("Added Enemy");
 	}
 	
 	public void addChest(Chest c)
 	{
 		chest.add(c); 
+		System.out.println("Added Chest");
 	}
 	
 	public void addLoot( Loot l )
 	{
 	    lootList.add(l);
+	    System.out.println("Added Coin");
+	}
+	
+	public void addHero( Hero h )
+	{
+	    hero = h;
+	    System.out.println( "Added Hero" );
 	}
 
 	public boolean update(boolean b)
 	{
 	    completed = false;
 	    if(b)
+	    {
             scroll();
+	    }
 		hero.applyFriction(FRICTION);
 		hero.applyGravity(GRAVITY);
 		hero.applyDecisions(b);
@@ -92,7 +111,9 @@ public class Environment extends GraphicsProgram
                     completed = true;
             }
 		for( Loot l: lootList )
+		{
 		    l.pickUp( hero, program );
+		}
 		if(hero.getY() >= groundY) {
 			hero.stopJumping(groundY+hero.image.getHeight());
 		}
