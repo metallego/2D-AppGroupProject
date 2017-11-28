@@ -14,8 +14,14 @@ public class Environment extends GraphicsProgram
 	private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 	private ArrayList<Platform> platforms = new ArrayList<Platform>();
 	private ArrayList<Loot> lootList = new ArrayList<Loot>();
+	private ArrayList <HeartSlots> hearts = new ArrayList <HeartSlots>(); 
+	private ArrayList <CoinSlots> coins = new ArrayList <CoinSlots>(); 
 	private double platformWidth = 100;
 	private double platformHeight = 50;
+	private double heartSlotX = 990; 
+	private double heartSlotY = 0; 
+	private double heartSlotWidthHeight = 30; 
+	private double coinSlotY = 40; 
 	private double FRICTION = .1;
 	private double GRAVITY = .3;
 	private double groundY = 400;
@@ -49,20 +55,54 @@ public class Environment extends GraphicsProgram
 	    System.out.println("Added Platform");
 	}
 
+	public void setUpHeartSlots()
+	{
+		for (int i = 0; i < 3; i++)
+		{
+			HeartSlots s = new HeartSlots(((i * 30) + heartSlotX), heartSlotY, heartSlotWidthHeight, heartSlotWidthHeight); 
+			hearts.add(s); 
+			hearts.get(i).drawHearts(program, hearts.get(i));
+			
+		}
+	}
+	
+	public void setUpCoinSlots()
+	{
+		for (int i = 0; i < 3; i++)
+		{
+			CoinSlots c = new CoinSlots((i * 30) + heartSlotX, coinSlotY, heartSlotWidthHeight, heartSlotWidthHeight); 
+			coins.add(c);
+			coins.get(i).drawCoins(program, coins.get(i));
+		}
+	}
+
 	public void checkForEntity(GRectangle bounds, double attack) {
 		for (Enemy e:enemies) {
-			if(bounds.contains(e.getX()+e.getWidth()/2,e.getY()+e.getHeight()/2)) {
-				e.takeDamage(attack);
+			System.out.println("START");
+			System.out.println(bounds.getX());
+			System.out.println(bounds.getY());
+
+
+			System.out.println((e.getX()+e.getWidthEntity()/2));
+			System.out.println(e.getY()+e.getHeightEntity()/2);
+			System.out.println("END");
+			GRectangle rect = new GRectangle(e.getX()+e.getWidthEntity()/2,+e.getWidthEntity()/2);
+			if(bounds.intersects(rect)){
 				
+				e.takeDamage(attack);
+
+
+				println("attacked!!!! ENEMY");
 			}
 		
 		}
 		
-		for (Chest c:chest) {
-			bounds.contains(c.getX()+c.getWidth()/2,c.getY()+c.getHeight()/2);
-			c.takeDamage(attack);
-			
-		}
+//		for (Chest c:chest) {
+//			bounds.contains(c.getX()+c.getWidth()/2,c.getY()+c.getHeight()/2);
+//			c.takeDamage(attack);
+//			println("attacked!!!! CHEST");
+//
+//		}
 		
 	}
 	
@@ -120,6 +160,8 @@ public class Environment extends GraphicsProgram
         if( completed )
             return true;
         return false;
+        
+  
 	}
 	
 	public ArrayList<Platform> getPlatforms()
@@ -144,14 +186,45 @@ public class Environment extends GraphicsProgram
 		}
 		return boxes; 
 	}
+	
+	public ArrayList<HeartSlots> getHeartSlots()
+	{
+		return hearts; 
+	}
 
+	public ArrayList<GImage> getHeartSlotImage()
+	{
+		ArrayList <GImage> heartSlots = new ArrayList <GImage>();
+		for (HeartSlots s: hearts)
+		{
+			heartSlots.add(s.getGImage());
+		}
+		return heartSlots; 
+	}
+	
+	public ArrayList<GImage> getCoinSlotImage()
+	{
+		ArrayList <GImage> coinSlots = new ArrayList <GImage>(); 
+		for (CoinSlots c: coins)
+		{
+			coinSlots.add(c.getGImage());
+		}
+		return coinSlots; 
+	}
+	
+	public ArrayList<CoinSlots> getCoinSlots()
+	{
+		return coins; 
+	}
+	
+	
 	
 	public void scroll()
 	{
 	    for( Platform p: platforms )
 	        p.getGImage().move( -hero.getSpeed(), 0 );
 	    for( Enemy e: enemies)
-	        e.enemyImage.move( -hero.getSpeed(), 0 );
+	        e.image.move( -hero.getSpeed(), 0 );
 	}
 
 }

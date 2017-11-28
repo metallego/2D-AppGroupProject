@@ -11,64 +11,65 @@ public class Enemy extends Entity{
 	 * need move, height, accel
 	 * speed, level, hp, attacks, exp, 
 	 */
-	private static final int HEIGHT = 10;
+
+
 	private static final int MAX_SPEED = 10;
 	private static final double ACCELERATION = .7;
-	
 	private double speed = 0;
 
 
-	
-	public GImage enemyImage; 
-	
+		
 	public Enemy()
 	{
-		enemyImage = new GImage ("bread.jpg", 400, 400); 
-		enemyImage.setSize(100, 100);
+		
+		image = new GImage ("bread.jpg", 400, 400); 
+		image.setSize(getHeightEntity(),getWidthEntity());
+		GRectangle test = image.getBounds();
+		
+
+		
 	}
 	
 	public Enemy( int i, int j )
 	{
-	    enemyImage = new GImage ("bread.jpg", i, j); 
-        enemyImage.setSize(100, 100);
+	    image = new GImage ("bread.jpg", i, j); 
+        image.setSize(100, 100);
 	}
-	
-	public void move()
-	{
-		enemyImage.move(speed, 0); 
-	}
-	
-	public void moveLeft()
-	{
-		if (enemyImage.getX() > (enemyImage.getX() + 10))
-		{
-			enemyImage.move(speed, 0);
-			speed -= ACCELERATION;
-			speed = Math.max(speed, -MAX_SPEED);
-		}
-		else if (enemyImage.getX() == enemyImage.getX())
-		{
-			enemyImage.move(speed, 0);
-			speed -= ACCELERATION;
-			speed = Math.max(speed, -MAX_SPEED);
-		}
-	}
-	
-	public void moveRight()
-	{
-		if (enemyImage.getX() < (enemyImage.getX() - 10))
-		{
-			enemyImage.move(speed, 0);
-			speed += ACCELERATION;
-			speed = Math.min(speed, MAX_SPEED);
-		}
-		else if (enemyImage.getX() == enemyImage.getX())
-		{
-			enemyImage.move(speed, 0);
-			speed += ACCELERATION;
-			speed = Math.min(speed, MAX_SPEED);
-		}
-	}
-	
-
+//	
+//	public void move()
+//	{
+//		image.move(speed, 0); 
+//	}
+//	
+//	public void moveLeft()
+//	{
+//		if (image.getX() > (image.getX() + 10))
+//		{
+//			image.move(speed, 0);
+//			speed -= ACCELERATION;
+//			speed = Math.max(speed, -MAX_SPEED);
+//		}
+//		else if (image.getX() == image.getX())
+//		{
+//			image.move(speed, 0);
+//			speed -= ACCELERATION;
+//			speed = Math.max(speed, -MAX_SPEED);
+//		}
+//	}
+//	
+//	public void moveRight()
+//	{
+//		if (image.getX() < (image.getX() - 10))
+//		{
+//			image.move(speed, 0);
+//			speed += ACCELERATION;
+//			speed = Math.min(speed, MAX_SPEED);
+//		}
+//		else if (image.getX() == image.getX())
+//		{
+//			image.move(speed, 0);
+//			speed += ACCELERATION;
+//			speed = Math.min(speed, MAX_SPEED);
+//		}
+//	}
 }

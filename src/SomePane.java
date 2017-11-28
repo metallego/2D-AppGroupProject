@@ -10,12 +10,6 @@ public class SomePane extends GraphicsPane {
 	private GButton optionsButton; 
 	private InGameOptionsPane merp; 
 	private GImage background; 
-	private GImage heart1; 
-	private GImage heart2;
-	private GImage heart3; 
-	private GImage coinSlot1;
-	private GImage coinSlot2;
-	private GImage coinSlot3; 
 	
 	
 	public SomePane(MainApplication app) {
@@ -25,62 +19,44 @@ public class SomePane extends GraphicsPane {
 		//img = new GImage("hero.jpg", 100, 100);
 		background = new GImage("background.jpg", 0, 0);
 		background.setSize(1080, 600);
-		
-		heart1 = new GImage ("heart.jpg", 990, 0);
-		heart1.setSize(30, 30);
-		
-		heart2 = new GImage ("heart.jpg", 1020, 0);
-		heart2.setSize(30, 30);
-		
-		heart3 = new GImage ("heart.jpg", 1050, 0);
-		heart3.setSize(30, 30);
-		
-		coinSlot1 = new GImage ("coin_slot.jpg", 990, 40);
-		coinSlot1.setSize(30, 30);
-		
-		coinSlot2 = new GImage ("coin_slot.jpg", 1020, 40);
-		coinSlot2.setSize(30, 30);
-		
-		coinSlot3 = new GImage ("coin_slot.jpg", 1050, 40);
-		coinSlot3.setSize(30, 30);
 	}
 	
 	@Override
 	public void showContents() {
 		program.add(background);
 		program.add(program.hero.image);
-		program.add(program.enemy.enemyImage);
+		program.add(program.enemy.image);
 		//program.environment.setupPlatforms();
 		for( int i = 0; i < program.environment.getPlatforms().size(); i++)
             program.add( program.environment.getPlatforms().get(i).getGImage() );
-		program.add(program.chest.chestImage);
+		program.add(program.chest.image);
+		program.environment.setUpHeartSlots();
+		program.environment.setUpCoinSlots();
+		program.add(program.chest.image);
 		program.add(exitButton);
 		program.add(optionsButton);
 		program.add( program.coin.image );
-		program.add(heart1);
-		program.add(heart2);
-		program.add(heart3);
-		program.add(coinSlot1);
-		program.add(coinSlot2);
-		program.add(coinSlot3);
 	}
 
 	@Override
 	public void hideContents() {
 		program.remove(background);
 		program.remove(program.hero.image);
-		program.remove(program.enemy.enemyImage);
-		for( int i = 0; i < program.environment.getPlatforms().size(); i++)
-		    program.remove( program.environment.getPlatforms().get(i).getGImage() );
-		program.remove(program.chest.chestImage);
+		program.remove(program.enemy.image);
+		program.remove(program.chest.image);
 		program.remove(exitButton);
 		program.remove(optionsButton);
-		program.remove(heart1);
-		program.remove(heart2);
-		program.remove(heart3);
-		program.remove(coinSlot1);
-		program.remove(coinSlot2);
-		program.remove(coinSlot3);
+		
+		for( int i = 0; i < program.environment.getPlatforms().size(); i++)
+		    program.remove( program.environment.getPlatforms().get(i).getGImage() );
+		
+		for (int i = 0; i < program.environment.getHeartSlotImage().size(); i++)
+			program.remove(program.environment.getHeartSlots().get(i).getGImage());
+		
+		for (int i = 0; i < program.environment.getCoinSlotImage().size(); i++)
+			program.remove(program.environment.getCoinSlots().get(i).getGImage())
+			;
+		
 	}
 	
 	@Override
