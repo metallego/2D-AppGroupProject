@@ -52,7 +52,7 @@ public class Environment extends GraphicsProgram
 			System.out.println(e.getY()+e.getHeightEntity()/2);
 			System.out.println("END");
 			GRectangle rect = new GRectangle(e.getX()+e.getWidthEntity()/2,+e.getWidthEntity()/2);
-			if(!bounds.intersects(rect)){
+			if(bounds.intersects(rect)){
 				
 				e.takeDamage(attack);
 
