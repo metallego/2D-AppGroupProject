@@ -227,6 +227,9 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			{
 				runFrames = 1; 
 			}
+			
+			isRight = false;
+			isLeft = true; 
 		}
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			// this is for the key event for the right arrow key
@@ -240,6 +243,9 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			{
 				runFrames = 1; 
 			}
+			
+			isRight = true; 
+			isLeft = false; 
 		}
 		if(e.getKeyCode() == KeyEvent.VK_SPACE && isLeft) {
 			hero.jump();
@@ -286,15 +292,15 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		if(e.getKeyCode() == KeyEvent.VK_LEFT) {
 			hero.image.setImage("hero_idle_left.jpg");
 			hero.stopMoveLeft();
-			isRight = false;
-			isLeft = true; 
+			//isRight = false;
+			//isLeft = true; 
 		}
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			hero.image.setImage("hero_idle_right.jpg");
 			// this is for the key event for the right arrow key
 			hero.stopMoveRight();
-			isRight = true; 
-			isLeft = false; 
+			//isRight = true; 
+			//isLeft = false; 
 		}
 
 		if(e.getKeyCode() == KeyEvent.VK_Z) {
