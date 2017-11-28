@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class Hero extends Entity{
 
-	private int coins;
+	private static int coins = 0;
 	private GImage currentWeapon;
 	private Timer attackTimer;
 	public static final int timerWoken = 50;
@@ -55,7 +55,7 @@ public class Hero extends Entity{
 	    return coins;
 	}
 	
-	public void addCoin()
+	public static void addCoin()
 	{
 	    coins ++;
 	}
