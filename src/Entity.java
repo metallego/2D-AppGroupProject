@@ -9,7 +9,9 @@ import javax.imageio.ImageIO;
 
 public class Entity extends GraphicsProgram {
 
-	private static final int HEIGHT = 10;
+	private static final int HEIGHT = 100;
+	private static final int WIDTH = 100;
+	
 	private static final int MAX_SPEED = 5; //should be 3 but set it so that we can test jump 
 	private static final int MAX_VERT_SPEED = 8;
 	private static final double ACCELERATION = .7;
@@ -41,6 +43,17 @@ public class Entity extends GraphicsProgram {
 		if(HP <= 0) {
 			death();
 		}
+	}
+	
+	public int getHeightEntity() {
+		
+		return HEIGHT;
+		
+	}
+	public int getWidthEntity() {
+		
+		return WIDTH;
+		
 	}
 	
 	

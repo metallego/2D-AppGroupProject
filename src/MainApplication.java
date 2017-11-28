@@ -219,7 +219,6 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			hero.startMoveLeft();
 			hero.image.setImage("hero_run_left" + runFrames + ".jpg");
 			//pause(15); 
-			enemy.moveRight();
 			print(runFrames);
 			print("Move left\n");
 			runFrames++; 
@@ -233,7 +232,6 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			// this is for the key event for the right arrow key
 			hero.startMoveRight();
 			hero.image.setImage("hero_run_right" + runFrames + ".jpg");
-			enemy.moveLeft();
 			print(runFrames);
 			print("Move right\n");
 			runFrames++; 

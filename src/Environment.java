@@ -43,19 +43,31 @@ public class Environment extends GraphicsProgram
 
 	public void checkForEntity(GRectangle bounds, double attack) {
 		for (Enemy e:enemies) {
-			if(bounds.contains(e.getX()+e.getWidth()/2,e.getY()+e.getHeight()/2)) {
+			System.out.println("START");
+			System.out.println(bounds.getX());
+			System.out.println(bounds.getY());
+
+
+			System.out.println((e.getX()+e.getWidthEntity()/2));
+			System.out.println(e.getY()+e.getHeightEntity()/2);
+			System.out.println("END");
+			GRectangle rect = new GRectangle(e.getX()+e.getWidthEntity()/2,+e.getWidthEntity()/2);
+			if(!bounds.intersects(rect)){
+				
 				e.takeDamage(attack);
+
+
 				println("attacked!!!! ENEMY");
 			}
 		
 		}
 		
-		for (Chest c:chest) {
-			bounds.contains(c.getX()+c.getWidth()/2,c.getY()+c.getHeight()/2);
-			c.takeDamage(attack);
-			println("attacked!!!! CHEST");
-
-		}
+//		for (Chest c:chest) {
+//			bounds.contains(c.getX()+c.getWidth()/2,c.getY()+c.getHeight()/2);
+//			c.takeDamage(attack);
+//			println("attacked!!!! CHEST");
+//
+//		}
 		
 	}
 	
