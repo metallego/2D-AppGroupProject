@@ -57,16 +57,20 @@ public class SomePane extends GraphicsPane {
 			program.remove(program.environment.getCoinSlots().get(i).getGImage())
 			;
 		
+		program.environment.emptyLists();
 	}
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		if(obj == program.hero.image || obj == exitButton) {
+		    program.environment.setPreserve( false );
+		    program.loadedLevel = false;
 			program.switchToMenu();
 		}
 		if(obj == optionsButton)
 		{
+		    program.environment.setPreserve( true );
 			program.switchtoIGOptions(); 
 		}
 	}

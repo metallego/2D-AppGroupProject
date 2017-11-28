@@ -36,6 +36,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	private int count = 0;
 	private boolean scrollState = false;
 	private boolean completed = false;
+	public boolean loadedLevel = false;
 	private Timer attackTimer;
 	public static final int timerWoken = 50;
 	private boolean isLeft = false;
@@ -195,7 +196,8 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		
 		}
 		//load level data into environment here
-		loadLevel();
+		if(!loadedLevel )
+		    loadLevel();
         gameStarted = true;
         System.out.println( "Loaded Level" );
         pause(500);
@@ -400,6 +402,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+	    loadedLevel = true;
 	}
 
 
