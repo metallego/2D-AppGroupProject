@@ -26,6 +26,7 @@ public class Environment extends GraphicsProgram
 	private double GRAVITY = .3;
 	private double groundY = 400;
 	private boolean completed = false;
+	private boolean preserveLevel = false;
 	//just a default value here for now
 	private int winCoinAmount = 1;
 
@@ -251,6 +252,31 @@ public class Environment extends GraphicsProgram
 			p.getGImage().move( -hero.getSpeed(), 0 );
 		for( Enemy e: enemies)
 			e.image.move( -hero.getSpeed(), 0 );
+		for( Chest c: chest )
+		    c.image.move( -hero.getSpeed(), 0 );
+		for( Loot l: lootList )
+		    l.image.move( -hero.getSpeed(), 0 );
+	}
+	
+	public void emptyLists()
+	{
+	    if(!preserveLevel)
+	    {
+    	    chest.clear();
+	        enemies.clear();
+	        platforms.clear();
+	        lootList.clear();
+	    }
+	}
+	
+	public void setPreserve( boolean b )
+	{
+	    preserveLevel = b;
+	}
+	
+	public boolean getPreserve()
+	{
+	    return preserveLevel;
 	}
 
 }
