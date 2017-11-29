@@ -278,5 +278,10 @@ public class Environment extends GraphicsProgram
 	{
 	    return preserveLevel;
 	}
+	
+	public ArrayList<Loot> getLootList()
+	{
+	    return lootList;
+	}
 
 }
