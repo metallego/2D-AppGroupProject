@@ -22,7 +22,7 @@ public class Enemy extends Entity{
 	public Enemy()
 	{
 		
-		image = new GImage ("bread.jpg", 400, 400); 
+		image = new GImage ("enemy_left.jpg", 400, 400); 
 		image.setSize(getHeightEntity(),getWidthEntity());
 		GRectangle test = image.getBounds();
 		
@@ -32,7 +32,7 @@ public class Enemy extends Entity{
 	
 	public Enemy( int i, int j )
 	{
-	    image = new GImage ("bread.jpg", i, j); 
+	    image = new GImage ("enemy_left.jpg", i, j); 
         image.setSize(100, 100);
 	}
 //	

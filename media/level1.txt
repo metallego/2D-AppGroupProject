@@ -12,7 +12,9 @@ platform, 10, 10, false
 hero, 50, 400
 
 coin, 700, 450
+coin, 800, 450
+coin, 600, 450
 
 chest, 500, 400
 
-bread, 400, 400
+enemy_left, 400, 400
