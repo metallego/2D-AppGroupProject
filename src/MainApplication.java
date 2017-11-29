@@ -49,7 +49,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	private int runFrames = 1;
 	private int jumpFrames = 1; 
 	public int currentLevel = 1;
-
+	public static int hitcount = 0; 
 
 	public void init() {
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
