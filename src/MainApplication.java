@@ -131,14 +131,14 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			//weapon size
 			
 			pause(15);
-			print(numTimesCalled);
+			//print(numTimesCalled);
 			numTimesCalled++;
 			testcount++;
 		}
 		else if(attackIsPressed&&!isRight) {
 			hero.image.setImage("hero_attack_left" + numTimesCalled  + ".jpg");
 			pause(15);
-			print(numTimesCalled);
+			//print(numTimesCalled);
 			numTimesCalled++;
 		}
 
