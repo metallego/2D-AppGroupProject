@@ -11,7 +11,7 @@ public class Entity extends GraphicsProgram {
 
 	private static final int HEIGHT = 100;
 	private static final int WIDTH = 100;
-	
+
 	private static final int MAX_SPEED = 5; //should be 3 but set it so that we can test jump 
 	private static final int MAX_VERT_SPEED = 8;
 	private static final double ACCELERATION = .7;
@@ -20,82 +20,64 @@ public class Entity extends GraphicsProgram {
 
 	private int level;
 	private int HP; // health points
-	private double attack;
+	public double attack;
 	private int exp; //experience
 	private String name;
 	private EntityType type;
-	
+
 	private MainApplication program; 
 	private boolean shouldMoveLeft = false;
 	private boolean shouldMoveRight = false;
 	public GImage image;
-	private double weaponRatio = 0;
 
-	
+
 	public Entity()
 	{
-		
+
 
 	}
-	
+
 	public void takeDamage(double damage) {
 		HP -= damage;
+		System.out.println("HP: ");
+		System.out.println(HP);
+		System.out.println("DAMAGE: ");
+		System.out.println(damage);
 		if(HP <= 0) {
 			death();
 		}
 	}
-	
-	public int getHeightEntity() {
-		
-		return HEIGHT;
-		
-	}
-	public int getWidthEntity() {
-		
-		return WIDTH;
-		
-	}
-	
-	
-	
+
 	public void setType(EntityType t) {
 		type = t;
-		
+
 	}
 	public EntityType getType() {
-		
+
 		return type;
 	}
-	
-	public void setWeaponRatio(double wRatio) {
-		
-		weaponRatio = wRatio;
-	}
-	
-	public double getWeaponRatio() {
-		
-		return weaponRatio;
-	}
-	
-	public void interact(Entity e1, Entity e2, double wRatio) {
-		//TODO
-			
-		
-	}
 
-
-	
-	
 	public void death() {
 		//TODO
 	}
 	public double getAttack() {
+		
 		return attack;
 	}
 	public void setAttack(double atk) {
+		
 		attack = atk;
 	}
-	
+
+	public int getHP() {
+		
+		return HP;
+	}
+	public void setHP(int health) {
+		
+		HP = health;
+	}
+
 	public int getX() {
 
 		return (int) image.getX();
@@ -111,7 +93,7 @@ public class Entity extends GraphicsProgram {
 
 		applyDecisions(b);
 		if( !b )
-    		image.move(speed,0);
+			image.move(speed,0);
 		image.move( 0, -vertSpeed );
 
 	}
@@ -133,8 +115,8 @@ public class Entity extends GraphicsProgram {
 	{
 
 		// this is for the key event for the right arrow key
-	    if( !b )
-    		image.move(speed, 0);
+		if( !b )
+			image.move(speed, 0);
 
 		speed += ACCELERATION;
 		speed = Math.min(speed, MAX_SPEED);
@@ -146,8 +128,8 @@ public class Entity extends GraphicsProgram {
 	{
 
 		// this is for the key event for the left arrow key
-	    if( !b )
-    		image.move(speed, 0);
+		if( !b )
+			image.move(speed, 0);
 		speed -= ACCELERATION;
 		speed = Math.max(speed, -MAX_SPEED);
 	}
@@ -206,15 +188,15 @@ public class Entity extends GraphicsProgram {
 		return new Point2D.Double( image.getX() + image.getWidth()/2,
 				image.getY() + image.getHeight());
 	}
-	
+
 	public double getSpeed()
 	{
-	    return speed;
+		return speed;
 	}
-	
+
 	public double getVertSpeed()
 	{
-	    return vertSpeed;
+		return vertSpeed;
 	}
 
 

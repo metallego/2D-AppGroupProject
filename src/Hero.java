@@ -19,6 +19,7 @@ public class Hero extends Entity{
 	public static final int timerWoken = 50;
 	private boolean right;
 	
+	
 	private ArrayList<Weapon> inventory = new ArrayList<Weapon>();
 	
 
@@ -26,6 +27,7 @@ public class Hero extends Entity{
 	{
 		image = new GImage("hero_idle_right.jpg", 50, 400); 
 		this.setType(EntityType.HERO);
+		
 
 	}
 	
@@ -34,12 +36,10 @@ public class Hero extends Entity{
         image = new GImage("hero_idle_right.jpg", i, j); 
         this.setType(EntityType.HERO);
         System.out.println("Created new Hero");
-
+        this.setAttack(5);
     }
 
-	public void attack() {
-		// TODO Auto-generated method stub
-	}
+
 	
 	
 	

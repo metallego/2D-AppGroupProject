@@ -7,27 +7,12 @@ import acm.graphics.*;
 import acm.program.*;
 
 public class Enemy extends Entity{
-	/*
-	 * need move, height, accel
-	 * speed, level, hp, attacks, exp, 
-	 */
-
-
-	private static final int MAX_SPEED = 10;
-	private static final double ACCELERATION = .7;
-	private double speed = 0;
-
-
 		
 	public Enemy()
 	{
-		
 		image = new GImage ("bread.jpg", 400, 400); 
-		image.setSize(getHeightEntity(),getWidthEntity());
-		GRectangle test = image.getBounds();
-		
-
-		
+		image.setSize(100, 100);
+		this.setHP(10);
 	}
 	
 	public Enemy( int i, int j )
@@ -35,6 +20,13 @@ public class Enemy extends Entity{
 	    image = new GImage ("bread.jpg", i, j); 
         image.setSize(100, 100);
 	}
+	
+	
+	
+	
+	
+	
+	
 //	
 //	public void move()
 //	{

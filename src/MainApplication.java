@@ -112,7 +112,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 				//this would be the weaponhitbox for animation 4
 				GLine weapon1 = new GLine( hero.getX()+77, hero.getY()+67, hero.getX()+104 ,hero.getY()+22);
 				GRectangle hitBox = weapon1.getBounds();
-				environment.checkForEntity(hitBox,hero.getAttack());
+				environment.checkForEntity(hitBox);
 				GRect testbox = new GRect (hitBox.getX(), hitBox.getY(), hitBox.getWidth(),hitBox.getHeight());
 				add(testbox);
 			}
@@ -120,7 +120,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			else if(numTimesCalled == 5) {
 				GLine weapon2 = new GLine( hero.getX()+76, hero.getY()+66, hero.getX()+122,hero.getY()+61);
 				GRectangle hitBox = weapon2.getBounds();
-				environment.checkForEntity(hitBox,hero.getAttack());
+				environment.checkForEntity(hitBox);
 				GRect testbox = new GRect (hitBox.getX(), hitBox.getY(), hitBox.getWidth(),hitBox.getHeight());
 				add(testbox);
 			}
@@ -131,14 +131,14 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			//weapon size
 			
 			pause(15);
-			print(numTimesCalled);
+		//	print(numTimesCalled);
 			numTimesCalled++;
 			testcount++;
 		}
 		else if(attackIsPressed&&!isRight) {
 			hero.image.setImage("hero_attack_left" + numTimesCalled  + ".jpg");
 			pause(15);
-			print(numTimesCalled);
+			//print(numTimesCalled);
 			numTimesCalled++;
 		}
 
