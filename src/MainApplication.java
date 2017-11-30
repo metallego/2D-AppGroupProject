@@ -409,7 +409,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
                                       Integer.parseInt( objAttributes[2] ));
                     environment.addChest( chest );
                 }
-                else if( objAttributes[0].equals( "enemy_left" ))
+                else if( objAttributes[0].equals( "enemy" ))
                 {
                     enemy = new Enemy(Integer.parseInt( objAttributes[1] ),
                                       Integer.parseInt( objAttributes[2] ));
