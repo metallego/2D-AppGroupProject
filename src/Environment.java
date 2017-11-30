@@ -77,12 +77,12 @@ public class Environment extends GraphicsProgram
 		}
 	}
 
-	public void checkForEntity(GRectangle bounds, double attack) {
+	public void checkForEntity(GRectangle bounds) {
 		for (Enemy e:enemies) {
 			GRectangle rect = e.image.getBounds();
 			if(bounds.intersects(rect)){
-				e.takeDamage(attack);
-				println("attacked!!!! ENEMY");
+				e.takeDamage(hero.getAttack());
+				println("enemy was attacked");
 			}
 
 		}
@@ -90,8 +90,8 @@ public class Environment extends GraphicsProgram
 		for (Chest c:chest) {
 			GRectangle rect = c.image.getBounds();
 			if(bounds.intersects(rect)){
-				c.takeDamage(attack);
-				println("attacked!!!! CHEST");
+				c.takeDamage(hero.getAttack());
+				println("chest was attacked");
 			}
 		}
 
