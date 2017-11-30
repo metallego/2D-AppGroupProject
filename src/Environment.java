@@ -99,7 +99,7 @@ public class Environment extends GraphicsProgram
 			GRectangle rect = e.image.getBounds();
 			if(bounds.intersects(rect)){
 				e.takeDamage(hero.getAttack());
-				String atkNum = Double.toString(hero.getAttack());
+				String atkNum = Integer.toString(hero.getAttack());
 				GImage particle = new GImage("hit_particle.jpg",e.image.getX()+ e.image.getWidth()/5, e.image.getY()+e.image.getHeight()/4);
 				GLabel attackLabel = new GLabel(atkNum,e.image.getX()+ e.image.getWidth()/3, e.image.getY()+e.image.getHeight()/2); 
 				attackLabel.setColor(Color.white);
