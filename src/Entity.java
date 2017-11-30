@@ -20,7 +20,7 @@ public class Entity extends GraphicsProgram {
 
 	private int level;
 	private int HP; // health points
-	public double attack;
+	public int attack;
 	private int exp; //experience
 	private String name;
 	private EntityType type;
@@ -44,6 +44,7 @@ public class Entity extends GraphicsProgram {
 		System.out.println(HP);
 		System.out.println("DAMAGE: ");
 		System.out.println(damage);
+		
 		if(HP <= 0) {
 			death();
 		}
@@ -61,11 +62,11 @@ public class Entity extends GraphicsProgram {
 	public void death() {
 		//TODO
 	}
-	public double getAttack() {
+	public int getAttack() {
 		
 		return attack;
 	}
-	public void setAttack(double atk) {
+	public void setAttack(int atk) {
 		
 		attack = atk;
 	}

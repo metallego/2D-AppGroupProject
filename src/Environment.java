@@ -2,7 +2,14 @@ import acm.graphics.*;
 
 import acm.program.*;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.util.ArrayList;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+import javax.swing.SwingUtilities;
 
 
 public class Environment extends GraphicsProgram
@@ -76,13 +83,31 @@ public class Environment extends GraphicsProgram
 			coins.get(i).drawCoins(program, coins.get(i));
 		}
 	}
+	public void particle(String attack, GImage part, GLabel atkLabel) {
+
+		ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
+		program.add(part);
+		program.add(atkLabel);
+		Runnable task = () -> SwingUtilities.invokeLater(() -> program.remove(part));
+		Runnable task1 = () -> SwingUtilities.invokeLater(() -> program.remove(atkLabel));
+		executor.schedule(task, 200, TimeUnit.MILLISECONDS);
+		executor.schedule(task1, 200, TimeUnit.MILLISECONDS);
+	}
 
 	public void checkForEntity(GRectangle bounds) {
 		for (Enemy e:enemies) {
 			GRectangle rect = e.image.getBounds();
 			if(bounds.intersects(rect)){
 				e.takeDamage(hero.getAttack());
+				String atkNum = Integer.toString(hero.getAttack());
+				GImage particle = new GImage("hit_particle.jpg",e.image.getX()+ e.image.getWidth()/5, e.image.getY()+e.image.getHeight()/4);
+				GLabel attackLabel = new GLabel(atkNum,e.image.getX()+ e.image.getWidth()/3, e.image.getY()+e.image.getHeight()/2); 
+				attackLabel.setColor(Color.white);
+				attackLabel.setFont((new Font("Times New Roman", Font.BOLD, 14)));
 				println("enemy was attacked");
+				particle(atkNum, particle, attackLabel);
+				
+				
 			}
 
 		}
@@ -158,24 +183,26 @@ public class Environment extends GraphicsProgram
 			{
 				lootList.remove(l);
 			}
-				
-			if(hero.coins == 1)
-			{
-				coins.get(0).image.setImage("coin_token.jpg");
-				coins.get(0).image.setSize(heartSlotWidthHeight, heartSlotWidthHeight);
-			}
-			else if(hero.coins == 2)
-			{
-				coins.get(1).image.setImage("coin_token.jpg");
-				coins.get(1).image.setSize(heartSlotWidthHeight, heartSlotWidthHeight);
-			}
-			else if(hero.coins == 3)
-			{
-				coins.get(2).image.setImage("coin_token.jpg");
-				coins.get(2).image.setSize(heartSlotWidthHeight, heartSlotWidthHeight);
-			}
 		}
-			
+		if(!coins.isEmpty())
+		{
+    		if(hero.coins == 1)
+	    	{
+		    	coins.get(0).image.setImage("coin_token.jpg");
+			    coins.get(0).image.setSize(heartSlotWidthHeight, heartSlotWidthHeight);
+    		}
+	    	else if(hero.coins == 2)
+		    {
+			    coins.get(1).image.setImage("coin_token.jpg");
+    			coins.get(1).image.setSize(heartSlotWidthHeight, heartSlotWidthHeight);
+	    	}
+		    else if(hero.coins == 3)
+    		{
+	    		coins.get(2).image.setImage("coin_token.jpg");
+		    	coins.get(2).image.setSize(heartSlotWidthHeight, heartSlotWidthHeight);
+		    }
+		}
+		
 		if(hero.getY() >= groundY) {
 			hero.stopJumping(groundY+hero.image.getHeight());
 		}
@@ -261,6 +288,8 @@ public class Environment extends GraphicsProgram
 	        enemies.clear();
 	        platforms.clear();
 	        lootList.clear();
+	        hearts.clear();
+	        coins.clear();
 	    }
 	}
 	
