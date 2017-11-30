@@ -1,13 +1,13 @@
-platform, 0, 0, false
-platform, 1, 1, false
-platform, 2, 2, false
-platform, 3, 3, false
-platform, 4, 4, false
-platform, 5, 5, false
-platform, 6, 6, true
-platform, 7, 7, false
-platform, 8, 8, false
-platform, 9, 9, false
+platform, 0, 0, 1, 1, false
+platform, 1, 1, 1, 1, false
+platform, 2, 2, 1, 1, false
+platform, 3, 3, 1, 1, false
+platform, 4, 4, 1, 1, false
+platform, 5, 5, 1, 1, false
+platform, 6, 6, 1, 1, true
+platform, 7, 7, 1, 1, false
+platform, 8, 8, 1, 1, false
+platform, 9, 9, 1, 1, false
 
 hero, 50, 400
 

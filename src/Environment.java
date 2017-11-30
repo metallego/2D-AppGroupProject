@@ -47,9 +47,9 @@ public class Environment extends GraphicsProgram
 		}
 	}
 	
-	public void addPlatform( int i, int j, boolean b )
+	public void addPlatform( int i, int j, int k, int l, boolean b )
 	{
-	    Platform p = new Platform(i*platformWidth, j*platformHeight, platformWidth, platformHeight);
+	    Platform p = new Platform(i*platformWidth, j*platformHeight, k*platformWidth, l*platformHeight);
 	    platforms.add( p );
 	    if( b )
 	        p.setWinning( b );
@@ -146,41 +146,36 @@ public class Environment extends GraphicsProgram
 		    l.pickUp( hero, program );
 		   
 		}
-		
-		for(CoinSlots c: coins)
+		ArrayList<Loot> temp = new ArrayList<Loot>(); 
+		for(Loot l: lootList)
 		{
-			ArrayList<Loot> temp = new ArrayList<Loot>(); 
-			for(Loot l: lootList)
-			{
-				temp.add(l);
-			}
-			for(Loot l: temp)
-			{
-				
-				
-				if(l.isCollected)
-				{
-					lootList.remove(l);
-				}
-					
-				if(hero.coins == 1)
-				{
-					coins.get(0).image.setImage("coin_token.jpg");
-					coins.get(0).image.setSize(heartSlotWidthHeight, heartSlotWidthHeight);
-				}
-				else if(hero.coins == 2)
-				{
-					coins.get(1).image.setImage("coin_token.jpg");
-					coins.get(1).image.setSize(heartSlotWidthHeight, heartSlotWidthHeight);
-				}
-				else if(hero.coins == 3)
-				{
-					coins.get(2).image.setImage("coin_token.jpg");
-					coins.get(2).image.setSize(heartSlotWidthHeight, heartSlotWidthHeight);
-				}
-			}
-			
+			temp.add(l);
 		}
+		for(Loot l: temp)
+		{
+				
+			if(l.isCollected)
+			{
+				lootList.remove(l);
+			}
+				
+			if(hero.coins == 1)
+			{
+				coins.get(0).image.setImage("coin_token.jpg");
+				coins.get(0).image.setSize(heartSlotWidthHeight, heartSlotWidthHeight);
+			}
+			else if(hero.coins == 2)
+			{
+				coins.get(1).image.setImage("coin_token.jpg");
+				coins.get(1).image.setSize(heartSlotWidthHeight, heartSlotWidthHeight);
+			}
+			else if(hero.coins == 3)
+			{
+				coins.get(2).image.setImage("coin_token.jpg");
+				coins.get(2).image.setSize(heartSlotWidthHeight, heartSlotWidthHeight);
+			}
+		}
+			
 		if(hero.getY() >= groundY) {
 			hero.stopJumping(groundY+hero.image.getHeight());
 		}
