@@ -2,7 +2,14 @@ import acm.graphics.*;
 
 import acm.program.*;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.util.ArrayList;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+import javax.swing.SwingUtilities;
 
 
 public class Environment extends GraphicsProgram
@@ -76,6 +83,16 @@ public class Environment extends GraphicsProgram
 			coins.get(i).drawCoins(program, coins.get(i));
 		}
 	}
+	public void particle(String attack, GImage part, GLabel atkLabel) {
+
+		ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
+		program.add(part);
+		program.add(atkLabel);
+		Runnable task = () -> SwingUtilities.invokeLater(() -> program.remove(part));
+		Runnable task1 = () -> SwingUtilities.invokeLater(() -> program.remove(atkLabel));
+		executor.schedule(task, 200, TimeUnit.MILLISECONDS);
+		executor.schedule(task1, 200, TimeUnit.MILLISECONDS);
+	}
 
 	public void checkForEntity(GRectangle bounds) {
 		for (Enemy e:enemies) {
@@ -83,17 +100,13 @@ public class Environment extends GraphicsProgram
 			if(bounds.intersects(rect)){
 				e.takeDamage(hero.getAttack());
 				String atkNum = Double.toString(hero.getAttack());
-				GImage particle = new GImage("hit_particle.jpg",e.image.getX()+ e.image.getWidth()/2, e.image.getY()+e.image.getHeight()/2);
-				GLabel attackNumber = new GLabel(atkNum,e.image.getX()+ e.image.getWidth()/2, e.image.getY()+e.image.getHeight()/2); 
+				GImage particle = new GImage("hit_particle.jpg",e.image.getX()+ e.image.getWidth()/5, e.image.getY()+e.image.getHeight()/4);
+				GLabel attackLabel = new GLabel(atkNum,e.image.getX()+ e.image.getWidth()/3, e.image.getY()+e.image.getHeight()/2); 
+				attackLabel.setColor(Color.white);
+				attackLabel.setFont((new Font("Times New Roman", Font.BOLD, 14)));
 				println("enemy was attacked");
-				particle.sendToFront();
-				attackNumber.sendToFront();
-
-				program.add(particle);
-				program.add(attackNumber);
-				program.remove(particle);
-				program.remove(attackNumber);
-
+				particle(atkNum, particle, attackLabel);
+				
 				
 			}
 
