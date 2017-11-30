@@ -205,7 +205,8 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		//case 1: audio.stopSound("sounds", "somethinlikethis.mp3"); break;
 		}
 		count++;
-
+		if( hero!= null )
+    		hero.resetCoins();
 		switchToScreen(menu);
 	}
 
@@ -256,7 +257,6 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	{
 	    loadedLevel = false;
 	    completed = false;
-	    hero.resetCoins();
 	    switchToScreen(winScreen);
 	}
 

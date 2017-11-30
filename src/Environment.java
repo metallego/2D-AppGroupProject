@@ -158,24 +158,26 @@ public class Environment extends GraphicsProgram
 			{
 				lootList.remove(l);
 			}
-				
-			if(hero.coins == 1)
-			{
-				coins.get(0).image.setImage("coin_token.jpg");
-				coins.get(0).image.setSize(heartSlotWidthHeight, heartSlotWidthHeight);
-			}
-			else if(hero.coins == 2)
-			{
-				coins.get(1).image.setImage("coin_token.jpg");
-				coins.get(1).image.setSize(heartSlotWidthHeight, heartSlotWidthHeight);
-			}
-			else if(hero.coins == 3)
-			{
-				coins.get(2).image.setImage("coin_token.jpg");
-				coins.get(2).image.setSize(heartSlotWidthHeight, heartSlotWidthHeight);
-			}
 		}
-			
+		if(!coins.isEmpty())
+		{
+    		if(hero.coins == 1)
+	    	{
+		    	coins.get(0).image.setImage("coin_token.jpg");
+			    coins.get(0).image.setSize(heartSlotWidthHeight, heartSlotWidthHeight);
+    		}
+	    	else if(hero.coins == 2)
+		    {
+			    coins.get(1).image.setImage("coin_token.jpg");
+    			coins.get(1).image.setSize(heartSlotWidthHeight, heartSlotWidthHeight);
+	    	}
+		    else if(hero.coins == 3)
+    		{
+	    		coins.get(2).image.setImage("coin_token.jpg");
+		    	coins.get(2).image.setSize(heartSlotWidthHeight, heartSlotWidthHeight);
+		    }
+		}
+		
 		if(hero.getY() >= groundY) {
 			hero.stopJumping(groundY+hero.image.getHeight());
 		}
@@ -261,6 +263,8 @@ public class Environment extends GraphicsProgram
 	        enemies.clear();
 	        platforms.clear();
 	        lootList.clear();
+	        hearts.clear();
+	        coins.clear();
 	    }
 	}
 	
