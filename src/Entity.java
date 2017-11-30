@@ -43,6 +43,7 @@ public class Entity extends GraphicsProgram {
 		System.out.println(HP);
 		System.out.println("DAMAGE: ");
 		System.out.println(damage);
+		
 		if(HP <= 0) {
 			death();
 		}
