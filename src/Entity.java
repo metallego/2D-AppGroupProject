@@ -12,9 +12,9 @@ public class Entity extends GraphicsProgram {
 	private static final int HEIGHT = 100;
 	private static final int WIDTH = 100;
 
-	private static final int MAX_SPEED = 5; //should be 3 but set it so that we can test jump 
+	private static final int MAX_SPEED = 2; //should be 3 but set it so that we can test jump 
 	private static final int MAX_VERT_SPEED = 8;
-	private static final double ACCELERATION = .7;
+	private static final double ACCELERATION = .35;
 	private double vertSpeed = 0;
 	private double speed = 0;
 
@@ -28,6 +28,7 @@ public class Entity extends GraphicsProgram {
 	private MainApplication program; 
 	private boolean shouldMoveLeft = false;
 	private boolean shouldMoveRight = false;
+	private boolean jumping = false;
 	public GImage image;
 
 
@@ -103,12 +104,14 @@ public class Entity extends GraphicsProgram {
 		if(vertSpeed == 0) {
 			vertSpeed = MAX_VERT_SPEED;
 			image.move(0,-MAX_VERT_SPEED);
+			jumping = true;
 		}
 	}
 
 	public void stopJumping(double y) {
 		vertSpeed = 0;
 		image.setLocation(image.getX(),y-image.getHeight());
+		jumping = false;
 
 	}
 
@@ -198,6 +201,11 @@ public class Entity extends GraphicsProgram {
 	public double getVertSpeed()
 	{
 		return vertSpeed;
+	}
+	
+	public boolean getJumping()
+	{
+	    return jumping;
 	}
 
 

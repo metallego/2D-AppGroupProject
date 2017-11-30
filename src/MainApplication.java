@@ -254,6 +254,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	
 	public void switchtoLevelComplete()
 	{
+	    loadedLevel = false;
 	    completed = false;
 	    hero.resetCoins();
 	    switchToScreen(winScreen);
@@ -386,7 +387,9 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
                 {
                     environment.addPlatform( Integer.parseInt( objAttributes[1] ),
                                              Integer.parseInt( objAttributes[2] ),
-                                             Boolean.parseBoolean( objAttributes[3] ));
+                                             Integer.parseInt( objAttributes[3] ),
+                                             Integer.parseInt( objAttributes[4] ),
+                                             Boolean.parseBoolean( objAttributes[5] ));
                 }
                 else if( objAttributes[0].equals( "hero" ))
                 {
