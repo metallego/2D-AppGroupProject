@@ -278,5 +278,10 @@ public class Environment extends GraphicsProgram
 	{
 	    return lootList;
 	}
+	
+	public ArrayList<Enemy> getEnemyList()
+	{
+		return enemies; 
+	}
 
 }
