@@ -31,6 +31,8 @@ public class SomePane extends GraphicsPane {
             program.add( program.environment.getPlatforms().get(i).getGImage() );
 		for( int i = 0; i < program.environment.getLootList().size(); i++)
             program.add( program.environment.getLootList().get(i).image );
+		for(int i = 0; i < program.environment.getEnemyList().size(); i++)
+			program.add(program.environment.getEnemyList().get(i).image);
 		program.add(program.chest.image);
 		program.environment.setUpHeartSlots();
 		program.environment.setUpCoinSlots();
@@ -50,13 +52,12 @@ public class SomePane extends GraphicsPane {
 		
 		for( int i = 0; i < program.environment.getPlatforms().size(); i++)
 		    program.remove( program.environment.getPlatforms().get(i).getGImage() );
-		
 		for (int i = 0; i < program.environment.getHeartSlotImage().size(); i++)
-			program.remove(program.environment.getHeartSlots().get(i).getGImage());
-		
+			program.remove(program.environment.getHeartSlots().get(i).getGImage());	
 		for (int i = 0; i < program.environment.getCoinSlotImage().size(); i++)
-			program.remove(program.environment.getCoinSlots().get(i).getGImage())
-			;
+			program.remove(program.environment.getCoinSlots().get(i).getGImage());
+		for(int i = 0; i < program.environment.getEnemyList().size(); i++)
+			program.remove(program.environment.getEnemyList().get(i).image);
 	      for( int i = 0; i < program.environment.getLootList().size(); i++)
 	            program.remove( program.environment.getLootList().get(i).image );
 		

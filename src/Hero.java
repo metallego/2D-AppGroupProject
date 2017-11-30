@@ -12,13 +12,7 @@ import java.util.ArrayList;
 
 
 public class Hero extends Entity{
-
 	public static int coins = 0;
-	private GImage currentWeapon;
-	private Timer attackTimer;
-	public static final int timerWoken = 50;
-	private boolean right;
-	
 	
 	private ArrayList<Weapon> inventory = new ArrayList<Weapon>();
 	
@@ -40,21 +34,6 @@ public class Hero extends Entity{
     }
 
 
-	
-	
-	
-	public void setCurrentWeapon(GImage image, boolean right) {
-		if(right) {
-			
-			
-		}
-		
-		
-		if(!right) {// this is the left interaction
-			
-		}
-		
-	}
 	
 
 	
