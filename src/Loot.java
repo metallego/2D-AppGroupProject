@@ -13,12 +13,14 @@ public class Loot extends GraphicsProgram
     public boolean isCollected = false; 
     public Loot()
     {
-        image = new GImage("coin.jpg", 700, 450);
+        image = new GImage("coin_token.jpg", 700, 450);
+        image.setSize(50, 50);
     }
     
     public Loot( int i, int j )
     {
-        image = new GImage("coin.jpg", i, j);
+        image = new GImage("coin_token.jpg", i, j);
+        image.setSize(50, 50);
     }
     
     public void addImage( MainApplication p )

@@ -29,13 +29,14 @@ public class SomePane extends GraphicsPane {
 		//program.environment.setupPlatforms();
 		for( int i = 0; i < program.environment.getPlatforms().size(); i++)
             program.add( program.environment.getPlatforms().get(i).getGImage() );
+		for( int i = 0; i < program.environment.getLootList().size(); i++)
+            program.add( program.environment.getLootList().get(i).image );
 		program.add(program.chest.image);
 		program.environment.setUpHeartSlots();
 		program.environment.setUpCoinSlots();
 		program.add(program.chest.image);
 		program.add(exitButton);
 		program.add(optionsButton);
-		program.add( program.coin.image );
 	}
 
 	@Override
@@ -56,6 +57,8 @@ public class SomePane extends GraphicsPane {
 		for (int i = 0; i < program.environment.getCoinSlotImage().size(); i++)
 			program.remove(program.environment.getCoinSlots().get(i).getGImage())
 			;
+	      for( int i = 0; i < program.environment.getLootList().size(); i++)
+	            program.remove( program.environment.getLootList().get(i).image );
 		
 		program.environment.emptyLists();
 	}

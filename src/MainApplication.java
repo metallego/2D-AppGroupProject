@@ -49,7 +49,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	private int runFrames = 1;
 	private int jumpFrames = 1; 
 	public int currentLevel = 1;
-
+	public static int hitcount = 0; 
 
 	public void init() {
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -131,7 +131,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			//weapon size
 			
 			pause(15);
-		//	print(numTimesCalled);
+
 			numTimesCalled++;
 			testcount++;
 		}
@@ -383,7 +383,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
                                       Integer.parseInt( objAttributes[2] ));
                     environment.addChest( chest );
                 }
-                else if( objAttributes[0].equals( "bread" ))
+                else if( objAttributes[0].equals( "enemy_left" ))
                 {
                     enemy = new Enemy(Integer.parseInt( objAttributes[1] ),
                                       Integer.parseInt( objAttributes[2] ));

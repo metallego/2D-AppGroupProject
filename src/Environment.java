@@ -144,6 +144,42 @@ public class Environment extends GraphicsProgram
 		for( Loot l: lootList )
 		{
 		    l.pickUp( hero, program );
+		   
+		}
+		
+		for(CoinSlots c: coins)
+		{
+			ArrayList<Loot> temp = new ArrayList<Loot>(); 
+			for(Loot l: lootList)
+			{
+				temp.add(l);
+			}
+			for(Loot l: temp)
+			{
+				
+				
+				if(l.isCollected)
+				{
+					lootList.remove(l);
+				}
+					
+				if(hero.coins == 1)
+				{
+					coins.get(0).image.setImage("coin_token.jpg");
+					coins.get(0).image.setSize(heartSlotWidthHeight, heartSlotWidthHeight);
+				}
+				else if(hero.coins == 2)
+				{
+					coins.get(1).image.setImage("coin_token.jpg");
+					coins.get(1).image.setSize(heartSlotWidthHeight, heartSlotWidthHeight);
+				}
+				else if(hero.coins == 3)
+				{
+					coins.get(2).image.setImage("coin_token.jpg");
+					coins.get(2).image.setSize(heartSlotWidthHeight, heartSlotWidthHeight);
+				}
+			}
+			
 		}
 		if(hero.getY() >= groundY) {
 			hero.stopJumping(groundY+hero.image.getHeight());
@@ -241,6 +277,11 @@ public class Environment extends GraphicsProgram
 	public boolean getPreserve()
 	{
 	    return preserveLevel;
+	}
+	
+	public ArrayList<Loot> getLootList()
+	{
+	    return lootList;
 	}
 
 }

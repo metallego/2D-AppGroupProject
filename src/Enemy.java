@@ -10,15 +10,16 @@ public class Enemy extends Entity{
 		
 	public Enemy()
 	{
-		image = new GImage ("bread.jpg", 400, 400); 
+		image = new GImage ("enemy_left1.jpg", 400, 400); 
 		image.setSize(100, 100);
 		this.setHP(10);
+
 	}
 	
 	public Enemy( int i, int j )
 	{
-	    image = new GImage ("bread.jpg", i, j); 
-        image.setSize(100, 100);
+	    image = new GImage ("enemy_left1.jpg", i, j); 
+        image.setSize(50, 75);
 	}
 	
 	
