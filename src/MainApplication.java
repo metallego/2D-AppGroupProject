@@ -36,6 +36,8 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	public OptionsPane options; 
 	public InGameOptionsPane igOptions; 
 	private LevelCompletePane winScreen;
+	private GameOverPane gameOver;
+
 	private LevelSelectPane levelSelect; 
 	private int count = 0;
 	private boolean scrollState = false;
@@ -71,6 +73,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		igOptions = new InGameOptionsPane(this);
 		winScreen = new LevelCompletePane(this);
 		levelSelect = new LevelSelectPane(this); 
+		gameOver = new GameOverPane(this);
 		switchToMenu();
 		//everything below here is going to need to be refactored when Text File Level Loading is implemented
 		//hero = new Hero();
@@ -103,17 +106,22 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 				pause( 30 );
 			}
 			winScreen.setScore( hero.getCoins() );
-			switchtoLevelComplete();
+			if(dead) {
+				switchToGameOver();
+			}
+			else {
+				switchtoLevelComplete();
+			}
 		}
 
 	}
 
 	public void actionPerformed (ActionEvent e) {
-	    //invincibility timer for hero after getting hit
-	    invulnTimer += 50;
-	    if( invulnTimer >= 2000 )
-	        hero.setInvincible( false );
-	    
+		//invincibility timer for hero after getting hit
+		invulnTimer += 50;
+		if( invulnTimer >= 2000 )
+			hero.setInvincible( false );
+
 		//DEATH ANIMATION
 		if(environment.checkForDeath() != null) {
 
@@ -198,7 +206,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 
 		//ATTACKING ANIMATION
 
-		
+
 		if(attackIsPressed&&isRight)	{
 			hero.image.setImage("hero_attack_right" + numTimesCalled  + ".jpg");
 			//chest.image.setImage("wooden_chest" + testcount + ".jpg");
@@ -319,7 +327,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			audio.playSound("sounds", "Level.mp3");
 		}
 		audio.stopSound("sounds", "Intro Song.mp3");
-	
+
 		//load level data into environment here
 		if(!loadedLevel )
 			loadLevel();
@@ -353,7 +361,22 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	{
 		switchToScreen(igOptions); 
 	}
+	
+	public void switchToGameOver()
+	{
+		somePane.hideContents();
+		loadedLevel = false;
+		completed = false;
+		if(dead)
+		{
+			dead = false;
+			hero.hp = 3;
+			hero.setDeath( false );
+		}
+		switchToScreen(gameOver);
+	}
 
+	
 	public void switchtoLevelComplete()
 	{
 		somePane.hideContents();
@@ -361,16 +384,16 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		completed = false;
 		if(dead)
 		{
-		    dead = false;
-		    hero.hp = 3;
-		    hero.setDeath( false );
+			dead = false;
+			hero.hp = 3;
+			hero.setDeath( false );
 		}
 		switchToScreen(winScreen);
 	}
-	
+
 	public void resetInvulnTimer()
 	{
-	    invulnTimer = 0;
+		invulnTimer = 0;
 	}
 
 	@Override
