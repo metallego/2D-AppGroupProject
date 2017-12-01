@@ -193,6 +193,7 @@ public class Environment extends GraphicsProgram
 			enemies.remove(e);
 		}
 		else if(e.getType() == EntityType.CHEST) {
+			System.out.println("chest removed");
 			chest.remove(e);	
 		}
 
@@ -426,6 +427,12 @@ public class Environment extends GraphicsProgram
 	{
 		return enemies; 
 	}
+	
+	public ArrayList<Chest> getChestList()
+	{
+		return chest; 
+	}
+	
 	
 	public void setWinCoinAmount(int i)
 	{

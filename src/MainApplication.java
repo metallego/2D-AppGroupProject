@@ -186,7 +186,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 					deathCalled++;
 					if(deathCalled == 4) {
 						deathCalled = 1;
-						tempEntity.setDeath(false);
+						tempEntity.setDeath(true);
 						Environment.removeEntity(tempEntity);
 						Hero.addExp(5);
 						somePane.showContents();
