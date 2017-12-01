@@ -21,7 +21,11 @@ public class SomePane extends GraphicsPane {
 	@Override
 	public void showContents() {
 		program.add(background);
-		program.add(program.chest.image);
+
+		for(Chest e:program.environment.getChestList()) {
+			GImage temp = e.getImage();
+			program.add(temp);
+		}
 
 		for(Platform e:program.environment.getPlatforms()) {
 			GImage temp = e.getGImage();

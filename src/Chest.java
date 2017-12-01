@@ -23,5 +23,7 @@ public class Chest extends Entity{
 		this.setType(EntityType.CHEST);
 
 	}
+	
+	
 
 }
