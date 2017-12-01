@@ -94,7 +94,11 @@ public class InGameOptionsPane extends GraphicsPane{
 		}
 		else if (obj == backGame)
 		{
+			AudioPlayer audio = AudioPlayer.getInstance();
+			if(is_off)
+				audio.stopSound("sounds", "Level.mp3");	
 			program.switchToSome();
+				
 		}
 	}
 	

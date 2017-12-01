@@ -71,6 +71,9 @@ public class OptionsPane extends GraphicsPane{
 		if(obj == backMenu) {
 		    program.currentLevel = 1;
 			program.switchToMenu();
+			AudioPlayer audio = AudioPlayer.getInstance();
+			if(isOff)
+				audio.stopSound("sounds", "Intro Song.mp3");
 		}
 		else if (obj == on)
 		{
@@ -78,6 +81,7 @@ public class OptionsPane extends GraphicsPane{
 			off.setFillColor(Color.white);
 			AudioPlayer audio = AudioPlayer.getInstance();
 			audio.playSound("sounds", "Intro Song.mp3");
+			isOff = false; 
 		}
 		else if (obj == off)
 		{
