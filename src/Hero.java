@@ -73,6 +73,8 @@ public class Hero extends Entity{
 		}
 	}
 	
+
+	
 	
 	private static void levelUp() {
 		level++;
