@@ -18,7 +18,7 @@ platform, 1, 5, 1, 1, false
 platform, 2, 3, 2, 1, false
 platform, 5, 2, 4, 1, false
 platform, 7, 5, 2, 1, false
-platform, -1, 5, 1, 1, false
+platform, -1, 5, 1, 1, true
 
 
 hero, 50, 400
@@ -27,8 +27,10 @@ coin, 100, 200
 coin, 800, 50
 coin, 600, 350
 
-chest, 800, 200
+chest, 800, 180
 
-enemy, 900, 435
-enemy, 400, 237
-enemy, 700, 35
+enemy, 900, 427
+enemy, 400, 229
+enemy, 700, 27
+
+other, 3

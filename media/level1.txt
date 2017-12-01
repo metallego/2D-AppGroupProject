@@ -23,8 +23,10 @@ coin, 350, 280
 coin, 900, 450
 coin, 700, 170
 
-chest, 700, 253
+chest, 700, 230
 
-enemy, 500, 238
-enemy, 700, 238
+enemy, 500, 230
+enemy, 700, 230
 enemy, 800, 425
+
+other, 3

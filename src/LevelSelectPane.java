@@ -58,7 +58,7 @@ public class LevelSelectPane extends GraphicsPane{
             program.switchToSome();
         }
 		else if(obj == lvl3) {
-		    program.currentLevel = 1;
+		    program.currentLevel = 3;
             program.switchToSome();
         }
 	}

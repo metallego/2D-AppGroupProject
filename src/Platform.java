@@ -10,7 +10,7 @@ import javax.imageio.ImageIO;
 
 public class Platform {
 	private GRect box;
-	private static final int buffer = 10;
+	private static final int buffer = 15;
 	private boolean winning = false;
 	private GImage image; 
 

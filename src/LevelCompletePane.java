@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
 
+import acm.graphics.GImage;
 import acm.graphics.GLabel;
 import acm.graphics.GObject;
 import acm.graphics.GOval;
@@ -11,6 +12,7 @@ public class LevelCompletePane extends GraphicsPane
 {
     private MainApplication program;
     private GLabel congrats;
+    private GImage background; 
     private GLabel scoreLabel;
     private GButton rect;
     private GButton next; 
@@ -20,6 +22,8 @@ public class LevelCompletePane extends GraphicsPane
     public LevelCompletePane( MainApplication app )
     {
         program = app;
+        background = new GImage("You_win.jpg", 0, 0); 
+        background.setSize(1080, 600);
         congrats = new GLabel( "Congrtatulations you win!", 475, 200 );
         scoreLabel = new GLabel( "Score goes here: ", 500, 400 );
         rect = new GButton("Back to Main Menu", 500, 500, 100, 50);
@@ -36,6 +40,7 @@ public class LevelCompletePane extends GraphicsPane
     @Override
     public void showContents() 
     {
+    		program.add(background);
         program.add( congrats );
         program.add( scoreLabel );
         program.add( rect );
@@ -45,6 +50,7 @@ public class LevelCompletePane extends GraphicsPane
     @Override
     public void hideContents()
     {
+    		program.remove(background);
         program.remove( congrats );
         program.remove( scoreLabel );
         program.remove( rect );
