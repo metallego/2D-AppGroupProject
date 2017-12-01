@@ -17,6 +17,7 @@ public class Environment extends GraphicsProgram
 	private MainApplication program;
 	private Hero hero;
 	private Enemy enemy; 
+	private ArrayList<Entity> entities = new ArrayList<Entity>();
 	private ArrayList<Chest> chest = new ArrayList<Chest>();
 	private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 	private ArrayList<Platform> platforms = new ArrayList<Platform>();
@@ -39,7 +40,7 @@ public class Environment extends GraphicsProgram
 
 	public Environment(MainApplication p)
 	{
-	    program = p;
+		program = p;
 	}
 
 
@@ -53,14 +54,14 @@ public class Environment extends GraphicsProgram
 				p.setWinning( true );
 		}
 	}
-	
+
 	public void addPlatform( int i, int j, int k, int l, boolean b )
 	{
-	    Platform p = new Platform(i*platformWidth, j*platformHeight, k*platformWidth, l*platformHeight);
-	    platforms.add( p );
-	    if( b )
-	        p.setWinning( b );
-	    System.out.println("Added Platform");
+		Platform p = new Platform(i*platformWidth, j*platformHeight, k*platformWidth, l*platformHeight);
+		platforms.add( p );
+		if( b )
+			p.setWinning( b );
+		System.out.println("Added Platform");
 	}
 
 	public void setUpHeartSlots()
@@ -93,6 +94,16 @@ public class Environment extends GraphicsProgram
 		executor.schedule(task, 200, TimeUnit.MILLISECONDS);
 		executor.schedule(task1, 200, TimeUnit.MILLISECONDS);
 	}
+	
+	public Entity checkForDeath() {
+		for(Entity e:entities) {
+			if(e.getDeath()) {
+				return e;
+			}
+			
+		}
+		return null;
+	}
 
 	public void checkForEntity(GRectangle bounds) {
 		for (Enemy e:enemies) {
@@ -106,8 +117,8 @@ public class Environment extends GraphicsProgram
 				attackLabel.setFont((new Font("Times New Roman", Font.BOLD, 14)));
 				println("enemy was attacked");
 				particle(atkNum, particle, attackLabel);
-				
-				
+
+
 			}
 
 		}
@@ -127,34 +138,37 @@ public class Environment extends GraphicsProgram
 	public void addEnemy( Enemy e)
 	{
 		enemies.add(e);
+		entities.add(e);
 		System.out.println("Added Enemy");
 	}
 
 	public void addChest(Chest c)
 	{
-		chest.add(c); 
+		chest.add(c);
+		entities.add(c);
 		System.out.println("Added Chest");
 	}
 
 	public void addLoot( Loot l )
 	{
-	    lootList.add(l);
-	    System.out.println("Added Coin");
+		lootList.add(l);
+		System.out.println("Added Coin");
 	}
-	
+
 	public void addHero( Hero h )
 	{
-	    hero = h;
-	    System.out.println( "Added Hero" );
+		hero = h;
+		entities.add(h);
+		System.out.println( "Added Hero" );
 	}
 
 	public boolean update(boolean b)
 	{
-	    completed = false;
-	    if(b)
-	    {
-            scroll();
-	    }
+		completed = false;
+		if(b)
+		{
+			scroll();
+		}
 		hero.applyFriction(FRICTION);
 		hero.applyGravity(GRAVITY);
 		hero.applyDecisions(b);
@@ -168,9 +182,10 @@ public class Environment extends GraphicsProgram
 			}
 		for( Loot l: lootList )
 		{
-		    l.pickUp( hero, program );
-		   
+			l.pickUp( hero, program );
+
 		}
+		
 		ArrayList<Loot> temp = new ArrayList<Loot>(); 
 		for(Loot l: lootList)
 		{
@@ -178,12 +193,12 @@ public class Environment extends GraphicsProgram
 		}
 		for(Loot l: temp)
 		{
-				
+
 			if(l.isCollected)
 			{
 				lootList.remove(l);
 			}
-				
+
 			if(hero.coins == 1)
 			{
 				coins.get(0).image.setImage("coin_token.jpg");
@@ -200,7 +215,7 @@ public class Environment extends GraphicsProgram
 				coins.get(2).image.setSize(heartSlotWidthHeight, heartSlotWidthHeight);
 			}
 		}
-			
+
 		if(hero.getY() >= groundY) {
 			hero.stopJumping(groundY+hero.image.getHeight());
 		}
@@ -273,37 +288,37 @@ public class Environment extends GraphicsProgram
 		for( Enemy e: enemies)
 			e.image.move( -hero.getSpeed(), 0 );
 		for( Chest c: chest )
-		    c.image.move( -hero.getSpeed(), 0 );
+			c.image.move( -hero.getSpeed(), 0 );
 		for( Loot l: lootList )
-		    l.image.move( -hero.getSpeed(), 0 );
+			l.image.move( -hero.getSpeed(), 0 );
 	}
-	
+
 	public void emptyLists()
 	{
-	    if(!preserveLevel)
-	    {
-    	    chest.clear();
-	        enemies.clear();
-	        platforms.clear();
-	        lootList.clear();
-	    }
+		if(!preserveLevel)
+		{
+			chest.clear();
+			enemies.clear();
+			platforms.clear();
+			lootList.clear();
+		}
 	}
-	
+
 	public void setPreserve( boolean b )
 	{
-	    preserveLevel = b;
+		preserveLevel = b;
 	}
-	
+
 	public boolean getPreserve()
 	{
-	    return preserveLevel;
+		return preserveLevel;
 	}
-	
+
 	public ArrayList<Loot> getLootList()
 	{
-	    return lootList;
+		return lootList;
 	}
-	
+
 	public ArrayList<Enemy> getEnemyList()
 	{
 		return enemies; 

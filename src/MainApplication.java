@@ -37,7 +37,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	private boolean scrollState = false;
 	private boolean completed = false;
 	public boolean loadedLevel = false;
-	private Timer attackTimer;
+	private Timer myTimer;
 	public static final int timerWoken = 50;
 	private boolean isLeft = false;
 	private boolean isRight = false;
@@ -64,49 +64,56 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		winScreen = new LevelCompletePane(this);
 		levelSelect = new LevelSelectPane(this); 
 		switchToMenu();
-        //everything below here is going to need to be refactored when Text File Level Loading is implemented
+		//everything below here is going to need to be refactored when Text File Level Loading is implemented
 		//hero = new Hero();
 		//enemy = new Enemy(); 
 		//chest = new Chest(); 
-        //coin = new Loot();
+		//coin = new Loot();
 		environment = new Environment(this);
 		//environment.addEnemy( enemy );
 		//environment.addChest( chest );
 		//environment.addLoot( coin );
-		attackTimer = new Timer(timerWoken, this);
-		attackTimer.start();
-		
+		myTimer = new Timer(timerWoken, this);
+		myTimer.start();
+
 		while( !gameStarted )
 		{
-		    pause(30);
+			pause(30);
 		}
-		
-        while ( true )
-        {
-            pause(30);
-            System.out.println( "Going into gameplay Loop" );
-            while ( !completed )
-            {
-                if ( ( hero.image.getX() > WINDOW_WIDTH - SCROLL_BUFFER ) && hero.getSpeed() > 0 ) scrollState = true;
-                else if ( ( hero.image.getX() < SCROLL_BUFFER ) && hero.getSpeed() < 0 ) scrollState = true;
-                else scrollState = false;
-                hero.move( scrollState );
-                completed = environment.update( scrollState );
-                pause( 30 );
-            }
-            winScreen.setScore( hero.getCoins() );
-            switchtoLevelComplete();
-        }
+
+		while ( true )
+		{
+			pause(30);
+			System.out.println( "Going into gameplay Loop" );
+			while ( !completed )
+			{
+				if ( ( hero.image.getX() > WINDOW_WIDTH - SCROLL_BUFFER ) && hero.getSpeed() > 0 ) scrollState = true;
+				else if ( ( hero.image.getX() < SCROLL_BUFFER ) && hero.getSpeed() < 0 ) scrollState = true;
+				else scrollState = false;
+				hero.move( scrollState );
+				completed = environment.update( scrollState );
+				pause( 30 );
+			}
+			winScreen.setScore( hero.getCoins() );
+			switchtoLevelComplete();
+		}
 
 	}
 
 	public void actionPerformed (ActionEvent e) {
+		//DEATH ANIMATION
+		if(environment.checkForDeath() != null) {
+			
+		}
+
+
+		//ATTACKING ANIMATION
 
 		if(attackIsPressed&&isRight)	{
 			hero.image.setImage("hero_attack_right" + numTimesCalled  + ".jpg");
 			//chest.image.setImage("wooden_chest" + testcount + ".jpg");
 
-			
+
 			//set weaponratio
 			if(numTimesCalled == 4) {
 				//this would be the weaponhitbox for animation 4
@@ -114,8 +121,8 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 				GRectangle hitBox = weapon1.getBounds();
 				environment.checkForEntity(hitBox);
 				//TESTING
-//				GRect testbox = new GRect (hitBox.getX(), hitBox.getY(), hitBox.getWidth(),hitBox.getHeight());
-//				add(testbox);
+				//				GRect testbox = new GRect (hitBox.getX(), hitBox.getY(), hitBox.getWidth(),hitBox.getHeight());
+				//				add(testbox);
 			}
 			//this would be the weaponhitbox for animation 5
 			else if(numTimesCalled == 5) {
@@ -123,14 +130,14 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 				GRectangle hitBox = weapon2.getBounds();
 				environment.checkForEntity(hitBox);
 				//TESTING
-//				GRect testbox = new GRect (hitBox.getX(), hitBox.getY(), hitBox.getWidth(),hitBox.getHeight());
-//				add(testbox);
+				//				GRect testbox = new GRect (hitBox.getX(), hitBox.getY(), hitBox.getWidth(),hitBox.getHeight());
+				//				add(testbox);
 			}
-			
+
 			else{
 			}
-			
-			
+
+
 			pause(15);
 
 			numTimesCalled++;
@@ -152,8 +159,8 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			GRectangle hitBox = weapon1.getBounds();
 			environment.checkForEntity(hitBox);
 			//TESTING
-//			GRect testbox = new GRect (hitBox.getX(), hitBox.getY(), hitBox.getWidth(),hitBox.getHeight());
-//			add(testbox);
+			//			GRect testbox = new GRect (hitBox.getX(), hitBox.getY(), hitBox.getWidth(),hitBox.getHeight());
+			//			add(testbox);
 		}
 		//this would be the weaponhitbox for animation 5
 		else if(numTimesCalled == 5) {
@@ -161,18 +168,20 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			GRectangle hitBox = weapon2.getBounds();
 			environment.checkForEntity(hitBox);
 			//TESTING
-//			GRect testbox = new GRect (hitBox.getX(), hitBox.getY(), hitBox.getWidth(),hitBox.getHeight());
-//			add(testbox);
+			//			GRect testbox = new GRect (hitBox.getX(), hitBox.getY(), hitBox.getWidth(),hitBox.getHeight());
+			//			add(testbox);
 		}
-		
+
 		else{
+			
 		}
 		
-		
-//		if (testcount > 4)
-//		{
-//			testcount = 1; 
-//		}
+
+
+		//		if (testcount > 4)
+		//		{
+		//			testcount = 1; 
+		//		}
 
 		/*
 		if (jumpIsPressed && isRight)
@@ -187,14 +196,14 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			pause(15);
 			jumpFrames++;
 		}
-		
+
 		if (jumpFrames > 10)
 		{
 			jumpFrames = 1; 
 		}
-		*/
+		 */
 	}
-		
+
 
 
 	public void switchToMenu() {
@@ -215,15 +224,15 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		switch(count % 2) {
 		//case 0: audio.playSound("sounds", "r2d2.mp3"); break;
 		//case 1: audio.playSound("sounds", "somethinlikethis.mp3"); break;
-		
-		
+
+
 		}
 		//load level data into environment here
 		if(!loadedLevel )
-		    loadLevel();
-        gameStarted = true;
-        System.out.println( "Loaded Level" );
-        pause(500);
+			loadLevel();
+		gameStarted = true;
+		System.out.println( "Loaded Level" );
+		pause(500);
 		switchToScreen(somePane);
 	}
 
@@ -231,7 +240,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	{
 		//switchToScreen(hero);
 	}
-	
+
 	public void switchtoLevelSelect()
 	{
 		switchToScreen(levelSelect); 
@@ -251,13 +260,13 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	{
 		switchToScreen(igOptions); 
 	}
-	
+
 	public void switchtoLevelComplete()
 	{
-	    loadedLevel = false;
-	    completed = false;
-	    hero.resetCoins();
-	    switchToScreen(winScreen);
+		loadedLevel = false;
+		completed = false;
+		hero.resetCoins();
+		switchToScreen(winScreen);
 	}
 
 	@Override
@@ -269,12 +278,12 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			print(runFrames);
 			print("Move left\n");
 			runFrames++; 
-			
+
 			if (runFrames > 10)
 			{
 				runFrames = 1; 
 			}
-			
+
 			isRight = false;
 			isLeft = true; 
 		}
@@ -285,12 +294,12 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			print(runFrames);
 			print("Move right\n");
 			runFrames++; 
-			
+
 			if (runFrames > 10)
 			{
 				runFrames = 1; 
 			}
-			
+
 			isRight = true; 
 			isLeft = false; 
 		}
@@ -300,7 +309,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			print(jumpFrames);
 			print("jump left\n"); 
 			jumpFrames++;
-			
+
 			if (jumpFrames > 10)
 			{
 				jumpFrames = 1;
@@ -313,7 +322,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			print(jumpFrames);
 			print("jump right\n"); 
 			jumpFrames++;
-			
+
 			if (jumpFrames > 10)
 			{
 				jumpFrames = 1; 
@@ -321,7 +330,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		}
 
 		if(e.getKeyCode() == KeyEvent.VK_Z) { 	
-			attackTimer.start();
+			myTimer.start();
 			print("attack\n");
 			//    		hero.attack();
 
@@ -354,81 +363,81 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			attackIsPressed = true;
 
 		}
-		
+
 		if (e.getKeyCode() == KeyEvent.VK_SPACE)
 		{
 			jumpIsPressed = true; 
 		}
 	}
-	
+
 	public void loadLevel()
 	{
-	    String fileName = "level" + currentLevel + ".txt";
-	    System.out.println( fileName );
-	    BufferedReader file = null;
-	    int z = 0;
-        try
-        {
-            file = new BufferedReader(new FileReader(fileName));
-        }
-        catch ( FileNotFoundException e1 )
-        {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        }
-	    String currLine = null;
-	    String[] objAttributes;
-	    try
-        {
-            while (( currLine = file.readLine()) != null )
-            {
-                objAttributes = currLine.split( ",[ ]*" );
-                if( objAttributes[0].equals( "platform" ) )
-                {
-                    environment.addPlatform( Integer.parseInt( objAttributes[1] ),
-                                             Integer.parseInt( objAttributes[2] ),
-                                             Integer.parseInt( objAttributes[3] ),
-                                             Integer.parseInt( objAttributes[4] ),
-                                             Boolean.parseBoolean( objAttributes[5] ));
-                }
-                else if( objAttributes[0].equals( "hero" ))
-                {
-                    hero = new Hero(Integer.parseInt( objAttributes[1] ),
-                                    Integer.parseInt( objAttributes[2] ));
-                    environment.addHero( hero );
-                }
-                else if( objAttributes[0].equals( "coin" ))
-                {
-                    coin = new Loot(Integer.parseInt( objAttributes[1] ),
-                                    Integer.parseInt( objAttributes[2] ));
-                    environment.addLoot( coin );
-                }
-                else if( objAttributes[0].equals( "chest" ))
-                {
-                    chest = new Chest(Integer.parseInt( objAttributes[1] ),
-                                      Integer.parseInt( objAttributes[2] ));
-                    environment.addChest( chest );
-                }
-                else if( objAttributes[0].equals( "enemy" ))
-                {
-                    enemy = new Enemy(Integer.parseInt( objAttributes[1] ),
-                                      Integer.parseInt( objAttributes[2] ));
-                    environment.addEnemy( enemy );
-                }
-                z++;
-                System.out.println( "Line# " + z );
-                for( int y = 0; y < objAttributes.length; y++ )
-                {
-                    System.out.println( objAttributes[y] );
-                }
-            }
-        }
-        catch ( IOException e )
-        {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-	    loadedLevel = true;
+		String fileName = "level" + currentLevel + ".txt";
+		System.out.println( fileName );
+		BufferedReader file = null;
+		int z = 0;
+		try
+		{
+			file = new BufferedReader(new FileReader(fileName));
+		}
+		catch ( FileNotFoundException e1 )
+		{
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		String currLine = null;
+		String[] objAttributes;
+		try
+		{
+			while (( currLine = file.readLine()) != null )
+			{
+				objAttributes = currLine.split( ",[ ]*" );
+				if( objAttributes[0].equals( "platform" ) )
+				{
+					environment.addPlatform( Integer.parseInt( objAttributes[1] ),
+							Integer.parseInt( objAttributes[2] ),
+							Integer.parseInt( objAttributes[3] ),
+							Integer.parseInt( objAttributes[4] ),
+							Boolean.parseBoolean( objAttributes[5] ));
+				}
+				else if( objAttributes[0].equals( "hero" ))
+				{
+					hero = new Hero(Integer.parseInt( objAttributes[1] ),
+							Integer.parseInt( objAttributes[2] ));
+					environment.addHero( hero );
+				}
+				else if( objAttributes[0].equals( "coin" ))
+				{
+					coin = new Loot(Integer.parseInt( objAttributes[1] ),
+							Integer.parseInt( objAttributes[2] ));
+					environment.addLoot( coin );
+				}
+				else if( objAttributes[0].equals( "chest" ))
+				{
+					chest = new Chest(Integer.parseInt( objAttributes[1] ),
+							Integer.parseInt( objAttributes[2] ));
+					environment.addChest( chest );
+				}
+				else if( objAttributes[0].equals( "enemy" ))
+				{
+					enemy = new Enemy(Integer.parseInt( objAttributes[1] ),
+							Integer.parseInt( objAttributes[2] ));
+					environment.addEnemy( enemy );
+				}
+				z++;
+				System.out.println( "Line# " + z );
+				for( int y = 0; y < objAttributes.length; y++ )
+				{
+					System.out.println( objAttributes[y] );
+				}
+			}
+		}
+		catch ( IOException e )
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		loadedLevel = true;
 	}
 
 

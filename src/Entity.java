@@ -18,17 +18,18 @@ public class Entity extends GraphicsProgram {
 	private double vertSpeed = 0;
 	private double speed = 0;
 
+	private int exp; //experience
+	private String name;
 	private int level;
 	private int HP; // health points
 	public int attack;
-	private int exp; //experience
-	private String name;
 	private EntityType type;
 
 	private MainApplication program; 
 	private boolean shouldMoveLeft = false;
 	private boolean shouldMoveRight = false;
 	private boolean jumping = false;
+	private boolean death = false;
 	public GImage image;
 
 
@@ -46,7 +47,7 @@ public class Entity extends GraphicsProgram {
 		System.out.println(damage);
 		
 		if(HP <= 0) {
-			death();
+			death = true;
 		}
 	}
 
@@ -59,8 +60,13 @@ public class Entity extends GraphicsProgram {
 		return type;
 	}
 
-	public void death() {
-		//TODO
+	public void setDeath(boolean d) {
+		death = d;
+	}
+	
+	public boolean getDeath() {
+		
+		return death;
 	}
 	public int getAttack() {
 		
@@ -207,6 +213,10 @@ public class Entity extends GraphicsProgram {
 	{
 	    return jumping;
 	}
+
+
+
+
 
 
 }

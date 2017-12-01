@@ -12,10 +12,7 @@ import java.util.ArrayList;
 
 
 public class Hero extends Entity{
-	public static int coins = 0;
-	
-	private ArrayList<Weapon> inventory = new ArrayList<Weapon>();
-	
+	public static int coins = 0;	
 
 	public Hero()
 	{
