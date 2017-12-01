@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
 
+import acm.graphics.GImage;
 import acm.graphics.GLabel;
 import acm.graphics.GObject;
 import acm.graphics.GOval;
@@ -16,6 +17,7 @@ public class ControlsPane extends GraphicsPane{
 	private GButton Down_Key; 
 	private GButton Spacebar; 
 	private GButton attack; 
+	private GImage background;
 	private GButton back; 
 
 	// labels and lines 
@@ -44,7 +46,8 @@ public class ControlsPane extends GraphicsPane{
 		
 		back = new  GButton("back to menu", 0, 0, 100, 50); 
 		
-		
+		background = new GImage("OptionsBackground.jpg", 0, 0); 
+		background.setSize(1080, 600);
 		
 	}
 	
@@ -52,6 +55,7 @@ public class ControlsPane extends GraphicsPane{
 	@Override
 	public void showContents() {
 		// TODO Auto-generated method stub
+		program.add(background);
 		program.add(Up_Key);
 		program.add(Right_Key);
 		program.add(Left_Key);
@@ -70,6 +74,7 @@ public class ControlsPane extends GraphicsPane{
 	@Override
 	public void hideContents() {
 		// TODO Auto-generated method stub
+		program.remove(background);
 		program.remove(Up_Key);
 		program.remove(Right_Key);
 		program.remove(Left_Key);

@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
 
+import acm.graphics.GImage;
 import acm.graphics.GLabel;
 import acm.graphics.GObject;
 import acm.graphics.GOval;
@@ -15,6 +16,7 @@ public class OptionsPane extends GraphicsPane{
 	private GButton on; 
 	private GButton off; 
 	private GButton backMenu;
+	private GImage background; 
 	private GButton backGame; 
 	public boolean isOff = false; 
 
@@ -22,14 +24,17 @@ public class OptionsPane extends GraphicsPane{
 	{
 		program = app; 
 		
-		volume_box = new GRect (400, 100, 100, 50);
-		volume = new GLabel ("Volume", 425, 130);
+		volume_box = new GRect (100, 100, 100, 50);
+		volume = new GLabel ("Volume", 125, 130);
 		
-		backMenu = new GButton ("Back to Menu", 500, 400, 100, 50);
+		backMenu = new GButton ("Back to Menu", 0, 0, 100, 50);
 		backGame = new GButton ("Back to Game", 500, 350, 100, 50);
 		
-		on = new GButton ("ON", 600, 100, 100, 50);
-		off = new GButton ("OFF", 700, 100, 100, 50); 
+		on = new GButton ("ON", 775, 100, 100, 50);
+		off = new GButton ("OFF", 875, 100, 100, 50); 
+		
+		background = new GImage("options_Background.jpg", 0, 0);
+		background.setSize(1080, 600);
 		
 	}
 	
@@ -46,6 +51,7 @@ public class OptionsPane extends GraphicsPane{
 	@Override
 	public void showContents() {
 		// TODO Auto-generated method stub
+		program.add(background);
 		program.add(volume_box);
 		program.add(volume);
 		program.add(backMenu);
@@ -57,6 +63,7 @@ public class OptionsPane extends GraphicsPane{
 	@Override
 	public void hideContents() {
 		// TODO Auto-generated method stub
+		program.remove(background);
 		program.remove(volume_box);
 		program.remove(volume);
 		program.remove(backMenu);

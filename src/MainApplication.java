@@ -289,34 +289,6 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			//			GRect testbox = new GRect (hitBox.getX(), hitBox.getY(), hitBox.getWidth(),hitBox.getHeight());
 			//			add(testbox);
 		}
-
-
-
-
-		//		if (testcount > 4)
-		//		{
-		//			testcount = 1; 
-		//		}
-
-		/*
-		if (jumpIsPressed && isRight)
-		{
-			hero.image.setImage("hero_jump_left" + jumpFrames + ".jpg");
-			pause(15);
-			jumpFrames++; 
-		}
-		else if (jumpIsPressed && isLeft)
-		{
-			hero.image.setImage("hero_jump_right" + jumpFrames + ".jpg");
-			pause(15);
-			jumpFrames++;
-		}
-
-		if (jumpFrames > 10)
-		{
-			jumpFrames = 1; 
-		}
-		 */
 	}
 
 

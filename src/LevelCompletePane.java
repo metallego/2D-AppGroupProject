@@ -16,6 +16,7 @@ public class LevelCompletePane extends GraphicsPane
     private GLabel scoreLabel;
     private GButton rect;
     private GButton next; 
+    private GLabel credits; 
     private int score = 0;
     
     
@@ -25,10 +26,14 @@ public class LevelCompletePane extends GraphicsPane
         background = new GImage("You_win.jpg", 0, 0); 
         background.setSize(1080, 600);
         congrats = new GLabel( "Congrtatulations you win!", 475, 200 );
+        congrats.setColor(Color.white);
         scoreLabel = new GLabel( "Score goes here: ", 500, 400 );
+        scoreLabel.setColor(Color.white);
         rect = new GButton("Back to Main Menu", 500, 500, 100, 50);
         rect.setFillColor(Color.white);
         next = new GButton("Next Level", 500, 450, 100, 50); 
+        credits = new GLabel("Game made by: Jeremy, Nathan, Antonio Team LTS. We Hope you enjoyed our game", 300, 400);
+        credits.setColor(Color.white);
     }
     
     public void setScore( int i )
@@ -45,6 +50,8 @@ public class LevelCompletePane extends GraphicsPane
         program.add( scoreLabel );
         program.add( rect );
         program.add(next); 
+        if(program.currentLevel == 3)
+        		program.add(credits);
     }
     
     @Override
@@ -55,6 +62,8 @@ public class LevelCompletePane extends GraphicsPane
         program.remove( scoreLabel );
         program.remove( rect );
         program.remove(next);
+        if(program.currentLevel == 3)
+        		program.remove(credits);
     }
     
     @Override

@@ -26,7 +26,7 @@ coin, 700, 170
 chest, 700, 230
 
 enemy, 500, 230
-enemy, 700, 230
+enemy, 800, 230
 enemy, 800, 425
 
 other, 3

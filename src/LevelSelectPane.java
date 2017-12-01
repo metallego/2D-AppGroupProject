@@ -17,6 +17,7 @@ public class LevelSelectPane extends GraphicsPane{
 	private GButton lvl2;
 	private GButton lvl3; 
 	private GButton Back; 
+
 	
 	public LevelSelectPane(MainApplication app)
 	{
@@ -26,7 +27,7 @@ public class LevelSelectPane extends GraphicsPane{
 		
 		lvl2 = new GButton ("Level 2", 500, 200, 100, 100); 
 		lvl2.setFillColor(Color.cyan);
-		
+
 		lvl3 = new GButton ("Level 3", 700, 200, 100, 100);
 		lvl3.setFillColor(Color.cyan);
 		
@@ -45,6 +46,7 @@ public class LevelSelectPane extends GraphicsPane{
 		program.add(lvl2);
 		program.add(lvl3);
 		program.add(Back);
+
 	}
 
 	@Override
@@ -76,6 +78,7 @@ public class LevelSelectPane extends GraphicsPane{
 		else if(obj == Back)
 		{
 			program.switchToMenu();
+
 		}
 	}
 
