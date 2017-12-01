@@ -170,6 +170,8 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 						tempEntity.setImage(null);
 						Environment.removeEntity(tempEntity);
 						Hero.addExp(5);
+						somePane.showContents();
+
 						if(Hero.isHeroIsLeveling()) {
 							println("LEVELUPP");
 							//							environment.levelAnimation();
@@ -187,12 +189,11 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 						tempEntity.setDeath(false);
 						Environment.removeEntity(tempEntity);
 						Hero.addExp(5);
+						somePane.showContents();
 						if(Hero.isHeroIsLeveling()) {
 							println("LEVELUPP");
 
 							//							environment.levelAnimation();
-							//							somePane.showContents();
-
 						}
 					}
 				}
