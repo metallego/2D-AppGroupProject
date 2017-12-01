@@ -105,6 +105,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 				completed = environment.update( scrollState );
 				pause( 30 );
 			}
+			somePane.hideContents();
 			winScreen.setScore( hero.getCoins() );
 			if(dead) {
 				switchToGameOver();

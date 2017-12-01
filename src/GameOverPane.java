@@ -20,8 +20,8 @@ public class GameOverPane extends GraphicsPane
 	public GameOverPane( MainApplication app )
 	{
 		program = app;
-		darn = new GLabel( "Oh Darn! You lost.", 475, 200 );
-		scoreLabel = new GLabel( "Score goes here: ", 500, 400 );
+		darn = new GLabel( "Oh Darn! You lost.", 500, 200 );
+		scoreLabel = new GLabel( "Your Score: ", 500, 400 );
 		rect = new GButton("Back to Main Menu", 500, 500, 100, 50);
 		rect.setFillColor(Color.white);
 		again = new GButton("Play Again", 500, 450, 100, 50); 
