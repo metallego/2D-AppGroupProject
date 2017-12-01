@@ -18,11 +18,9 @@ public class Entity extends GraphicsProgram {
 	private double vertSpeed = 0;
 	private double speed = 0;
 
-	private int exp; //experience
-	private String name;
-	private int level;
+
 	private int HP; // health points
-	public int attack;
+	public static int attack;
 	private EntityType type;
 	private boolean left = true;
 	private boolean right = false;

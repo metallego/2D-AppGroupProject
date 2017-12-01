@@ -122,8 +122,10 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 					if(deathCalled == 4) {
 						deathCalled = 1;
 						tempEntity.setDeath(false);
-						//						tempEntity = null;
+						//tempEntity = null;
 						Environment.removeEntity(tempEntity);
+						Hero.addExp(5);
+
 					}
 				}
 				else {
@@ -135,7 +137,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 						tempEntity.setDeath(false);
 						//tempEntity = null;
 						Environment.removeEntity(tempEntity);
-
+						Hero.addExp(5);
 					}
 				}
 			}
