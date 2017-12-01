@@ -16,6 +16,7 @@ public class InGameOptionsPane extends GraphicsPane{
 	private GButton off; 
 	private GButton backMenu;
 	private GButton backGame; 
+	public boolean is_off = true; 
 
 	public InGameOptionsPane (MainApplication app)
 	{
@@ -67,17 +68,29 @@ public class InGameOptionsPane extends GraphicsPane{
 	public void mousePressed(MouseEvent e) {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		if(obj == backMenu) {
+			AudioPlayer audio = AudioPlayer.getInstance();
+			if(is_off)
+				audio.stopSound("sounds", "Intro Song.mp3");
+			else
+				audio.playSound("sounds", "Intro Song.mp3");
 			program.switchToMenu();
+				
 		}
 		else if (obj == on)
 		{
 			on.setFillColor(Color.gray);
 			off.setFillColor(Color.white);
+			AudioPlayer audio = AudioPlayer.getInstance();
+			audio.playSound("sounds", "Level.mp3");
+			is_off = false; 
 		}
 		else if (obj == off)
 		{
 			off.setFillColor(Color.gray);
 			on.setFillColor(Color.white);
+			AudioPlayer audio = AudioPlayer.getInstance();
+			audio.stopSound("sounds", "Level.mp3");
+			is_off = true; 
 		}
 		else if (obj == backGame)
 		{

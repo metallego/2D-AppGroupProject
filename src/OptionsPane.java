@@ -16,6 +16,7 @@ public class OptionsPane extends GraphicsPane{
 	private GButton off; 
 	private GButton backMenu;
 	private GButton backGame; 
+	public boolean isOff = false; 
 
 	public OptionsPane (MainApplication app)
 	{
@@ -75,11 +76,17 @@ public class OptionsPane extends GraphicsPane{
 		{
 			on.setFillColor(Color.gray);
 			off.setFillColor(Color.white);
+			AudioPlayer audio = AudioPlayer.getInstance();
+			audio.playSound("sounds", "Intro Song.mp3");
 		}
 		else if (obj == off)
 		{
 			off.setFillColor(Color.gray);
 			on.setFillColor(Color.white);
+			AudioPlayer audio = AudioPlayer.getInstance();
+			audio.stopSound("sounds", "Intro Song.mp3");
+			isOff = true; 
+			
 		}
 		else if (obj == backGame)
 		{
