@@ -15,6 +15,7 @@ public class LevelSelectPane extends GraphicsPane{
 	private GButton lvl1; 
 	private GButton lvl2;
 	private GButton lvl3; 
+	private GButton back;
 	
 	public LevelSelectPane(MainApplication app)
 	{
@@ -27,6 +28,8 @@ public class LevelSelectPane extends GraphicsPane{
 		
 		lvl3 = new GButton ("Level 3", 500, 200, 100, 100);
 		lvl3.setFillColor(Color.white);
+		
+		back = new  GButton("back to menu", 0, 0, 100, 50); 
 	}
 
 	@Override
@@ -35,6 +38,7 @@ public class LevelSelectPane extends GraphicsPane{
 		program.add(lvl1);
 		program.add(lvl2);
 		program.add(lvl3);
+		program.add( back );
 	}
 
 	@Override
@@ -43,6 +47,7 @@ public class LevelSelectPane extends GraphicsPane{
 		program.remove(lvl1);
 		program.remove(lvl2);
 		program.remove(lvl3);
+		program.remove( back );
 	}
 	
 	public void mousePressed(MouseEvent e) {
@@ -61,6 +66,10 @@ public class LevelSelectPane extends GraphicsPane{
 		    program.currentLevel = 3;
             program.switchToSome();
         }
+		else if(obj == back)
+		{
+		    program.switchToMenu();
+		}
 	}
 
 }
