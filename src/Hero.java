@@ -21,6 +21,7 @@ public class Hero extends Entity{
 	private static int level = 1;
 	public static int hp = 3;
 	private static boolean invincible = false;	
+	public String imageName;
 
 	
 
@@ -30,13 +31,15 @@ public class Hero extends Entity{
 	{
 		image = new GImage("hero_idle_right.jpg", 50, 400); 
 		this.setType(EntityType.HERO);
+		imageName = new String("hero_idle_right.jpg" );
 
 	}
 	
 	public Hero(int i, int j)
     {
-        image = new GImage("hero_idle_right.jpg", i, j); 
+        image = new GImage("hero_idle_right.jpg", i, j);
         this.setType(EntityType.HERO);
+        imageName = new String("hero_idle_right.jpg" );
         System.out.println("Created new Hero");
         this.setAttack(5);
         this.setDeath( false );

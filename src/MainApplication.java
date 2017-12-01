@@ -122,6 +122,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 				{
 					if(tempEntity.isLeft()) {
 						tempEntity.image.setImage("hero_death_left" + deathCalled + ".jpg");
+						hero.imageName = "hero_death_left" + deathCalled + ".jpg";
 						tempEntity.image.setSize(ENEMY_WIDTH, ENEMY_HEIGHT);
 						deathCalled++;
 						if(deathCalled == 9) {
@@ -132,7 +133,8 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 						}
 					}
 					else {
-						tempEntity.image.setImage("hero_death_left" + deathCalled + ".jpg");
+						tempEntity.image.setImage("hero_death_right" + deathCalled + ".jpg");
+						hero.imageName = "hero_death_right" + deathCalled + ".jpg";
 						tempEntity.image.setSize(ENEMY_WIDTH, ENEMY_HEIGHT);
 						deathCalled++;
 						if(deathCalled == 9) {
@@ -201,6 +203,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		
 		if(attackIsPressed&&isRight)	{
 			hero.image.setImage("hero_attack_right" + numTimesCalled  + ".jpg");
+			hero.imageName = "hero_attack_right" + numTimesCalled + ".jpg";
 			//chest.image.setImage("wooden_chest" + testcount + ".jpg");
 
 
@@ -234,7 +237,10 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			testcount++;
 		}
 		else if(attackIsPressed&&!isRight) {
+		    if( hero.imageName == "hero_idle_left.jpg" )
+		        hero.image.move( -45, 0 );
 			hero.image.setImage("hero_attack_left" + numTimesCalled  + ".jpg");
+			hero.imageName = "hero_attack_left" + numTimesCalled + ".jpg";
 			pause(15);
 			numTimesCalled++;
 		}
@@ -378,6 +384,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		if(e.getKeyCode() == KeyEvent.VK_LEFT) {
 			hero.startMoveLeft();
 			hero.image.setImage("hero_run_left" + runFrames + ".jpg");
+			hero.imageName = "her_run_left" + runFrames + ".jpg";
 			//pause(15); 
 			print(runFrames);
 			print("Move left\n");
@@ -395,6 +402,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			// this is for the key event for the right arrow key
 			hero.startMoveRight();
 			hero.image.setImage("hero_run_right" + runFrames + ".jpg");
+			hero.imageName = "her_run_right" + runFrames + ".jpg";
 			print(runFrames);
 			print("Move right\n");
 			runFrames++; 
@@ -410,6 +418,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		if(e.getKeyCode() == KeyEvent.VK_SPACE && isLeft) {
 			hero.jump();
 			hero.image.setImage("hero_jump_left" + jumpFrames + ".jpg");
+			hero.imageName = "her_jump_left" + runFrames + ".jpg";
 			print(jumpFrames);
 			print("jump left\n"); 
 			jumpFrames++;
@@ -423,6 +432,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		{
 			hero.jump();
 			hero.image.setImage("hero_jump_right" + jumpFrames + ".jpg");
+			hero.imageName = "her_jump_right" + runFrames + ".jpg";
 			print(jumpFrames);
 			print("jump right\n"); 
 			jumpFrames++;
@@ -451,12 +461,14 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	{
 		if(e.getKeyCode() == KeyEvent.VK_LEFT) {
 			hero.image.setImage("hero_idle_left.jpg");
+			hero.imageName = "hero_idle_left.jpg";
 			hero.stopMoveLeft();
 			//isRight = false;
 			//isLeft = true; 
 		}
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			hero.image.setImage("hero_idle_right.jpg");
+			hero.imageName = "hero_idle_right.jpg";
 			// this is for the key event for the right arrow key
 			hero.stopMoveRight();
 			//isRight = true; 
@@ -527,6 +539,10 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 					enemy = new Enemy(Integer.parseInt( objAttributes[1] ),
 							Integer.parseInt( objAttributes[2] ));
 					environment.addEnemy( enemy );
+				}
+				else if( objAttributes[0].equals( "other" ))
+				{
+				    environment.setWinCoinAmount( Integer.parseInt( objAttributes[1] ));
 				}
 				z++;
 				System.out.println( "Line# " + z );

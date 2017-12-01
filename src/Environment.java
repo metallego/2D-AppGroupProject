@@ -110,7 +110,7 @@ public class Environment extends GraphicsProgram
 	}
 
 	public void checkForEntity(GRectangle bounds) {
-		for (Enemy e:enemies) {
+	    for (Enemy e:enemies) {
 			GRectangle rect = e.image.getBounds();
 			if(bounds.intersects(rect)){
 				e.takeDamage(hero.getAttack());
@@ -134,17 +134,29 @@ public class Environment extends GraphicsProgram
 	}
 
 	public void heroTakesDamage(GRectangle bounds) {
-		for (Enemy e:enemies) {
-			GRectangle rect = e.image.getBounds();
-			if(bounds.intersects(rect)){
-				hero.updateHP();
-				GLabel hurtLabel = new GLabel("Ow",e.image.getX()+ e.image.getWidth()/3, e.image.getY()+e.image.getHeight()/2); 
-				hurtLabel.setColor(Color.red);
-				hurtLabel.setFont((new Font("Times New Roman", Font.BOLD, 14)));
-				println("hero was attacked");
-				program.resetInvulnTimer();
-			}
-		}
+	    if(!(hero.imageName.equals( "hero_attack_left1.jpg")
+	         || hero.imageName.equals( "hero_attack_left2.jpg")
+	         || hero.imageName.equals( "hero_attack_left3.jpg")
+	         || hero.imageName.equals( "hero_attack_left4.jpg")
+	         || hero.imageName.equals( "hero_attack_left5.jpg")
+	         || hero.imageName.equals( "hero_attack_right1.jpg")
+	         || hero.imageName.equals( "hero_attack_right2.jpg")
+	         || hero.imageName.equals( "hero_attack_right3.jpg")
+	         || hero.imageName.equals( "hero_attack_right4.jpg")
+	         || hero.imageName.equals( "hero_attack_right5.jpg")))
+	    {
+    		for (Enemy e:enemies) {
+	    		GRectangle rect = e.image.getBounds();
+		    	if(bounds.intersects(rect)){
+			    	hero.updateHP();
+    				GLabel hurtLabel = new GLabel("Ow",e.image.getX()+ e.image.getWidth()/3, e.image.getY()+e.image.getHeight()/2); 
+	    			hurtLabel.setColor(Color.red);
+		    		hurtLabel.setFont((new Font("Times New Roman", Font.BOLD, 14)));
+			    	println("hero was attacked");
+				    program.resetInvulnTimer();
+			    }
+		    }
+	    }
 	}
 
 	public static void removeEntity(Entity e) {
@@ -244,10 +256,6 @@ public class Environment extends GraphicsProgram
 				coins.get(2).image.setImage("coin_token.jpg");
 				coins.get(2).image.setSize(heartSlotWidthHeight, heartSlotWidthHeight);
 			}
-		}
-
-		if(hero.getY() >= groundY) {
-			hero.stopJumping(groundY+hero.image.getHeight());
 		}
 		
 		if(!Hero.isInvincible()) {
@@ -369,6 +377,11 @@ public class Environment extends GraphicsProgram
 	public ArrayList<Enemy> getEnemyList()
 	{
 		return enemies; 
+	}
+	
+	public void setWinCoinAmount(int i)
+	{
+	    winCoinAmount = i;
 	}
 
 }

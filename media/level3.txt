@@ -12,7 +12,7 @@
  ***********************************************************/
 
 platform, -5, 10, 20, 11, false
-platform, 1, 6, 1, 1, false
+platform, 1, 6, 1, 1, true
 platform, 3, 3, 2, 1, false
 platform, 5, 5, 10, 1, false
 platform, 13, 9, 1, 1, false
@@ -27,8 +27,10 @@ coin, 100, 250
 coin, 1000, 200
 coin, 600, 450
 
-chest, 800, 200
+chest, 800, 180
 
-enemy, 900, 435
-enemy, 400, 83
-enemy, 700, 183
+enemy, 900, 427
+enemy, 400, 75
+enemy, 700, 175
+
+other, 3
