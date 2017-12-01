@@ -346,7 +346,11 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 
 		//load level data into environment here
 		if(!loadedLevel )
+		{
 			loadLevel();
+			hero.resetCoins();
+			hero.resetHearts();
+		}
 		gameStarted = true;
 		System.out.println( "Loaded Level" );
 		pause(500);

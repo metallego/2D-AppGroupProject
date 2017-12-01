@@ -129,6 +129,11 @@ public class Hero extends Entity{
 	public static void setHeroIsLeveling(boolean heroIsLeveling) {
 		Hero.heroIsLeveling = heroIsLeveling;
 	}
+	
+	public void resetHearts()
+	{
+		hp = 3;
+	}
 
 
 
