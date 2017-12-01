@@ -169,8 +169,8 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 						Hero.addExp(5);
 						if(Hero.isHeroIsLeveling()) {
 							println("LEVELUPP");
-							environment.levelAnimation();
-							somePane.showContents();
+//							environment.levelAnimation();
+//							somePane.showContents();
 
 						}
 					}
@@ -187,8 +187,8 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 						if(Hero.isHeroIsLeveling()) {
 							println("LEVELUPP");
 
-							environment.levelAnimation();
-							somePane.showContents();
+//							environment.levelAnimation();
+//							somePane.showContents();
 
 						}
 					}

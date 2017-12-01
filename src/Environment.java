@@ -103,25 +103,26 @@ public class Environment extends GraphicsProgram
 	}
 	
 	
-	public void levelAnimation() {
-		GImage atkImage = new GImage("Level_Up.png",hero.image.getX()+ hero.image.getWidth()/5, hero.image.getY()+hero.image.getHeight()/4);
-		atkImage.setSize(100,100);
-		GLabel incAtkLabel = new GLabel("+ATK",hero.image.getX()+ hero.image.getWidth()/3, hero.image.getY()+hero.image.getHeight()/2); 
-		incAtkLabel.setColor(Color.white);
-		incAtkLabel.setFont((new Font("Times New Roman", Font.BOLD, 14)));
-		
-		ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
-		program.add(atkImage);
-		program.add(incAtkLabel);
-		Runnable task = () -> SwingUtilities.invokeLater(() -> program.remove(atkImage));
-		Runnable task1 = () -> SwingUtilities.invokeLater(() -> program.remove(incAtkLabel));
-		Runnable task2 = () -> SwingUtilities.invokeLater(() -> hero.setHeroIsLeveling(false));
-
-		executor.schedule(task, 200, TimeUnit.MILLISECONDS);
-		executor.schedule(task1, 200, TimeUnit.MILLISECONDS);
-		executor.schedule(task2, 200, TimeUnit.MILLISECONDS);
-
-	}
+//	public void levelAnimation() {
+//		System.out.println("levelsss");
+//		GImage atkImage = new GImage("Level_Up.png",hero.image.getX()+ hero.image.getWidth()/5, hero.image.getY()+hero.image.getHeight()/4);
+//		atkImage.setSize(100,100);
+//		GLabel incAtkLabel = new GLabel("+ATK",hero.image.getX()+ hero.image.getWidth()/3, hero.image.getY()+hero.image.getHeight()/2); 
+//		incAtkLabel.setColor(Color.white);
+//		incAtkLabel.setFont((new Font("Times New Roman", Font.BOLD, 14)));
+//		
+//		ScheduledExecutorService executor1 = Executors.newSingleThreadScheduledExecutor();
+//		program.add(atkImage);
+//		program.add(incAtkLabel);
+//		Runnable task4 = () -> SwingUtilities.invokeLater(() -> program.remove(atkImage));
+//		Runnable task5 = () -> SwingUtilities.invokeLater(() -> program.remove(incAtkLabel));
+//		Runnable task6 = () -> SwingUtilities.invokeLater(() -> hero.setHeroIsLeveling(false));
+//
+//		executor1.schedule(task4, 200, TimeUnit.MILLISECONDS);
+//		executor1.schedule(task5, 200, TimeUnit.MILLISECONDS);
+//		executor1.schedule(task6, 200, TimeUnit.MILLISECONDS);
+//
+//	}
 	
 
 	public Entity checkForDeath() {
