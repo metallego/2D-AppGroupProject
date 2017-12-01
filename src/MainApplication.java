@@ -167,7 +167,12 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 						tempEntity.setImage(null);
 						Environment.removeEntity(tempEntity);
 						Hero.addExp(5);
-						somePane.showContents();
+						if(Hero.isHeroIsLeveling()) {
+							println("LEVELUPP");
+							environment.levelAnimation();
+							somePane.showContents();
+
+						}
 					}
 				}
 				else {
@@ -179,10 +184,16 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 						tempEntity.setDeath(false);
 						Environment.removeEntity(tempEntity);
 						Hero.addExp(5);
-						somePane.showContents();
+						if(Hero.isHeroIsLeveling()) {
+							println("LEVELUPP");
 
+							environment.levelAnimation();
+							somePane.showContents();
+
+						}
 					}
 				}
+
 			}
 
 
@@ -244,8 +255,8 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			testcount++;
 		}
 		else if(attackIsPressed&&!isRight) {
-		    if( hero.imageName == "hero_idle_left.jpg" )
-		        hero.image.move( -45, 0 );
+			if( hero.imageName == "hero_idle_left.jpg" )
+				hero.image.move( -45, 0 );
 			hero.image.setImage("hero_attack_left" + numTimesCalled  + ".jpg");
 			hero.imageName = "hero_attack_left" + numTimesCalled + ".jpg";
 			pause(15);
@@ -555,7 +566,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 				}
 				else if( objAttributes[0].equals( "other" ))
 				{
-				    environment.setWinCoinAmount( Integer.parseInt( objAttributes[1] ));
+					environment.setWinCoinAmount( Integer.parseInt( objAttributes[1] ));
 				}
 				z++;
 				System.out.println( "Line# " + z );

@@ -101,15 +101,25 @@ public class Environment extends GraphicsProgram
 		executor.schedule(task1, 200, TimeUnit.MILLISECONDS);
 	}
 	
-	public void levelAnimation(String attack, GImage levelAnimation, GLabel atkLabel) {
-
+	
+	public void levelAnimation() {
+		GImage atkImage = new GImage("Level_Up.png",hero.image.getX()+ hero.image.getWidth()/5, hero.image.getY()+hero.image.getHeight()/4);
+		atkImage.setSize(100,100);
+		GLabel incAtkLabel = new GLabel("+ATK",hero.image.getX()+ hero.image.getWidth()/3, hero.image.getY()+hero.image.getHeight()/2); 
+		incAtkLabel.setColor(Color.white);
+		incAtkLabel.setFont((new Font("Times New Roman", Font.BOLD, 14)));
+		
 		ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
-		program.add(levelAnimation);
-		program.add(atkLabel);
-		Runnable task = () -> SwingUtilities.invokeLater(() -> program.remove(levelAnimation));
-		Runnable task1 = () -> SwingUtilities.invokeLater(() -> program.remove(atkLabel));
+		program.add(atkImage);
+		program.add(incAtkLabel);
+		Runnable task = () -> SwingUtilities.invokeLater(() -> program.remove(atkImage));
+		Runnable task1 = () -> SwingUtilities.invokeLater(() -> program.remove(incAtkLabel));
+		Runnable task2 = () -> SwingUtilities.invokeLater(() -> hero.setHeroIsLeveling(false));
+
 		executor.schedule(task, 200, TimeUnit.MILLISECONDS);
 		executor.schedule(task1, 200, TimeUnit.MILLISECONDS);
+		executor.schedule(task2, 200, TimeUnit.MILLISECONDS);
+
 	}
 	
 
@@ -135,11 +145,7 @@ public class Environment extends GraphicsProgram
 				println("enemy was attacked");
 				particle(atkNum, particle, attackLabel);
 				
-				//TO DO IMAGES
-				GImage atkImage = new GImage("hit_particle.jpg",e.image.getX()+ e.image.getWidth()/5, e.image.getY()+e.image.getHeight()/4);
-				GLabel incAtkLabel = new GLabel("+ATK",e.image.getX()+ e.image.getWidth()/3, e.image.getY()+e.image.getHeight()/2); 
-				attackLabel.setColor(Color.white);
-				attackLabel.setFont((new Font("Times New Roman", Font.BOLD, 14)));
+
 			}
 		}
 

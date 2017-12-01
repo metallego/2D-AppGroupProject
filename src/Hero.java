@@ -22,6 +22,7 @@ public class Hero extends Entity{
 	public static int hp = 3;
 	private static boolean invincible = false;	
 	public String imageName;
+	private static boolean heroIsLeveling = false;
 
 	
 
@@ -83,7 +84,7 @@ public class Hero extends Entity{
 		level++;
 		System.out.println("level");
 		System.out.println(level);
-
+		setHeroIsLeveling(true);
 		setAttack();
 	}
 
@@ -120,6 +121,16 @@ public class Hero extends Entity{
 	public static void setInvincible(boolean invincible) {
 		Hero.invincible = invincible;
 	}
+
+	public static boolean isHeroIsLeveling() {
+		return heroIsLeveling;
+	}
+
+	public static void setHeroIsLeveling(boolean heroIsLeveling) {
+		Hero.heroIsLeveling = heroIsLeveling;
+	}
+
+
 
 
 
