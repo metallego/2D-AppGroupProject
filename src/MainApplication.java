@@ -291,9 +291,14 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	public void switchToMenu() {
 
 		AudioPlayer audio = AudioPlayer.getInstance();
-		switch(count % 2) {
-		//case 0: audio.stopSound("sounds", "r2d2.mp3"); break;
-		//case 1: audio.stopSound("sounds", "somethinlikethis.mp3"); break;
+		if(!options.isOff)
+		{
+			audio.playSound("sounds", "Intro Song.mp3");
+		}
+		if(!igOptions.is_off)
+		{
+			audio.playSound("sounds", "Intro Song.mp3");
+			audio.stopSound("sounds", "Level.mp3");
 		}
 		count++;
 		if( hero!= null )
@@ -304,12 +309,12 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	public void switchToSome() {
 
 		AudioPlayer audio = AudioPlayer.getInstance();
-		switch(count % 2) {
-		//case 0: audio.playSound("sounds", "r2d2.mp3"); break;
-		//case 1: audio.playSound("sounds", "somethinlikethis.mp3"); break;
-
-
+		if(!options.isOff)
+		{
+			audio.playSound("sounds", "Level.mp3");
 		}
+		audio.stopSound("sounds", "Intro Song.mp3");
+	
 		//load level data into environment here
 		if(!loadedLevel )
 			loadLevel();

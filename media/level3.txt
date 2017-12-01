@@ -1,0 +1,25 @@
+/***********************************************************
+ *This file reads in for level 1.                          *
+ *It will ignore all lines not starting with the keywords: *
+ *platform, hero, coin, chest, enemy_left, or enemy        *
+ *                                                         *
+ *line to create a platform are structured as follows:     *
+ *platform, xlocation, ylocation, width, height, and if the*
+ *platform is the goal to get to.                          *
+ *                                                         *
+ *lines for everything else are structured as follows:     *
+ *<identifier>, Xlocation, ylocation                       *
+ ***********************************************************/
+
+platform, -5, 10, 20, 11, false
+
+
+hero, 50, 400
+
+coin, 700, 450
+coin, 800, 450
+coin, 600, 450
+
+chest, 600, 155
+
+enemy, 400, 400
