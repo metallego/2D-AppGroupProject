@@ -13,6 +13,7 @@ public class LevelCompletePane extends GraphicsPane
     private GLabel congrats;
     private GLabel scoreLabel;
     private GButton rect;
+    private GButton next; 
     private int score = 0;
     
     
@@ -23,6 +24,7 @@ public class LevelCompletePane extends GraphicsPane
         scoreLabel = new GLabel( "Score goes here: ", 500, 400 );
         rect = new GButton("Back to Main Menu", 500, 500, 100, 50);
         rect.setFillColor(Color.white);
+        next = new GButton("Next Level", 500, 450, 100, 50); 
     }
     
     public void setScore( int i )
@@ -37,6 +39,7 @@ public class LevelCompletePane extends GraphicsPane
         program.add( congrats );
         program.add( scoreLabel );
         program.add( rect );
+        program.add(next); 
     }
     
     @Override
@@ -45,11 +48,25 @@ public class LevelCompletePane extends GraphicsPane
         program.remove( congrats );
         program.remove( scoreLabel );
         program.remove( rect );
+        program.remove(next);
     }
     
     @Override
     public void mousePressed(MouseEvent e) {
         GObject obj = program.getElementAt(e.getX(), e.getY());
+        if(obj == next)
+        {
+        		if(program.currentLevel == 1)
+        		{
+        			program.currentLevel = 2;
+        		}
+        		else if (program.currentLevel == 2)
+        		{
+        			program.currentLevel = 3; 
+        		}
+        		
+        		program.switchToSome();
+        }
         if( obj == rect )
             program.switchToMenu();
     }

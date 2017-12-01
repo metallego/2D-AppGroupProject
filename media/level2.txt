@@ -13,17 +13,22 @@
 
 platform, -5, 10, 20, 11, false
 platform, 5, 8, 3, 1, false
-platform, 4, 6, 1, 1, false
-platform, 5, 4, 4, 1, false
+platform, 3, 6, 2, 1, false
+platform, 1, 5, 1, 1, false
+platform, 2, 3, 2, 1, false
+platform, 5, 2, 4, 1, false
+platform, 7, 5, 2, 1, false
+platform, -1, 5, 1, 1, false
+
 
 hero, 50, 400
 
-coin, 700, 450
-coin, 800, 450
-coin, 600, 450
+coin, 100, 200
+coin, 800, 50
+coin, 600, 350
 
-chest, 600, 155
+chest, 800, 200
 
-enemy, 400, 400
-enemy, 600, 400
-enemy, 100, 400
+enemy, 900, 435
+enemy, 400, 237
+enemy, 700, 35

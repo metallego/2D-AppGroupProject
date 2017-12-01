@@ -11,25 +11,20 @@
  *<identifier>, Xlocation, ylocation                       *
  ***********************************************************/
 
-platform, 0, 0, 1, 1, false
-platform, 1, 1, 1, 1, false
-platform, 2, 2, 1, 1, false
-platform, 3, 3, 1, 1, false
-platform, 4, 4, 1, 1, false
-platform, 5, 5, 1, 1, false
-platform, 6, 6, 1, 1, true
-platform, 7, 7, 1, 1, false
-platform, 8, 8, 1, 1, false
-platform, 9, 9, 1, 1, false
+platform, -5, 10, 20, 11, false
+platform, 4, 6, 5, 1, true
+platform, 3, 7, 1, 1, false
+platform, 2, 8, 1, 1, false
+
 
 hero, 50, 400
 
-coin, 700, 450
-coin, 800, 450
-coin, 600, 450
+coin, 350, 280
+coin, 900, 450
+coin, 700, 170
 
-chest, 500, 400
+chest, 700, 253
 
-enemy, 400, 400
-enemy, 600, 400
-enemy, 800, 400
+enemy, 500, 238
+enemy, 700, 238
+enemy, 800, 425

@@ -24,7 +24,7 @@ public class SomePane extends GraphicsPane {
 	@Override
 	public void showContents() {
 		program.add(background);
-		program.add(program.hero.image);
+		program.add(program.chest.image);
 
 		for(Platform e:program.environment.getPlatforms()) {
 			GImage temp = e.getGImage();
@@ -42,12 +42,12 @@ public class SomePane extends GraphicsPane {
 			program.add(temp);
 		}
 
-		program.add(program.chest.image);
+		
 		program.environment.setUpHeartSlots();
 		program.environment.setUpCoinSlots();
-		program.add(program.chest.image);
 		program.add(exitButton);
 		program.add(optionsButton);
+		program.add(program.hero.image);
 	}
 
 	@Override
