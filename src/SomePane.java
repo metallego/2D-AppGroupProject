@@ -89,10 +89,15 @@ public class SomePane extends GraphicsPane {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
-		if(obj == program.hero.image || obj == exitButton) {
+		if(obj == exitButton) {
 			program.environment.setPreserve( false );
 			program.loadedLevel = false;
+			AudioPlayer audio = AudioPlayer.getInstance();
+			if(program.igOptions.is_off)
+				audio.stopSound("sound", "Level.mp3");
 			program.switchToMenu();
+			
+				
 		}
 		if(obj == optionsButton)
 		{

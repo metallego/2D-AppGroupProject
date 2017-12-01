@@ -33,8 +33,8 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	public Environment environment;
 	public Loot coin;
 	private ControlsPane control; 
-	private OptionsPane options; 
-	private InGameOptionsPane igOptions; 
+	public OptionsPane options; 
+	public InGameOptionsPane igOptions; 
 	private LevelCompletePane winScreen;
 	private LevelSelectPane levelSelect; 
 	private int count = 0;
