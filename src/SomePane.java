@@ -57,7 +57,6 @@ public class SomePane extends GraphicsPane {
 	public void hideContents() {
 		program.remove(background);
 		program.remove(program.hero.image);
-		program.remove(program.enemy.image);
 		program.remove(program.chest.image);
 		program.remove(exitButton);
 		program.remove(optionsButton);

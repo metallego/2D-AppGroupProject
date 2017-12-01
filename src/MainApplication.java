@@ -100,6 +100,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 				pause( 30 );
 			}
 			winScreen.setScore( hero.getCoins() );
+			somePane.update();
 			switchtoLevelComplete();
 		}
 
@@ -324,7 +325,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 
 	public void switchtoLevelComplete()
 	{
-
+		somePane.hideContents();
 		loadedLevel = false;
 		completed = false;
 		switchToScreen(winScreen);
