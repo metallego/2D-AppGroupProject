@@ -39,21 +39,23 @@ public class Hero extends Entity{
         this.setType(EntityType.HERO);
         System.out.println("Created new Hero");
         this.setAttack(5);
+        this.setDeath( false );
     }
 	
 
-	public static void updateHP() {
+	public void updateHP() {
 		// MAKE THE INVINCIBLITY CHANGE BACK TO VINICIBLE
 
 		
 		if(!isInvincible()) {
 			hp--;	
 			setInvincible(true);
-
+            System.out.println( "Hero took damage.  Current HP: " + hp );
 			}
 
 		
 		if(hp <= 0) {
+		    this.setDeath(true);
 		}
 	}
 	

@@ -118,34 +118,34 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		if(environment.checkForDeath() != null) {
 
 			Entity tempEntity = environment.checkForDeath();
-//			if (tempEntity.getType() == EntityType.HERO) {
-//				{
-//					if(tempEntity.isLeft()) {
-//						tempEntity.image.setImage("hero_death_left" + deathCalled + ".jpg");
-//						tempEntity.image.setSize(ENEMY_WIDTH, ENEMY_HEIGHT);
-//						deathCalled++;
-//						if(deathCalled == 9) {
-//							tempEntity.image.setImage("tombstone.jpg");
-//							tempEntity.image.setSize(ENEMY_WIDTH, ENEMY_HEIGHT);
-//							somePane.showContents();
-//							deathCalled = 1;
-//						}
-//					}
-//					else {
-//						tempEntity.image.setImage("hero_death_left" + deathCalled + ".jpg");
-//						tempEntity.image.setSize(ENEMY_WIDTH, ENEMY_HEIGHT);
-//						deathCalled++;
-//						if(deathCalled == 9) {
-//							tempEntity.image.setImage("tombstone.jpg");
-//							tempEntity.image.setSize(ENEMY_WIDTH, ENEMY_HEIGHT);
-//							somePane.showContents();
-//							deathCalled = 1;
-//
-//						}
-//					}
-//				}
-//
-//			}
+			if (tempEntity.getType() == EntityType.HERO) {
+				{
+					if(tempEntity.isLeft()) {
+						tempEntity.image.setImage("hero_death_left" + deathCalled + ".jpg");
+						tempEntity.image.setSize(ENEMY_WIDTH, ENEMY_HEIGHT);
+						deathCalled++;
+						if(deathCalled == 9) {
+							tempEntity.image.setImage("tombstone.jpg");
+							tempEntity.image.setSize(ENEMY_WIDTH, ENEMY_HEIGHT);
+							somePane.showContents();
+							deathCalled = 1;
+						}
+					}
+					else {
+						tempEntity.image.setImage("hero_death_left" + deathCalled + ".jpg");
+						tempEntity.image.setSize(ENEMY_WIDTH, ENEMY_HEIGHT);
+						deathCalled++;
+						if(deathCalled == 9) {
+							tempEntity.image.setImage("tombstone.jpg");
+							tempEntity.image.setSize(ENEMY_WIDTH, ENEMY_HEIGHT);
+							somePane.showContents();
+							deathCalled = 1;
+
+						}
+					}
+				}
+
+			}
 
 			if (tempEntity.getType() == EntityType.ENEMY) {
 				if(tempEntity.isLeft()) {
@@ -359,6 +359,12 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		somePane.hideContents();
 		loadedLevel = false;
 		completed = false;
+		if(dead)
+		{
+		    dead = false;
+		    hero.hp = 3;
+		    hero.setDeath( false );
+		}
 		switchToScreen(winScreen);
 	}
 	

@@ -137,13 +137,12 @@ public class Environment extends GraphicsProgram
 		for (Enemy e:enemies) {
 			GRectangle rect = e.image.getBounds();
 			if(bounds.intersects(rect)){
-				Hero.updateHP();
+				hero.updateHP();
 				GLabel hurtLabel = new GLabel("Ow",e.image.getX()+ e.image.getWidth()/3, e.image.getY()+e.image.getHeight()/2); 
 				hurtLabel.setColor(Color.red);
 				hurtLabel.setFont((new Font("Times New Roman", Font.BOLD, 14)));
 				println("hero was attacked");
 				program.resetInvulnTimer();
-				hero.setInvincible( true );
 			}
 		}
 	}
@@ -252,7 +251,7 @@ public class Environment extends GraphicsProgram
 		}
 		
 		if(!Hero.isInvincible()) {
-		heroTakesDamage(hero.image.getBounds());
+		    heroTakesDamage(hero.image.getBounds());
 		}
 //// MAKE THE INVINCIBLITY CHANGE BACK TO VINICIBLE
 //
