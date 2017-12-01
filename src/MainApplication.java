@@ -105,15 +105,15 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			}
 			somePane.hideContents();
 			winScreen.setScore( hero.getCoins() );
+			environment.emptyLists();
 			if(dead) {
 				switchToGameOver();
 			}
-			else {
-				switchtoLevelComplete();
-			}
+			switchtoLevelComplete();
 		}
-
 	}
+
+
 
 	public void actionPerformed (ActionEvent e) {
 		//invincibility timer for hero after getting hit
@@ -351,7 +351,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	{
 		switchToScreen(options);
 	}
-	
+
 	public void switchToGameOver()
 	{
 		somePane.hideContents();
@@ -366,7 +366,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		switchToScreen(gameOver);
 	}
 
-	
+
 	public void switchtoLevelComplete()
 	{
 		somePane.hideContents();

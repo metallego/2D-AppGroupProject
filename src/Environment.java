@@ -89,6 +89,7 @@ public class Environment extends GraphicsProgram
 			coins.get(i).drawCoins(program, coins.get(i));
 		}
 	}
+	
 	public void particle(String attack, GImage part, GLabel atkLabel) {
 
 		ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
@@ -99,6 +100,18 @@ public class Environment extends GraphicsProgram
 		executor.schedule(task, 200, TimeUnit.MILLISECONDS);
 		executor.schedule(task1, 200, TimeUnit.MILLISECONDS);
 	}
+	
+	public void levelAnimation(String attack, GImage levelAnimation, GLabel atkLabel) {
+
+		ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
+		program.add(levelAnimation);
+		program.add(atkLabel);
+		Runnable task = () -> SwingUtilities.invokeLater(() -> program.remove(levelAnimation));
+		Runnable task1 = () -> SwingUtilities.invokeLater(() -> program.remove(atkLabel));
+		executor.schedule(task, 200, TimeUnit.MILLISECONDS);
+		executor.schedule(task1, 200, TimeUnit.MILLISECONDS);
+	}
+	
 
 	public Entity checkForDeath() {
 		for(Entity e:entities) {
@@ -121,6 +134,12 @@ public class Environment extends GraphicsProgram
 				attackLabel.setFont((new Font("Times New Roman", Font.BOLD, 14)));
 				println("enemy was attacked");
 				particle(atkNum, particle, attackLabel);
+				
+				//TO DO IMAGES
+				GImage atkImage = new GImage("hit_particle.jpg",e.image.getX()+ e.image.getWidth()/5, e.image.getY()+e.image.getHeight()/4);
+				GLabel incAtkLabel = new GLabel("+ATK",e.image.getX()+ e.image.getWidth()/3, e.image.getY()+e.image.getHeight()/2); 
+				attackLabel.setColor(Color.white);
+				attackLabel.setFont((new Font("Times New Roman", Font.BOLD, 14)));
 			}
 		}
 
