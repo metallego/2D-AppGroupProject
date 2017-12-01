@@ -33,8 +33,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	public Environment environment;
 	public Loot coin;
 	private ControlsPane control; 
-	public OptionsPane options; 
-	public InGameOptionsPane igOptions; 
+	public OptionsPane options;
 	private LevelCompletePane winScreen;
 	private GameOverPane gameOver;
 
@@ -70,7 +69,6 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		menu = new MenuPane(this);
 		control = new ControlsPane(this);
 		options = new OptionsPane(this);
-		igOptions = new InGameOptionsPane(this);
 		winScreen = new LevelCompletePane(this);
 		levelSelect = new LevelSelectPane(this); 
 		gameOver = new GameOverPane(this);
@@ -308,11 +306,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		{
 			audio.playSound("sounds", "Intro Song.mp3");
 		}
-		if(!igOptions.is_off)
-		{
-			audio.playSound("sounds", "Intro Song.mp3");
-			audio.stopSound("sounds", "Level.mp3");
-		}
+		audio.stopSound("sounds", "Level.mp3");
 		count++;
 		if( hero!= null )
 			hero.resetCoins();
@@ -355,11 +349,6 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	public void switchtoOptions()
 	{
 		switchToScreen(options);
-	}
-
-	public void switchtoIGOptions()
-	{
-		switchToScreen(igOptions); 
 	}
 	
 	public void switchToGameOver()
