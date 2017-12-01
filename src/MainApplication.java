@@ -40,7 +40,6 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	private int count = 0;
 	private boolean scrollState = false;
 	public boolean completed = false;
-	public static boolean dead = false;
 	public boolean loadedLevel = false;
 	private Timer myTimer;
 	public static final int timerWoken = 50;
@@ -92,7 +91,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		{
 			pause(30);
 			System.out.println( "Going into gameplay Loop" );
-			while ( !completed & !dead )
+			while (!completed)
 			{
 				if ( ( hero.image.getX() > WINDOW_WIDTH - SCROLL_BUFFER ) && hero.getSpeed() > 0 ) scrollState = true;
 				else if ( ( hero.image.getX() < SCROLL_BUFFER ) && hero.getSpeed() < 0 ) scrollState = true;
@@ -102,7 +101,6 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 				pause( 30 );
 			}
 			winScreen.setScore( hero.getCoins() );
-			somePane.showContents();
 			switchtoLevelComplete();
 		}
 
