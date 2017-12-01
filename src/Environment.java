@@ -142,6 +142,8 @@ public class Environment extends GraphicsProgram
 				hurtLabel.setColor(Color.red);
 				hurtLabel.setFont((new Font("Times New Roman", Font.BOLD, 14)));
 				println("hero was attacked");
+				program.resetInvulnTimer();
+				hero.setInvincible( true );
 			}
 		}
 	}
@@ -188,7 +190,7 @@ public class Environment extends GraphicsProgram
 
 	public boolean update(boolean b)
 	{
-		
+		completed = false;
 		if(b)
 		{
 			scroll();
@@ -249,14 +251,16 @@ public class Environment extends GraphicsProgram
 			hero.stopJumping(groundY+hero.image.getHeight());
 		}
 		
-//		if(!Hero.isInvincible()) {
-//		heroTakesDamage(hero.image.getBounds());
-//		}
+		if(!Hero.isInvincible()) {
+		heroTakesDamage(hero.image.getBounds());
+		}
 //// MAKE THE INVINCIBLITY CHANGE BACK TO VINICIBLE
 //
-//		if(hero.getDeath()) {
-//			MainApplication.dead = true;
-//		}
+		if(hero.getDeath()) {
+			program.dead = true;
+		}
+		else
+		    program.dead = false;
 		
 		
 		if(completed)

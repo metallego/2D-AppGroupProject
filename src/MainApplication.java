@@ -48,11 +48,13 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	private boolean attackIsPressed = false;
 	private boolean jumpIsPressed = false;
 	private boolean gameStarted = false;
+	public boolean dead = false;
 	private int numTimesCalled = 1;
 	private int deathCalled = 1;
 	private int testcount = 1; 
 	private int runFrames = 1;
 	private int jumpFrames = 1; 
+	private int invulnTimer = 0;
 	public int currentLevel = 1;
 	public static int hitcount = 0; 
 	static boolean isAttacking;
@@ -91,7 +93,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		{
 			pause(30);
 			System.out.println( "Going into gameplay Loop" );
-			while (!completed)
+			while (!completed && !dead)
 			{
 				if ( ( hero.image.getX() > WINDOW_WIDTH - SCROLL_BUFFER ) && hero.getSpeed() > 0 ) scrollState = true;
 				else if ( ( hero.image.getX() < SCROLL_BUFFER ) && hero.getSpeed() < 0 ) scrollState = true;
@@ -107,6 +109,11 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	}
 
 	public void actionPerformed (ActionEvent e) {
+	    //invincibility timer for hero after getting hit
+	    invulnTimer += 50;
+	    if( invulnTimer >= 2000 )
+	        hero.setInvincible( false );
+	    
 		//DEATH ANIMATION
 		if(environment.checkForDeath() != null) {
 
@@ -353,6 +360,11 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		loadedLevel = false;
 		completed = false;
 		switchToScreen(winScreen);
+	}
+	
+	public void resetInvulnTimer()
+	{
+	    invulnTimer = 0;
 	}
 
 	@Override
