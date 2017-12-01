@@ -7,7 +7,7 @@ import java.awt.geom.Point2D;
 import javax.imageio.ImageIO; 
 
 public class HeartSlots {
-	private GImage image;
+	public GImage image;
 	
 	public HeartSlots (double x, double y, double width, double height)
 	{

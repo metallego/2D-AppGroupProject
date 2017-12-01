@@ -37,6 +37,7 @@ public class Environment extends GraphicsProgram
 	private double GRAVITY = .3;
 	private double groundY = 400;
 	private boolean preserveLevel = false;
+	private boolean updateHearts = false;
 	//just a default value here for now
 	private int winCoinAmount = 1;
 	private boolean completed = false;
@@ -173,6 +174,7 @@ public class Environment extends GraphicsProgram
 		    		hurtLabel.setFont((new Font("Times New Roman", Font.BOLD, 14)));
 			    	println("hero was attacked");
 				    program.resetInvulnTimer();
+				    updateHearts = true;
 			    }
 		    }
 	    }
@@ -287,6 +289,26 @@ public class Environment extends GraphicsProgram
 		}
 		else
 		    program.dead = false;
+		
+		if(updateHearts)
+		{
+		    updateHearts = false;
+		    if(hero.hp == 3)
+		    {
+		        hearts.get(2).image.setImage( "empty_heart.png" );
+		        hearts.get(2).image.setSize( heartSlotWidthHeight, heartSlotWidthHeight );
+		    }
+		    else if( hero.hp == 2)
+		    {
+		        hearts.get(0).image.setImage( "empty_heart.png" );
+                hearts.get(0).image.setSize( heartSlotWidthHeight, heartSlotWidthHeight );
+		    }
+		    else if( hero.hp == 1 )
+		    {
+		        hearts.get(1).image.setImage( "empty_heart.png" );
+                hearts.get(1).image.setSize( heartSlotWidthHeight, heartSlotWidthHeight );
+		    }
+		}
 		
 		
 		if(completed)
