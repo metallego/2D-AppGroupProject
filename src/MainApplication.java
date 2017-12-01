@@ -39,7 +39,8 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	private LevelSelectPane levelSelect; 
 	private int count = 0;
 	private boolean scrollState = false;
-	private boolean completed = false;
+	public static boolean completed = false;
+	public static boolean dead = false;
 	public boolean loadedLevel = false;
 	private Timer myTimer;
 	public static final int timerWoken = 50;
@@ -90,7 +91,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		{
 			pause(30);
 			System.out.println( "Going into gameplay Loop" );
-			while ( !completed )
+			while ( !completed & !dead )
 			{
 				if ( ( hero.image.getX() > WINDOW_WIDTH - SCROLL_BUFFER ) && hero.getSpeed() > 0 ) scrollState = true;
 				else if ( ( hero.image.getX() < SCROLL_BUFFER ) && hero.getSpeed() < 0 ) scrollState = true;
@@ -100,7 +101,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 				pause( 30 );
 			}
 			winScreen.setScore( hero.getCoins() );
-			somePane.update();
+			somePane.showContents();
 			switchtoLevelComplete();
 		}
 
@@ -112,6 +113,27 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 
 			Entity tempEntity = environment.checkForDeath();
 			if (tempEntity.getType() == EntityType.HERO) {
+				{
+					if(tempEntity.isLeft()) {
+						tempEntity.image.setImage("hero_death_left" + deathCalled + ".jpg");
+						tempEntity.image.setSize(ENEMY_WIDTH, ENEMY_HEIGHT);
+						deathCalled++;
+						if(deathCalled == 9) {
+							tempEntity.image.setImage("tombstone.jpg");
+							somePane.showContents();
+						}
+					}
+					else {
+						tempEntity.image.setImage("hero_death_left" + deathCalled + ".jpg");
+						tempEntity.image.setSize(ENEMY_WIDTH, ENEMY_HEIGHT);
+						deathCalled++;
+						if(deathCalled == 9) {
+							tempEntity.image.setImage("tombstone.jpg");
+							somePane.showContents();
+
+						}
+					}
+				}
 
 			}
 
@@ -127,7 +149,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 						tempEntity.setImage(null);
 						Environment.removeEntity(tempEntity);
 						Hero.addExp(5);
-						somePane.update();
+						somePane.showContents();
 					}
 				}
 				else {
@@ -139,7 +161,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 						tempEntity.setDeath(false);
 						Environment.removeEntity(tempEntity);
 						Hero.addExp(5);
-						somePane.update();
+						somePane.showContents();
 
 					}
 				}
@@ -156,23 +178,18 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 					tempEntity.setDeath(false);
 					//tempEntity = null;
 					Environment.removeEntity(tempEntity);
-					somePane.update();
+					somePane.showContents();
 				}
 			}
 
-			else if (tempEntity.getType() == EntityType.HERO) {
-				tempEntity.image.setImage("wooden_chest" + deathCalled + ".jpg");
-				deathCalled++;
-				//something about the location
-				//not moving anything boolean
-				somePane.update();
-			}
+
 
 		}
 
 
 		//ATTACKING ANIMATION
 
+		
 		if(attackIsPressed&&isRight)	{
 			hero.image.setImage("hero_attack_right" + numTimesCalled  + ".jpg");
 			//chest.image.setImage("wooden_chest" + testcount + ".jpg");

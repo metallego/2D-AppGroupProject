@@ -36,12 +36,11 @@ public class Environment extends GraphicsProgram
 	private double FRICTION = .1;
 	private double GRAVITY = .3;
 	private double groundY = 400;
-	private boolean completed = false;
 	private boolean preserveLevel = false;
 	//just a default value here for now
 	private int winCoinAmount = 1;
 	
-	
+
 
 	public Environment(MainApplication p)
 	{
@@ -132,6 +131,20 @@ public class Environment extends GraphicsProgram
 			}
 		}
 	}
+
+	public void heroTakesDamage(GRectangle bounds) {
+		for (Enemy e:enemies) {
+			GRectangle rect = e.image.getBounds();
+			if(bounds.intersects(rect)){
+				Hero.updateHP();
+				GLabel hurtLabel = new GLabel("Ow",e.image.getX()+ e.image.getWidth()/3, e.image.getY()+e.image.getHeight()/2); 
+				hurtLabel.setColor(Color.red);
+				hurtLabel.setFont((new Font("Times New Roman", Font.BOLD, 14)));
+				println("hero was attacked");
+			}
+		}
+	}
+
 	public static void removeEntity(Entity e) {
 
 		if(e.getType() == EntityType.ENEMY) {
@@ -140,7 +153,7 @@ public class Environment extends GraphicsProgram
 		else if(e.getType() == EntityType.CHEST) {
 			chest.remove(e);	
 		}
-		
+
 		entities.remove(e);
 
 	}
@@ -174,7 +187,7 @@ public class Environment extends GraphicsProgram
 
 	public boolean update(boolean b)
 	{
-		completed = false;
+		
 		if(b)
 		{
 			scroll();
@@ -188,7 +201,7 @@ public class Environment extends GraphicsProgram
 			{
 				hero.stopJumping( p.getY() );
 				if( p.checkWin( hero, winCoinAmount ))
-					completed = true;
+					MainApplication.completed = true;
 			}
 		for( Loot l: lootList )
 		{
@@ -234,7 +247,18 @@ public class Environment extends GraphicsProgram
 		if(hero.getY() >= groundY) {
 			hero.stopJumping(groundY+hero.image.getHeight());
 		}
-		if( completed )
+		
+		if(!Hero.isInvincible()) {
+		heroTakesDamage(hero.image.getBounds());
+		}
+// MAKE THE INVINCIBLITY CHANGE BACK TO VINICIBLE
+
+		if(hero.getDeath()) {
+			MainApplication.dead = true;
+		}
+		
+		
+		if( MainApplication.completed || MainApplication.dead)
 			return true;
 		return false;
 
