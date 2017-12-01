@@ -94,13 +94,13 @@ public class Environment extends GraphicsProgram
 		executor.schedule(task, 200, TimeUnit.MILLISECONDS);
 		executor.schedule(task1, 200, TimeUnit.MILLISECONDS);
 	}
-	
+
 	public Entity checkForDeath() {
 		for(Entity e:entities) {
 			if(e.getDeath()) {
 				return e;
 			}
-			
+
 		}
 		return null;
 	}
@@ -185,7 +185,7 @@ public class Environment extends GraphicsProgram
 			l.pickUp( hero, program );
 
 		}
-		
+
 		ArrayList<Loot> temp = new ArrayList<Loot>(); 
 		for(Loot l: lootList)
 		{
@@ -199,6 +199,11 @@ public class Environment extends GraphicsProgram
 				lootList.remove(l);
 			}
 
+		}
+
+
+		if(!coins.isEmpty())
+		{
 			if(hero.coins == 1)
 			{
 				coins.get(0).image.setImage("coin_token.jpg");
@@ -295,12 +300,16 @@ public class Environment extends GraphicsProgram
 
 	public void emptyLists()
 	{
+
 		if(!preserveLevel)
 		{
+
 			chest.clear();
 			enemies.clear();
 			platforms.clear();
 			lootList.clear();
+			hearts.clear();
+			coins.clear();
 		}
 	}
 
