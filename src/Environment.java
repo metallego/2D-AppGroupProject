@@ -5,6 +5,7 @@ import acm.program.*;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -17,9 +18,9 @@ public class Environment extends GraphicsProgram
 	private MainApplication program;
 	private Hero hero;
 	private Enemy enemy; 
-	private ArrayList<Entity> entities = new ArrayList<Entity>();
-	private ArrayList<Chest> chest = new ArrayList<Chest>();
-	private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+	private static ArrayList<Entity> entities = new ArrayList<Entity>();
+	private static ArrayList<Chest> chest = new ArrayList<Chest>();
+	private static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 	private ArrayList<Platform> platforms = new ArrayList<Platform>();
 	private ArrayList<Loot> lootList = new ArrayList<Loot>();
 	private ArrayList <HeartSlots> hearts = new ArrayList <HeartSlots>(); 
@@ -37,6 +38,8 @@ public class Environment extends GraphicsProgram
 	private boolean preserveLevel = false;
 	//just a default value here for now
 	private int winCoinAmount = 1;
+	
+	
 
 	public Environment(MainApplication p)
 	{
@@ -100,7 +103,6 @@ public class Environment extends GraphicsProgram
 			if(e.getDeath()) {
 				return e;
 			}
-
 		}
 		return null;
 	}
@@ -117,10 +119,7 @@ public class Environment extends GraphicsProgram
 				attackLabel.setFont((new Font("Times New Roman", Font.BOLD, 14)));
 				println("enemy was attacked");
 				particle(atkNum, particle, attackLabel);
-
-
 			}
-
 		}
 
 		for (Chest c:chest) {
@@ -130,12 +129,20 @@ public class Environment extends GraphicsProgram
 				println("chest was attacked");
 			}
 		}
+	}
+	public static void removeEntity(Entity e) {
+		if(e.getType() == EntityType.ENEMY) {
+			enemies.remove(e);
+		}
+		else if(e.getType() == EntityType.CHEST) {
+			chest.remove(e);	
+		}
+		
+		entities.remove(e);
 
 	}
 
-
-
-	public void addEnemy( Enemy e)
+	public void addEnemy(Enemy e)
 	{
 		enemies.add(e);
 		entities.add(e);

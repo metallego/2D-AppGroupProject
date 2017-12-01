@@ -2,7 +2,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -16,6 +16,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MainApplication extends GraphicsApplication  implements ActionListener{
+	private static final int ENEMY_HEIGHT = 75;
+	private static final int ENEMY_WIDTH = 50;
+	private static final int CHEST_WIDTH = 50;
+	private static final int CHEST_HEIGHT = 50;
 	public static final int WINDOW_WIDTH = 1080;
 	public static final int WINDOW_HEIGHT = 600;
 	public static final int SCROLL_BUFFER = 200;
@@ -45,6 +49,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	private boolean jumpIsPressed = false;
 	private boolean gameStarted = false;
 	private int numTimesCalled = 1;
+	private int deathCalled = 1;
 	private int testcount = 1; 
 	private int runFrames = 1;
 	private int jumpFrames = 1; 
@@ -103,7 +108,60 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	public void actionPerformed (ActionEvent e) {
 		//DEATH ANIMATION
 		if(environment.checkForDeath() != null) {
-			
+
+			Entity tempEntity = environment.checkForDeath();
+			if (tempEntity.getType() == EntityType.HERO) {
+
+			}
+
+			if (tempEntity.getType() == EntityType.ENEMY) {
+				if(tempEntity.isLeft()) {
+					tempEntity.image.setImage("enemy_left_death" + deathCalled + ".jpg");
+					tempEntity.image.setSize(ENEMY_WIDTH, ENEMY_HEIGHT);
+					deathCalled++;
+					if(deathCalled == 4) {
+						deathCalled = 1;
+						tempEntity.setDeath(false);
+						//						tempEntity = null;
+						Environment.removeEntity(tempEntity);
+					}
+				}
+				else {
+					tempEntity.image.setImage("enemy_right_death" + deathCalled + ".jpg");
+					tempEntity.image.setSize(ENEMY_WIDTH, ENEMY_HEIGHT);
+					deathCalled++;
+					if(deathCalled == 4) {
+						deathCalled = 1;
+						tempEntity.setDeath(false);
+						//tempEntity = null;
+						Environment.removeEntity(tempEntity);
+
+					}
+				}
+			}
+
+
+
+			else if (tempEntity.getType() == EntityType.CHEST) {
+				tempEntity.image.setImage("wooden_chest" + deathCalled + ".jpg");
+				tempEntity.image.setSize(CHEST_WIDTH, CHEST_HEIGHT);
+				deathCalled++;
+				if(deathCalled == 4) {
+					deathCalled = 1;
+					tempEntity.setDeath(false);
+					//tempEntity = null;
+					Environment.removeEntity(tempEntity);
+
+				}
+			}
+
+			else if (tempEntity.getType() == EntityType.HERO) {
+				tempEntity.image.setImage("wooden_chest" + deathCalled + ".jpg");
+				deathCalled++;
+				//something about the location
+				//not moving anything boolean
+			}
+
 		}
 
 
@@ -172,10 +230,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 			//			add(testbox);
 		}
 
-		else{
-			
-		}
-		
+
 
 
 		//		if (testcount > 4)
@@ -215,7 +270,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		}
 		count++;
 		if( hero!= null )
-    		hero.resetCoins();
+			hero.resetCoins();
 		switchToScreen(menu);
 	}
 
@@ -265,9 +320,9 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	public void switchtoLevelComplete()
 	{
 
-	    loadedLevel = false;
-	    completed = false;
-	    switchToScreen(winScreen);
+		loadedLevel = false;
+		completed = false;
+		switchToScreen(winScreen);
 	}
 
 	@Override
@@ -440,8 +495,6 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		}
 		loadedLevel = true;
 	}
-
-
 
 
 

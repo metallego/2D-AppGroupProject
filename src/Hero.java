@@ -18,7 +18,6 @@ public class Hero extends Entity{
 	{
 		image = new GImage("hero_idle_right.jpg", 50, 400); 
 		this.setType(EntityType.HERO);
-		
 
 	}
 	

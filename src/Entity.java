@@ -24,6 +24,9 @@ public class Entity extends GraphicsProgram {
 	private int HP; // health points
 	public int attack;
 	private EntityType type;
+	private boolean left = true;
+	private boolean right = false;
+
 
 	private MainApplication program; 
 	private boolean shouldMoveLeft = false;
@@ -32,6 +35,14 @@ public class Entity extends GraphicsProgram {
 	private boolean death = false;
 	public GImage image;
 
+
+	public GImage getImage() {
+		return image;
+	}
+
+	public void setImage(GImage image) {
+		this.image = image;
+	}
 
 	public Entity()
 	{
@@ -212,6 +223,14 @@ public class Entity extends GraphicsProgram {
 	public boolean getJumping()
 	{
 	    return jumping;
+	}
+
+	public boolean isLeft() {
+		return left;
+	}
+
+	public void setLeft(boolean left) {
+		this.left = left;
 	}
 
 
