@@ -291,7 +291,7 @@ public class Environment extends GraphicsProgram
 		}
 //// MAKE THE INVINCIBLITY CHANGE BACK TO VINICIBLE
 //
-		if(hero.getDeath()) {
+		if(hero.hp == 0) {
 			program.dead = true;
 		}
 		else
