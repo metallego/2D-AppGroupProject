@@ -30,7 +30,7 @@ public class Entity extends GraphicsProgram {
 	private boolean shouldMoveLeft = false;
 	private boolean shouldMoveRight = false;
 	private boolean jumping = false;
-	private static boolean death = false;
+	private boolean death = false;
 	public GImage image;
 
 
@@ -69,7 +69,7 @@ public class Entity extends GraphicsProgram {
 		return type;
 	}
 
-	public static void setDeath(boolean d) {
+	public void setDeath(boolean d) {
 		death = d;
 	}
 	

@@ -19,7 +19,7 @@ public class Hero extends Entity{
 	public static int coins = 0;	
 	private static int exp; //experience
 	private static int level = 1;
-	public static int hp = 1;
+	public static int hp = 3;
 	private static boolean invincible = false;	
 
 	
@@ -54,7 +54,6 @@ public class Hero extends Entity{
 
 		
 		if(hp <= 0) {
-			setDeath(true);
 		}
 	}
 	

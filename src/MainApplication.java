@@ -39,7 +39,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	private LevelSelectPane levelSelect; 
 	private int count = 0;
 	private boolean scrollState = false;
-	public static boolean completed = false;
+	public boolean completed = false;
 	public static boolean dead = false;
 	public boolean loadedLevel = false;
 	private Timer myTimer;
@@ -56,6 +56,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	private int jumpFrames = 1; 
 	public int currentLevel = 1;
 	public static int hitcount = 0; 
+	static boolean isAttacking;
 
 	public void init() {
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -112,30 +113,34 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 		if(environment.checkForDeath() != null) {
 
 			Entity tempEntity = environment.checkForDeath();
-			if (tempEntity.getType() == EntityType.HERO) {
-				{
-					if(tempEntity.isLeft()) {
-						tempEntity.image.setImage("hero_death_left" + deathCalled + ".jpg");
-						tempEntity.image.setSize(ENEMY_WIDTH, ENEMY_HEIGHT);
-						deathCalled++;
-						if(deathCalled == 9) {
-							tempEntity.image.setImage("tombstone.jpg");
-							somePane.showContents();
-						}
-					}
-					else {
-						tempEntity.image.setImage("hero_death_left" + deathCalled + ".jpg");
-						tempEntity.image.setSize(ENEMY_WIDTH, ENEMY_HEIGHT);
-						deathCalled++;
-						if(deathCalled == 9) {
-							tempEntity.image.setImage("tombstone.jpg");
-							somePane.showContents();
-
-						}
-					}
-				}
-
-			}
+//			if (tempEntity.getType() == EntityType.HERO) {
+//				{
+//					if(tempEntity.isLeft()) {
+//						tempEntity.image.setImage("hero_death_left" + deathCalled + ".jpg");
+//						tempEntity.image.setSize(ENEMY_WIDTH, ENEMY_HEIGHT);
+//						deathCalled++;
+//						if(deathCalled == 9) {
+//							tempEntity.image.setImage("tombstone.jpg");
+//							tempEntity.image.setSize(ENEMY_WIDTH, ENEMY_HEIGHT);
+//							somePane.showContents();
+//							deathCalled = 1;
+//						}
+//					}
+//					else {
+//						tempEntity.image.setImage("hero_death_left" + deathCalled + ".jpg");
+//						tempEntity.image.setSize(ENEMY_WIDTH, ENEMY_HEIGHT);
+//						deathCalled++;
+//						if(deathCalled == 9) {
+//							tempEntity.image.setImage("tombstone.jpg");
+//							tempEntity.image.setSize(ENEMY_WIDTH, ENEMY_HEIGHT);
+//							somePane.showContents();
+//							deathCalled = 1;
+//
+//						}
+//					}
+//				}
+//
+//			}
 
 			if (tempEntity.getType() == EntityType.ENEMY) {
 				if(tempEntity.isLeft()) {
@@ -145,7 +150,6 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 					if(deathCalled == 4) {
 						deathCalled = 1;
 						tempEntity.setDeath(false);
-						//tempEntity = null;
 						tempEntity.setImage(null);
 						Environment.removeEntity(tempEntity);
 						Hero.addExp(5);

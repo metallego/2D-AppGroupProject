@@ -39,7 +39,8 @@ public class Environment extends GraphicsProgram
 	private boolean preserveLevel = false;
 	//just a default value here for now
 	private int winCoinAmount = 1;
-	
+	private boolean completed = false;
+
 
 
 	public Environment(MainApplication p)
@@ -201,7 +202,7 @@ public class Environment extends GraphicsProgram
 			{
 				hero.stopJumping( p.getY() );
 				if( p.checkWin( hero, winCoinAmount ))
-					MainApplication.completed = true;
+					completed = true;
 			}
 		for( Loot l: lootList )
 		{
@@ -248,17 +249,17 @@ public class Environment extends GraphicsProgram
 			hero.stopJumping(groundY+hero.image.getHeight());
 		}
 		
-		if(!Hero.isInvincible()) {
-		heroTakesDamage(hero.image.getBounds());
-		}
-// MAKE THE INVINCIBLITY CHANGE BACK TO VINICIBLE
-
-		if(hero.getDeath()) {
-			MainApplication.dead = true;
-		}
+//		if(!Hero.isInvincible()) {
+//		heroTakesDamage(hero.image.getBounds());
+//		}
+//// MAKE THE INVINCIBLITY CHANGE BACK TO VINICIBLE
+//
+//		if(hero.getDeath()) {
+//			MainApplication.dead = true;
+//		}
 		
 		
-		if( MainApplication.completed || MainApplication.dead)
+		if(completed)
 			return true;
 		return false;
 
