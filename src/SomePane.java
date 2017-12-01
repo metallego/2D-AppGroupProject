@@ -6,15 +6,12 @@ import acm.graphics.GObject;
 public class SomePane extends GraphicsPane {
 	private MainApplication program; //you will use program to get access to all of the GraphicsProgram calls
 	private GButton exitButton; 
-	private GButton optionsButton; 
-	private InGameOptionsPane merp; 
 	private GImage background; 
 
 
 	public SomePane(MainApplication app) {
 		this.program = app;
 		exitButton = new GButton ("exit", 0, 0, 50, 50); 
-		optionsButton = new GButton ("Options", 0, 550, 50, 50); 
 		background = new GImage("background.jpg", 0, 0);
 		background.setSize(1080, 600);
 	}
@@ -46,7 +43,6 @@ public class SomePane extends GraphicsPane {
 		program.environment.setUpHeartSlots();
 		program.environment.setUpCoinSlots();
 		program.add(exitButton);
-		program.add(optionsButton);
 		program.add(program.hero.image);
 	}
 
@@ -56,7 +52,6 @@ public class SomePane extends GraphicsPane {
 		program.remove(program.hero.image);
 		program.remove(program.chest.image);
 		program.remove(exitButton);
-		program.remove(optionsButton);
 
 		for(HeartSlots e:program.environment.getHeartSlots()) {
 			GImage temp = e.getGImage();
@@ -93,16 +88,11 @@ public class SomePane extends GraphicsPane {
 			program.environment.setPreserve( false );
 			program.loadedLevel = false;
 			AudioPlayer audio = AudioPlayer.getInstance();
-			if(program.igOptions.is_off)
+			if(program.options.isOff)
 				audio.stopSound("sound", "Level.mp3");
 			program.switchToMenu();
 			
 				
-		}
-		if(obj == optionsButton)
-		{
-			program.environment.setPreserve( true );
-			program.switchtoIGOptions(); 
 		}
 	}
 
