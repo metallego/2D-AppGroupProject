@@ -21,18 +21,35 @@ public class SomePane extends GraphicsPane {
 		background.setSize(1080, 600);
 	}
 	
+	public void update() {
+		showContents();
+	}
+	
 	@Override
 	public void showContents() {
 		program.add(background);
 		program.add(program.hero.image);
-		program.add(program.enemy.image);
+//		program.add(program.enemy.image);
 		//program.environment.setupPlatforms();
 		for( int i = 0; i < program.environment.getPlatforms().size(); i++)
             program.add( program.environment.getPlatforms().get(i).getGImage() );
-		for( int i = 0; i < program.environment.getLootList().size(); i++)
-            program.add( program.environment.getLootList().get(i).image );
-		for(int i = 0; i < program.environment.getEnemyList().size(); i++)
-			program.add(program.environment.getEnemyList().get(i).image);
+		
+		for(Platform e:program.environment.getPlatforms()) {
+			GImage temp = e.getGImage();
+			program.add(temp);
+		}
+
+		
+		for(Loot e:program.environment.getLootList()) {
+			GImage temp = e.image;
+			program.add(temp);
+		}
+		
+		for(Entity e:program.environment.getEnemyList()) {
+			GImage temp = e.getImage();
+			program.add(temp);
+		}
+		
 		program.add(program.chest.image);
 		program.environment.setUpHeartSlots();
 		program.environment.setUpCoinSlots();

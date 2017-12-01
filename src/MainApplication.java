@@ -123,9 +123,10 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 						deathCalled = 1;
 						tempEntity.setDeath(false);
 						//tempEntity = null;
+						tempEntity.setImage(null);
 						Environment.removeEntity(tempEntity);
 						Hero.addExp(5);
-
+						somePane.update();
 					}
 				}
 				else {
@@ -135,9 +136,10 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 					if(deathCalled == 4) {
 						deathCalled = 1;
 						tempEntity.setDeath(false);
-						//tempEntity = null;
 						Environment.removeEntity(tempEntity);
 						Hero.addExp(5);
+						somePane.update();
+
 					}
 				}
 			}
@@ -153,7 +155,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 					tempEntity.setDeath(false);
 					//tempEntity = null;
 					Environment.removeEntity(tempEntity);
-
+					somePane.update();
 				}
 			}
 
@@ -162,6 +164,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 				deathCalled++;
 				//something about the location
 				//not moving anything boolean
+				somePane.update();
 			}
 
 		}

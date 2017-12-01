@@ -4,7 +4,9 @@ import acm.program.*;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -17,10 +19,10 @@ public class Environment extends GraphicsProgram
 {
 	private MainApplication program;
 	private Hero hero;
-	private Enemy enemy; 
+	private static Enemy enemy; 
 	private static ArrayList<Entity> entities = new ArrayList<Entity>();
 	private static ArrayList<Chest> chest = new ArrayList<Chest>();
-	private static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+	static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 	private ArrayList<Platform> platforms = new ArrayList<Platform>();
 	private ArrayList<Loot> lootList = new ArrayList<Loot>();
 	private ArrayList <HeartSlots> hearts = new ArrayList <HeartSlots>(); 
@@ -131,6 +133,7 @@ public class Environment extends GraphicsProgram
 		}
 	}
 	public static void removeEntity(Entity e) {
+
 		if(e.getType() == EntityType.ENEMY) {
 			enemies.remove(e);
 		}

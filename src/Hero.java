@@ -23,7 +23,9 @@ public class Hero extends Entity{
 
 	public static void addExp(int expNum) {
 		exp += expNum;
-		
+		System.out.println("exp");
+
+		System.out.println(exp);
 		if(exp % 10 == 0 && exp != 0) {
 			levelUp();
 		}
@@ -32,6 +34,9 @@ public class Hero extends Entity{
 	
 	private static void levelUp() {
 		level++;
+		System.out.println("level");
+		System.out.println(level);
+
 		setAttack();
 	}
 
@@ -40,7 +45,7 @@ public class Hero extends Entity{
 	}
 	
 	public static void setAttack() {
-		attack *= 0.5*level;
+		attack += 0.5*level;
 	}
 	
 
