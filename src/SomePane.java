@@ -5,7 +5,6 @@ import acm.graphics.GObject;
 
 public class SomePane extends GraphicsPane {
 	private MainApplication program; //you will use program to get access to all of the GraphicsProgram calls
-	//private GImage img;
 	private GButton exitButton; 
 	private GButton optionsButton; 
 	private InGameOptionsPane merp; 
@@ -20,9 +19,7 @@ public class SomePane extends GraphicsPane {
 		background.setSize(1080, 600);
 	}
 
-	public void update() {
-		showContents();
-	}
+
 
 	@Override
 	public void showContents() {
