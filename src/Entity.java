@@ -12,7 +12,7 @@ public class Entity extends GraphicsProgram {
 	private static final int HEIGHT = 100;
 	private static final int WIDTH = 100;
 
-	private static final int MAX_SPEED = 5; //should be 3 but set it so that we can test jump 
+	private static final int MAX_SPEED = 2; //should be 3 but set it so that we can test jump 
 	private static final int MAX_VERT_SPEED = 8;
 	private static final double ACCELERATION = .35;
 	private double vertSpeed = 0;
