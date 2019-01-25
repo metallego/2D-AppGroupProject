@@ -21,25 +21,33 @@ public class MenuPane extends GraphicsPane{
 	
 	public MenuPane(MainApplication app) {
 		program = app;
-		rect = new GButton("Start", 500, 200, 100, 50);
+		
+		//rect = new GButton("Start", 500, 200, 100, 50);
+		rect = new GButton("Start", (program.WINDOW_WIDTH/2.16), 200, 100, 50);
 		rect.setFillColor(Color.white);
 		
-		options = new GButton("Options", 500, 275, 100, 50);
+		//options = new GButton("Options", 500, 275, 100, 50);
+		options = new GButton("Options", (program.WINDOW_WIDTH/2.16), 275, 100, 50);
 		options.setFillColor(Color.white);
 		
-		exit = new GButton("Exit", 500, 500, 100, 50);
+		//exit = new GButton("Exit", 500, 500, 100, 50);
+		exit = new GButton("Exit", (program.WINDOW_WIDTH/2.16), 500, 100, 50);
 		exit.setFillColor(Color.WHITE);
 		
-		title = new GLabel("Golden Boy", 465, 150);
+		//title = new GLabel("Golden Boy", 465, 150);
+		title = new GLabel("Golden Boy", (program.WINDOW_WIDTH/2.32), 150);
 		title.setFont(new Font("Times New Roman", Font.BOLD, 34));
 		
-		controls = new GButton("Controls", 500, 350, 100, 50);
+		//controls = new GButton("Controls", 500, 350, 100, 50);
+		controls = new GButton("Controls", (program.WINDOW_WIDTH/2.16), 350, 100, 50);
 		controls.setFillColor(Color.white);
 		
 		background = new GImage("background01.jpg", 0, 0);
-		background.setSize(1080, 600);
+		//background.setSize(1080, 600); 
+		background.setSize(program.WINDOW_WIDTH, program.WINDOW_HEIGHT);
 		
-		lvlSelect = new GButton ("Level Select", 500, 425, 100, 50); 
+		//lvlSelect = new GButton ("Level Select", 500, 425, 100, 50);
+		lvlSelect = new GButton ("Level Select", (program.WINDOW_WIDTH/2.16), 425, 100, 50);
 		lvlSelect.setFillColor(Color.WHITE);
 		}
 	

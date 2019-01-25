@@ -20,8 +20,10 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	private static final int ENEMY_WIDTH = 50;
 	private static final int CHEST_WIDTH = 50;
 	private static final int CHEST_HEIGHT = 50;
-	public static final int WINDOW_WIDTH = 1080;
-	public static final int WINDOW_HEIGHT = 600;
+	//public static final int WINDOW_WIDTH = 1080;
+	//public static final int WINDOW_HEIGHT = 600;
+	public static final int WINDOW_WIDTH = 1280;
+	public static final int WINDOW_HEIGHT = 960;
 	public static final int SCROLL_BUFFER = 200;
 
 	private SomePane somePane;

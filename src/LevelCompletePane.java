@@ -24,7 +24,8 @@ public class LevelCompletePane extends GraphicsPane
     {
         program = app;
         background = new GImage("You_win.jpg", 0, 0); 
-        background.setSize(1080, 600);
+        //background.setSize(1080, 600);
+        background.setSize(program.WINDOW_WIDTH, program.WINDOW_HEIGHT);
         congrats = new GLabel( "Congrtatulations you win!", 475, 200 );
         congrats.setColor(Color.white);
         scoreLabel = new GLabel( "Score goes here: ", 500, 400 );

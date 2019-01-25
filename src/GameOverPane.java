@@ -24,7 +24,7 @@ public class GameOverPane extends GraphicsPane
 		program = app;
 
 		Background = new GImage("Game_Over.jpg", 0, 0); 
-		Background.setSize(1080, 600);
+		Background.setSize(program.WINDOW_WIDTH, program.WINDOW_HEIGHT);
 		darn = new GLabel( "Oh Darn! You lost.", 450, 300 );
 		darn.setFont(new Font("Times New Roman", Font.BOLD, 34));
 		darn.setColor(Color.WHITE);

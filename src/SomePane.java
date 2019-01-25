@@ -13,8 +13,10 @@ public class SomePane extends GraphicsPane {
 		this.program = app;
 		exitButton = new GButton ("exit", 0, 0, 50, 50); 
 		background = new GImage("background.jpg", 0, 0);
-		background.setSize(1080, 600);
+		//background.setSize(1080, 600);
+		background.setSize(program.WINDOW_WIDTH, program.WINDOW_HEIGHT);
 	}
+	
 
 
 

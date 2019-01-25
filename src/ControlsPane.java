@@ -17,7 +17,7 @@ public class ControlsPane extends GraphicsPane{
 	private GButton Down_Key; 
 	private GButton Spacebar; 
 	private GButton attack; 
-	private GImage background;
+	private GImage background; // gonna have to make edits here 
 	private GButton back; 
 
 	// labels and lines 
@@ -47,7 +47,8 @@ public class ControlsPane extends GraphicsPane{
 		back = new  GButton("back to menu", 0, 0, 100, 50); 
 		
 		background = new GImage("OptionsBackground.jpg", 0, 0); 
-		background.setSize(1080, 600);
+		//background.setSize(1080, 600); //this is where we will pull and change the size accordingly for the game 
+		background.setSize(program.WINDOW_WIDTH, program.WINDOW_HEIGHT);
 		
 	}
 	
