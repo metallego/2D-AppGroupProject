@@ -2,11 +2,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import java.io.*; 
+import static java.lang.System.*; 
 
 import acm.graphics.GImage;
 import acm.graphics.GLabel;
@@ -16,7 +13,8 @@ import acm.graphics.GRect;
 
 public class OptionsPane extends GraphicsPane{
 	
-	String [] res_sizes = {"800x600", "960x720", "1024x768", "1280x960", "1400x1080", "1600x1200"};
+	public int SCREEN_WIDTH = 1080;
+	public int SCREEN_HEIGHT = 600; 
 	
 	private MainApplication program; 
 	private GRect volume_box;
@@ -25,12 +23,18 @@ public class OptionsPane extends GraphicsPane{
 	private GButton off; 
 	private GButton backMenu;
 	private GImage background; 
-	private GButton backGame; 
-	final JComboBox<String> cb;
+	private GButton backGame;
+	private GLabel reset; 
+	private GRect screen_box;
+	private GLabel screen_res;
+	private GButton screen1;
+	private GButton screen2;
+	private GButton screen3;
+	private GButton screen4; 
 	// add the screen resolution option here with GButton
 	public boolean isOff = false; 
 
-	public OptionsPane (MainApplication app)
+	public OptionsPane (MainApplication app) //change the x and y values so that they will hopefully be placed correctly based on the width/height
 	{
 		program = app; 
 		
@@ -47,8 +51,15 @@ public class OptionsPane extends GraphicsPane{
 		on = new GButton ("ON", (program.WINDOW_WIDTH/1.4), 100, 100, 50);
 		off = new GButton ("OFF", (program.WINDOW_WIDTH/1.2), 100, 100, 50); 
 		
-		cb = new JComboBox<String>(res_sizes);
-		cb.setVisible(true);
+		// added new GRect, GLabel, and GButtons so that I can make it easier for the user to access and choose which screen they would prefer to play on
+		screen_box = new GRect((program.WINDOW_WIDTH/12), 300, 150, 50);
+		screen_res = new GLabel ("Screen Resolution", (program.WINDOW_WIDTH/9.84), 330);
+		reset = new GLabel("Changing the resolution will require a restart of the game to apply the change", (program.WINDOW_WIDTH/10),370); 
+		//used the same idea as to figure out where the buttons should be placed 
+		screen1 = new GButton("800x600", (program.WINDOW_WIDTH/1.4), 300, 100, 50);
+		screen2 = new GButton("960x720", (program.WINDOW_WIDTH/1.2), 300, 100, 50);
+		screen3 = new GButton("1024x768", (program.WINDOW_WIDTH/1.4), 350, 100, 50);
+		screen4 = new GButton("1280x960", (program.WINDOW_WIDTH/1.2), 350, 100, 50);
 		
 		background = new GImage("options_Background.jpg", 0, 0);
 		//background.setSize(1080, 600);
@@ -76,7 +87,13 @@ public class OptionsPane extends GraphicsPane{
 		//program.add(backGame);
 		program.add(on);
 		program.add(off); 
-		program.add(cb);
+		program.add(screen_box);
+		program.add(screen_res);
+		program.add(screen1);
+		program.add(screen2);
+		program.add(screen3);
+		program.add(screen4);
+		program.add(reset);
 	}
 
 	@Override
@@ -89,7 +106,26 @@ public class OptionsPane extends GraphicsPane{
 		//program.remove(backGame);
 		program.remove(on);
 		program.remove(off);
-		program.remove(cb);
+		program.remove(screen_box);
+		program.remove(screen_res);
+		program.remove(screen1);
+		program.remove(screen2);
+		program.remove(screen3);
+		program.remove(screen4);
+		program.remove(reset);
+	}
+	//write function is added here to allow the users choice to be remembered so it can be booted up once reset.
+	public void write() {
+		try {
+			FileWriter fw = new FileWriter("screen_res.txt");
+			PrintWriter pw = new PrintWriter(fw); 
+			
+			pw.println(SCREEN_WIDTH + " " + SCREEN_HEIGHT); //takes the current/chosen resolution and writes it in
+			
+			pw.close();
+		} catch(IOException e){
+			out.println("ERROR finding file");
+		}
 	}
 	
 	@Override
@@ -117,11 +153,50 @@ public class OptionsPane extends GraphicsPane{
 			AudioPlayer audio = AudioPlayer.getInstance();
 			audio.stopSound("sounds", "Intro Song.mp3");
 			isOff = true; 
-			
 		}
 		else if (obj == backGame)
 		{
 			program.switchToSome();
+		}
+		else if (obj == screen1) {
+			SCREEN_WIDTH = 800; 
+			SCREEN_HEIGHT = 600; 
+			screen1.setFillColor(Color.gray);
+			screen2.setFillColor(Color.white);
+			screen3.setFillColor(Color.white);
+			screen4.setFillColor(Color.white);
+			write();
+			System.exit(0); // here I want to reset the app so that the changes take place
+		}
+		else if (obj == screen2) {
+			SCREEN_WIDTH = 960; 
+			SCREEN_HEIGHT = 720; 
+			screen2.setFillColor(Color.gray);
+			screen1.setFillColor(Color.white);
+			screen3.setFillColor(Color.white);
+			screen4.setFillColor(Color.white);
+			write();
+			System.exit(0);
+		}
+		else if (obj == screen3) {
+			SCREEN_WIDTH = 1024; 
+			SCREEN_HEIGHT = 768; 
+			screen3.setFillColor(Color.gray);
+			screen2.setFillColor(Color.white);
+			screen1.setFillColor(Color.white);
+			screen4.setFillColor(Color.white);
+			write();
+			System.exit(0);
+		}
+		else if (obj == screen4) {
+			SCREEN_WIDTH = 1280; 
+			SCREEN_HEIGHT = 960; 
+			screen4.setFillColor(Color.gray);
+			screen2.setFillColor(Color.white);
+			screen3.setFillColor(Color.white);
+			screen1.setFillColor(Color.white);
+			write();
+			System.exit(0);
 		}
 	}
 	

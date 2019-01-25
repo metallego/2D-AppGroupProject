@@ -8,6 +8,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import java.io.*;
+import static java.lang.System.*; 
+
 import javax.swing.Timer;
 
 import acm.graphics.*;
@@ -16,14 +19,47 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MainApplication extends GraphicsApplication  implements ActionListener{
+	// adding a read function here to access the screen resolution txt
+	public void read() {
+		try {
+			int order = 0; 
+			FileReader fr = new FileReader("screen_res.txt");
+			BufferedReader br = new BufferedReader(fr); 
+			
+			String str;
+			
+			while((str = br.readLine()) != null) {
+				// here I wanted to split the string so that you can read in the x and y separately
+				String[] part = str.split(" ");
+				String parts1 = part[0];
+				String parts2 = part[1];
+				if (order == 0) {
+					WINDOW_WIDTH = Integer.parseInt(parts1); //have to change the values into ints to make it work 
+					//out.println(parts1); //just to make sure it is printing the right value
+					order++; // this will change the width then move onto the height
+				}
+				if (order == 1) {
+					WINDOW_HEIGHT = Integer.parseInt(parts2);
+					//out.println(parts2); //just a check as well 
+					order = 0; // this will reset it so that if the user wants to change the screen size again then it will be reset for the next iteration
+				}
+				//out.println(str + "\n");
+			}
+			br.close();
+		} catch(IOException e) {
+			out.println("Error could not find file");
+		}
+	}
+	
+	
+	
 	private static final int ENEMY_HEIGHT = 75;
 	private static final int ENEMY_WIDTH = 50;
 	private static final int CHEST_WIDTH = 50;
 	private static final int CHEST_HEIGHT = 50;
-	//public static final int WINDOW_WIDTH = 1080;
-	//public static final int WINDOW_HEIGHT = 600;
-	public static final int WINDOW_WIDTH = 1280;
-	public static final int WINDOW_HEIGHT = 960;
+	// 800x600 will be the default size 
+	public static int WINDOW_WIDTH = 800;
+	public static int WINDOW_HEIGHT = 600;
 	public static final int SCROLL_BUFFER = 200;
 
 	private SomePane somePane;
@@ -63,6 +99,7 @@ public class MainApplication extends GraphicsApplication  implements ActionListe
 	static boolean isAttacking;
 
 	public void init() {
+		read();
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 	}
 

@@ -26,14 +26,19 @@ public class LevelCompletePane extends GraphicsPane
         background = new GImage("You_win.jpg", 0, 0); 
         //background.setSize(1080, 600);
         background.setSize(program.WINDOW_WIDTH, program.WINDOW_HEIGHT);
-        congrats = new GLabel( "Congrtatulations you win!", 475, 200 );
+        //congrats = new GLabel( "Congrtatulations you win!", 475, 200 );
+        congrats = new GLabel( "Congrtatulations you win!", (program.WINDOW_WIDTH/2.27),(program.WINDOW_HEIGHT/3));
         congrats.setColor(Color.white);
-        scoreLabel = new GLabel( "Score goes here: ", 500, 400 );
+        //scoreLabel = new GLabel( "Score goes here: ", 500, 400 );
+        scoreLabel = new GLabel( "Score goes here: ", (program.WINDOW_WIDTH/2.16), (program.WINDOW_HEIGHT/1.5));
         scoreLabel.setColor(Color.white);
-        rect = new GButton("Back to Main Menu", 500, 500, 100, 50);
+        //rect = new GButton("Back to Main Menu", 500, 500, 100, 50);
+        rect = new GButton("Back to Main Menu", (program.WINDOW_WIDTH/2.16), (program.WINDOW_HEIGHT/1.2), 100, 50);
         rect.setFillColor(Color.white);
-        next = new GButton("Next Level", 500, 450, 100, 50); 
-        credits = new GLabel("Game made by: Jeremy, Nathan, Antonio Team LTS. We Hope you enjoyed our game", 300, 400);
+        //next = new GButton("Next Level", 500, 450, 100, 50); 
+        next = new GButton("Next Level", (program.WINDOW_WIDTH/2.16), (program.WINDOW_HEIGHT/1.3), 100, 50); 
+        //credits = new GLabel("Game made by: Jeremy, Nathan, Antonio Team LTS. We Hope you enjoyed our game", 300, 400);
+        credits = new GLabel("Game made by: Jeremy, Nathan, Antonio Team LTS. We Hope you enjoyed our game", (program.WINDOW_WIDTH/3.6), (program.WINDOW_HEIGHT/1.5));
         credits.setColor(Color.white);
     }
     
@@ -46,7 +51,7 @@ public class LevelCompletePane extends GraphicsPane
     @Override
     public void showContents() 
     {
-    		program.add(background);
+    	program.add(background);
         program.add( congrats );
         program.add( scoreLabel );
         program.add( rect );
@@ -58,7 +63,7 @@ public class LevelCompletePane extends GraphicsPane
     @Override
     public void hideContents()
     {
-    		program.remove(background);
+    	program.remove(background);
         program.remove( congrats );
         program.remove( scoreLabel );
         program.remove( rect );

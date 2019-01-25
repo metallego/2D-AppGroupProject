@@ -29,7 +29,8 @@ public class Environment extends GraphicsProgram
 	private ArrayList <CoinSlots> coins = new ArrayList <CoinSlots>(); 
 	private double platformWidth = 100;
 	private double platformHeight = 50;
-	private double heartSlotX = 990; 
+	//private double heartSlotX = 990; 
+	private double heartSlotX = (program.WINDOW_WIDTH/1.09); 
 	private double heartSlotY = 0; 
 	private double heartSlotWidthHeight = 30; 
 	private double coinSlotY = 40; 

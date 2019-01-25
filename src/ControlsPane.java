@@ -30,19 +30,31 @@ public class ControlsPane extends GraphicsPane{
 	public ControlsPane(MainApplication app)
 	{
 		program = app;
-		Up_Key = new GButton ("^", 900, 150, 50, 50); 
-		jumpUp = new GLabel ("Jump Up", 900, 125);
-		Right_Key = new GButton (">", 950, 200, 50, 50); 
-		moveRight = new GLabel ("Move right", 1010, 230); 
-		Left_Key = new GButton ("<", 850, 200, 50, 50); 
-		moveLeft = new GLabel ("Move left", 790, 230); 
-		Down_Key = new GButton("v", 900, 200, 50, 50);
-		jumpDown = new GLabel("Jump down", 900, 275);
+		//Up_Key = new GButton ("^", 900, 150, 50, 50); 
+		//jumpUp = new GLabel ("Jump Up", 900, 125);
+		//Right_Key = new GButton (">", 950, 200, 50, 50);
+		//moveRight = new GLabel ("Move right", 1010, 230);
+		//Left_Key = new GButton ("<", 850, 200, 50, 50); 
+		//moveLeft = new GLabel ("Move left", 790, 230); 
+		//Down_Key = new GButton("v", 900, 200, 50, 50);
+		//jumpDown = new GLabel("Jump down", 900, 275);
 		
-		Spacebar = new GButton("Spacebar - Jump", 425, 300, 200, 50);
+		Up_Key = new GButton ("^", (program.WINDOW_WIDTH/1.2), (program.WINDOW_HEIGHT/4), 50, 50);
+		jumpUp = new GLabel ("Jump Up", (program.WINDOW_WIDTH/1.2), (program.WINDOW_HEIGHT/4.8));
+		Right_Key = new GButton (">", (program.WINDOW_WIDTH/1.13), (program.WINDOW_HEIGHT/3), 50, 50);  
+		moveRight = new GLabel ("Move right", (program.WINDOW_WIDTH/1.07), (program.WINDOW_HEIGHT/2.61)); 		
+		Left_Key = new GButton ("<", (program.WINDOW_WIDTH/1.27), (program.WINDOW_HEIGHT/3), 50, 50); 		
+		moveLeft = new GLabel ("Move left", (program.WINDOW_WIDTH/1.37), (program.WINDOW_HEIGHT/2.61)); 		
+		Down_Key = new GButton("v", (program.WINDOW_WIDTH/1.2), (program.WINDOW_HEIGHT/3), 50, 50);		
+		jumpDown = new GLabel("Jump down", (program.WINDOW_WIDTH/1.2), (program.WINDOW_HEIGHT/2.18));
 		
-		attack = new GButton ("Z", 50, 200, 50, 50); 
-		attackLabel = new GLabel("Attack", 60, 260);
+		//Spacebar = new GButton("Spacebar - Jump", 425, 300, 200, 50);
+		Spacebar = new GButton("Spacebar - Jump", (program.WINDOW_WIDTH/2.54), (program.WINDOW_HEIGHT/2), 200, 50);
+		
+		//attack = new GButton ("Z", 50, 200, 50, 50); 
+		//attackLabel = new GLabel("Attack", 60, 260);
+		attack = new GButton ("Z", (program.WINDOW_WIDTH/21.6), (program.WINDOW_HEIGHT/3), 50, 50); 
+		attackLabel = new GLabel("Attack", (program.WINDOW_WIDTH/18), (program.WINDOW_HEIGHT/2.31));
 		
 		back = new  GButton("back to menu", 0, 0, 100, 50); 
 		

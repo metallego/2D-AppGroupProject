@@ -23,15 +23,15 @@ public class LevelSelectPane extends GraphicsPane{
 	{
 		program = app; 
 		//lvl1 = new GButton ("Level 1", 300, 200, 100, 100); 
-		lvl1 = new GButton ("Level 1", (program.WINDOW_WIDTH/3.6), (program.WINDOW_HEIGHT/3), 100, 100); 
+		lvl1 = new GButton ("Level 1", (program.WINDOW_WIDTH/3.6), (program.WINDOW_HEIGHT/2.5), 100, 100); 
 		lvl1.setFillColor(Color.CYAN);
 		
 		//lvl2 = new GButton ("Level 2", 500, 200, 100, 100); 
-		lvl2 = new GButton ("Level 2", (program.WINDOW_WIDTH/2.16), (program.WINDOW_HEIGHT/3), 100, 100); 
+		lvl2 = new GButton ("Level 2", (program.WINDOW_WIDTH/2.16), (program.WINDOW_HEIGHT/2.5), 100, 100); 
 		lvl2.setFillColor(Color.cyan);
 
 		//lvl3 = new GButton ("Level 3", 700, 200, 100, 100);
-		lvl3 = new GButton ("Level 3", (program.WINDOW_WIDTH/1.54), (program.WINDOW_HEIGHT/3), 100, 100);
+		lvl3 = new GButton ("Level 3", (program.WINDOW_WIDTH/1.54), (program.WINDOW_HEIGHT/2.5), 100, 100);
 		lvl3.setFillColor(Color.cyan);
 		
 		Background = new GImage ("shelf_background.jpg", 0, 0);
