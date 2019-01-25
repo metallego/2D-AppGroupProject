@@ -10,6 +10,7 @@ import acm.graphics.GRect;
 
 public class GameOverPane extends GraphicsPane
 {
+	private int test = 0; 
 	private MainApplication program;
 	private GLabel darn;
 	private GLabel scoreLabel;
